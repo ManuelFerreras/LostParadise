@@ -72,7 +72,7 @@ html {
 }
 
 
-h2 {
+.text h2 {
     letter-spacing: 4px;
     font-family: sans-serif;
     font-weight: 900;
@@ -86,4 +86,19 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.info h3{
+    font-size: 100px;
+    color: var(--blanco);
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.info p{
+    color: var(--azul);
+    font-size: 35px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    text-align: justify;
 }
