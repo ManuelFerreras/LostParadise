@@ -33,7 +33,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--verde);
+    color: var(--blanco);
     height: 10vh;
     font-size: 20px;
 }
