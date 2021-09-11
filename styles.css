@@ -22,11 +22,11 @@ html {
 }
 
 .fondo::after {
-    display: inline-block;
+    display: flex;
     content: "";
-    border-top: .3rem solid var(--blanco);
+    border-top: .2rem solid var(--blanco);
     width: 95%;
-    margin: 0 auto;
+    margin: 15px auto;
     transform: translateY(-1rem);
 }
 
