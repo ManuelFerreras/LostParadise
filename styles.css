@@ -22,7 +22,7 @@ html {
 .fondo::after {
     display: flex;
     content: "";
-    border-top: .2rem solid var(--blanco);
+    border-top: .2rem solid var(--verde);
     width: 95%;
     margin: 15px auto;
     transform: translateY(-1rem);
@@ -76,7 +76,7 @@ html {
     font-family: sans-serif;
     font-weight: 900;
     font-size: 40px;
-    color: var(--blanco);
+    color: var(--verde);
 }
 
 
