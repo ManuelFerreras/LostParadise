@@ -1,8 +1,8 @@
 :root {
     --blanco: #EDF5E1;
-    --verdeClaro: #8EE4AF;
-    --verde: #5CDB95;
-    --verdeOscuro: #379683;
+    --verdeClaro: #EDEADB;
+    --verde: #b9d3a0;
+    --verdeOscuro: #85BB65;
     --azul: #05386B;
 }
 
@@ -81,7 +81,14 @@ html {
     color: var(--blanco);
 }
 
-
+.text::after {
+    display: flex;
+    content: "";
+    border-top: .2rem solid var(--azul);
+    width: 95%;
+    margin: 15px auto;
+    transform: translateY(-1rem);
+}
 
 .info {
     height: 100vh;
