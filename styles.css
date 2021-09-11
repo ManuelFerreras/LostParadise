@@ -18,7 +18,7 @@ html {
 
 
 .fondo {
-    background-color: var(--azul);
+    background-color: var(--verde);
 }
 
 .header {
@@ -26,7 +26,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--verdeClaro);
+    color: var(--azul);
     height: 10vh;
     font-size: 20px;
 }
