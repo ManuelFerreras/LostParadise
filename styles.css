@@ -49,7 +49,7 @@ html {
 
 .navegacion a{
     text-decoration: none;
-    color: var(--blanco);
+    color: var(--azul);
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
