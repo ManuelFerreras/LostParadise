@@ -7,7 +7,7 @@
 }
 
 html {
-    background-color: var(--verdeClaro);
+    background-color: var(--verde);
 }
 
 .contenedor {
@@ -18,7 +18,7 @@ html {
 
 
 .fondo {
-    background-color: var(--verdeOscuro);
+    background-color: var(--verde);
 }
 
 .header {
