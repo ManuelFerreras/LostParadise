@@ -93,6 +93,7 @@ html {
     color: var(--blanco);
     font-family: sans-serif;
     font-weight: bold;
+    margin-top: 50px;
 }
 
 .info p{
