@@ -1,13 +1,11 @@
 :root {
-    --blanco: #85BB65;
-    --verdeClaro: #EDEADB;
-    --verde: #323232;
-    --verdeOscuro: #85BB65;
-    --azul: #EDEADB;
+    --verde: #85BB65;
+    --grisOscuro: #323232;
+    --blanco: #EDEADB;
 }
 
 html {
-    background-color: var(--verde);
+    background-color: var(--grisOscuro);
 }
 
 .contenedor {
@@ -18,13 +16,13 @@ html {
 
 
 .fondo {
-    background-color: var(--verde);
+    background-color: var(--grisOscuro);
 }
 
 .fondo::after {
     display: flex;
     content: "";
-    border-top: .2rem solid var(--blanco);
+    border-top: .2rem solid var(--verde);
     width: 95%;
     margin: 15px auto;
     transform: translateY(-1rem);
@@ -35,7 +33,7 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--azul);
+    color: var(--verde);
     height: 10vh;
     font-size: 20px;
 }
@@ -49,7 +47,7 @@ html {
 
 .navegacion a{
     text-decoration: none;
-    color: var(--azul);
+    color: var(--verde);
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -58,7 +56,7 @@ html {
 }
 .navegacion a:hover{
     transition: .3s;
-    color: var(--blanco);
+    color: var(--verde);
 }
 
 
@@ -78,7 +76,7 @@ html {
     font-family: sans-serif;
     font-weight: 900;
     font-size: 40px;
-    color: var(--blanco);
+    color: var(--verde);
 }
 
 
@@ -91,14 +89,14 @@ html {
 
 .info h3{
     font-size: 100px;
-    color: var(--blanco);
+    color: var(--verde);
     font-family: sans-serif;
     font-weight: bold;
     margin-top: 50px;
 }
 
 .info p{
-    color: var(--azul);
+    color: var(--verde);
     font-size: 35px;
     font-family: sans-serif;
     letter-spacing: 1px;
