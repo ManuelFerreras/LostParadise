@@ -22,11 +22,13 @@ html {
 }
 
 .header {
+    font-family: sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--azul);
     padding: 25px 0;
+    font-size: 20px;
 }
 
 .navegacion {
@@ -39,4 +41,8 @@ html {
 .navegacion a{
     text-decoration: none;
     color: var(--blanco);
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: sans-serif;
 }
