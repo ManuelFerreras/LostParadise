@@ -14,6 +14,7 @@
 
 
 .header {
+    background-color: var(--verdeOscuro);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +22,6 @@
 }
 
 .navegacion {
-    background-color: var(--verdeOscuro);
     display: flex;
     justify-content: space-between;
     width: 40%;
