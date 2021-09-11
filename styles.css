@@ -9,9 +9,6 @@
 html {
     background-color: var(--verde);
     background-image: url("bunchofmoney.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 .contenedor {
