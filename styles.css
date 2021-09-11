@@ -57,3 +57,10 @@ html {
     align-items: center;
 }
 
+
+h2 {
+    text-shadow: 1px;
+    letter-spacing: 5px;
+    font-family: serif;
+    font-weight: bold;
+}
