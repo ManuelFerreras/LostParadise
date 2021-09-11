@@ -19,7 +19,6 @@ html {
 
 .fondo {
     background-color: var(--verdeOscuro);
-    height: 200px;
 }
 
 .header {
@@ -27,6 +26,7 @@ html {
     justify-content: space-between;
     align-items: center;
     color: #05386B;
+    padding: 25px 0;
 }
 
 .navegacion {
