@@ -21,6 +21,15 @@ html {
     background-color: var(--verde);
 }
 
+.fondo::after {
+    display: flex;
+    content: "";
+    border-top: .2rem solid var(--blanco);
+    width: 95%;
+    margin: 15px auto;
+    transform: translateY(-1rem);
+}
+
 .header {
     font-family: sans-serif;
     display: flex;
@@ -72,14 +81,6 @@ html {
     color: var(--blanco);
 }
 
-.text::after {
-    display: flex;
-    content: "";
-    border-top: .2rem solid var(--azul);
-    width: 95%;
-    margin: 15px auto;
-    transform: translateY(-1rem);
-}
 
 .info {
     height: 100vh;
