@@ -6,6 +6,9 @@
     --azul: #05386B;
 }
 
+html {
+    background-color: var(--verdeClaro);
+}
 
 .contenedor {
     max-width: 80%;
@@ -15,7 +18,7 @@
 
 
 .fondo {
-    background-color: var(--verdeOscuro);
+    background-color: var(--verde);
 }
 
 .header {
