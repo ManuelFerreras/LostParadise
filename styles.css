@@ -19,6 +19,7 @@ html {
 
 .fondo {
     background-color: var(--verdeOscuro);
+    height: 200px;
 }
 
 .header {
