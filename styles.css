@@ -17,9 +17,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #05386B;
 }
 
 .navegacion {
+    background-color: var(--verdeOscuro);
     display: flex;
     justify-content: space-between;
     width: 40%;
@@ -28,4 +30,5 @@
 
 .navegacion a{
     text-decoration: none;
+    color: #05386B;
 }
