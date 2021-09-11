@@ -54,6 +54,7 @@ html {
     font-weight: bold;
     letter-spacing: 2px;
     font-family: sans-serif;
+    transition: .2s;
 }
 .navegacion a:hover{
     transition: .3s;
