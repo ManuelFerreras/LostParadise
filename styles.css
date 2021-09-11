@@ -22,7 +22,7 @@ html {
 .fondo::after {
     display: flex;
     content: "";
-    border-top: .2rem solid var(--verde);
+    border-top: .2rem solid var(--blanco);
     width: 95%;
     margin: 15px auto;
     transform: translateY(-1rem);
@@ -47,7 +47,7 @@ html {
 
 .navegacion a{
     text-decoration: none;
-    color: var(--verde);
+    color: var(--blanco);
     font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -76,7 +76,7 @@ html {
     font-family: sans-serif;
     font-weight: 900;
     font-size: 40px;
-    color: var(--verde);
+    color: var(--blanco);
 }
 
 
@@ -89,7 +89,7 @@ html {
 
 .info h3{
     font-size: 100px;
-    color: var(--verde);
+    color: var(--blanco);
     font-family: sans-serif;
     font-weight: bold;
     margin-top: 50px;
