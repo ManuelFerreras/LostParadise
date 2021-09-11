@@ -24,10 +24,10 @@ html {
 .fondo::after {
     display: inline-block;
     content: "";
-    border-top: .3rem solid var(--blanco);
-    border-radius: 5%;
+    border-top: .2rem solid var(--blanco);
+    border-radius: 25%;
     width: 95%;
-    margin: 0 1rem;
+    margin: 0 auto;
     transform: translateY(-1rem);
 }
 
