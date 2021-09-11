@@ -24,8 +24,8 @@ html {
 .fondo::after {
     display: inline-block;
     content: "";
-    border-top: .2rem solid var(--blanco);
-    border-radius: 25%;
+    border-top: .5rem solid var(--blanco);
+    border-radius: 10%;
     width: 95%;
     margin: 0 auto;
     transform: translateY(-1rem);
