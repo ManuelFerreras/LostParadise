@@ -7,6 +7,12 @@
 }
 
 
+.contenedor {
+    max-width: 80%;
+    margin: auto auto;
+}
+
+
 .header {
     display: flex;
     justify-content: space-between;
