@@ -25,7 +25,7 @@ html {
     background-color: var(--verde);
 }
 
-.fondo::after {
+.fondoD::after {
     display: flex;
     content: "";
     border-top: .2rem solid var(--blanco);
