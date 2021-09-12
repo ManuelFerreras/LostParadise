@@ -9,6 +9,11 @@
     --tercero: #172a3a;
     --cuarto: #004346;
     --quinto: #b3ffb3;
+
+    --common: #616161;
+    --uncommon: #4bafbd;
+    --rare: #dd2a2a;
+    --legendary: #f1e423;
 }
 
 
@@ -33,6 +38,8 @@ html {
 .box-shadowing {
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
+
+
 
 
 
@@ -266,4 +273,32 @@ html {
     top: 5%;
     transform: translateY(0%);
     
+}
+
+.tarjeta .common{
+    color: var(--common);
+}
+.tarjeta:hover .common {
+    color: var(--common);
+}
+
+.tarjeta .uncommon{
+    color: var(--uncommon);
+}
+.tarjeta:hover .uncommon {
+    color: var(--uncommon);
+}
+
+.tarjeta .rare{
+    color: var(--rare);
+}
+.tarjeta:hover .rare {
+    color: var(--rare);
+}
+
+.tarjeta .legendary{
+    color: var(--legendary);
+}
+.tarjeta:hover .legendary {
+    color: var(--legendary);
 }
