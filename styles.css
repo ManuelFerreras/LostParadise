@@ -19,6 +19,13 @@ html {
     margin: 0 auto;
 }
 
+.shadowing {
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+
+.box-shadowing {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
 
 
 .fondo {
