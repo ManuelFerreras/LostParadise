@@ -17,6 +17,8 @@
 }
 
 
+
+/* Global */
 body {
     display: flex;
     align-items: center;
@@ -25,9 +27,21 @@ body {
     min-height: 100vh;
 }
 
-/* Global */
 html {
     background-color: var(--tercero);
+}
+
+
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primero), var(--segundo));
+    border-radius: 6px;
 }
 
 

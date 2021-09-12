@@ -19,3 +19,19 @@ function init() {
 }
 
 init();
+
+
+
+/*
+
+window.addEventListener('load', function() {
+    loader.style.opacity = 0;
+    loader.style.display = 'none';
+
+    cargador.remove()
+    body.style.display = 'block';
+    contenidoPagina.style.display = 'block';
+    contenidoPagina.style.opacity = 1;
+});
+
+*/
