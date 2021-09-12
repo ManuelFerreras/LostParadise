@@ -175,7 +175,7 @@ html {
 
 .tarjeta .contentBx {
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     width: 100%;
     height: 100px;
     text-align: center;
@@ -186,12 +186,12 @@ html {
     position: relative;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #fff;
+    color: var(--cuarto);
     font-size: 20px;
 }
 .tarjeta:hover .contentBx {
     height: 210px;
-    bottom: 20%;
+    bottom: 15%;
 }
 
 .tarjeta .contentBx h5,
@@ -219,14 +219,14 @@ html {
 
 .tarjeta:hover .contentBx {
     height: 210px;
-    bottom: 20%;
+    bottom: 15%;
 }
 
 
 .imgBx {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 55%;
+    transform: translateY(-45%);
     z-index: 10000;
     width: 100%;
     height: 220px;
@@ -234,7 +234,7 @@ html {
 }
 
 .tarjeta:hover .imgBx {
-    top: 0%;
+    top: 5%;
     transform: translateY(0%);
     
 }
