@@ -134,6 +134,30 @@ html {
     flex-direction: column;
     align-items: center;
     width: 33%;
+    position: relative;
+    width: 320px;
+    height: 550px;
+    background-color: #232323;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .3s;
+}
+.tarjeta:hover {
+    background-color: var(--quinto);
+    transition: .3s;
+}
+
+
+.tarjeta p{
+    font-family: sans-serif;
+    color: var(--quinto);
+    font-size: 20px;
+    transition: .3s;
+    background-color: transparent;
+}
+.tarjeta:hover p {
+    color: var(--cuarto);
+    transition: .3s;
 }
 
 .tarjetas {
