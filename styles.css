@@ -1,5 +1,5 @@
 :root {
-    --verde: #85BB65;
+    --quinto: #85BB65;
     --cuarto: #323232;
     --blanco: #EDEADB;
 
@@ -28,7 +28,7 @@ html {
 .fondo::after {
     display: flex;
     content: "";
-    border-top: .2rem solid var(--verde);
+    border-top: .2rem solid var(--quinto);
     width: 95%;
     margin: 15px auto;
     transform: translateY(-1rem);
@@ -62,7 +62,7 @@ html {
 }
 .navegacion a:hover{
     transition: .3s;
-    color: var(--verde);
+    color: var(--quinto);
 }
 
 
@@ -82,7 +82,7 @@ html {
     font-family: sans-serif;
     font-weight: 900;
     font-size: 40px;
-    color: var(--verde);
+    color: var(--quinto);
 }
 
 
@@ -102,7 +102,7 @@ html {
 }
 
 .info p{
-    color: var(--verde);
+    color: var(--quinto);
     font-size: 35px;
     font-family: sans-serif;
     letter-spacing: 1px;
