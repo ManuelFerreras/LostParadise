@@ -1,6 +1,6 @@
 :root {
     --quinto: #85BB65;
-    --cuarto: #323232;
+    --gris: #323232;
     --blanco: #EDEADB;
 
     --primero: #75dddd;
@@ -98,6 +98,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: var(--gris);
 }
 
 .info h3{
@@ -116,7 +117,9 @@ html {
     text-align: justify;
 }
 
-
+.seccion-assets {
+    background-color: var(--tercero);
+}
 .assets {
     display: flex;
     flex-direction: column;
