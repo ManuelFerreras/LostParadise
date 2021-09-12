@@ -1,11 +1,17 @@
 :root {
     --verde: #85BB65;
-    --grisOscuro: #323232;
+    --cuarto: #323232;
     --blanco: #EDEADB;
+
+    --primero: #75dddd;
+    --segundo: #508991;
+    --tercero: #172a3a;
+    --cuarto: #004346;
+    --quinto: #09bc8a;
 }
 
 html {
-    background-color: var(--grisOscuro);
+    background-color: var(--tercero);
 }
 
 .contenedor {
@@ -16,7 +22,7 @@ html {
 
 
 .fondo {
-    background-color: var(--grisOscuro);
+    background-color: var(--tercero);
 }
 
 .fondo::after {
