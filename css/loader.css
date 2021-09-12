@@ -8,14 +8,21 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
+
+.cargador p {
+    color: white;
+    font-family: sans-serif;
+    font-size: 50px;
 }
 
 .loader{
     height: 50px;
     transform-origin: bottom center;
     animation: rotate 3s linear infinite;
+    margin-bottom: 150px;
 }
 
 .circle {
