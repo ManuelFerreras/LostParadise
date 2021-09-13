@@ -9,6 +9,8 @@
     --uncommon: #4bafbd;
     --rare: #dd2a2a;
     --legendary: #f1e423;
+
+    --tarjetas: #979797;
 }
 
 
@@ -202,7 +204,7 @@ html {
     position: relative;
     width: 320px;
     height: 550px;
-    background-color: var(--terciario);
+    background-color: var(--tarjetas);
     border-radius: 20px;
     overflow: hidden;
     transition: .3s;
