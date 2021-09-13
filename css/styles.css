@@ -10,7 +10,7 @@
     --rare: #dd2a2a;
     --legendary: #f1e423;
 
-    --tarjetas: #ff9800;
+    --tarjetas: #ffb34dcc;
 }
 
 
@@ -181,11 +181,11 @@ html {
 }
 
 .assets h4 {
-    font-size: 60px;
-    color: var(--secundario);
+    font-size: 80px;
+    color: var(--terciario);
     font-family: sans-serif;
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: 150px;
     text-align: center;
 }
 
