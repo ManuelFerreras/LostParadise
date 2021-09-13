@@ -2,7 +2,7 @@
 :root {
     --principal: #222222;
     --secundario: #ffb951;
-    --terciario: #F1F1E6;
+    --terciario: #dfdfdf;
 
 
     --common: #616161;
@@ -48,7 +48,7 @@ html {
 }
 
 .shadowing {
-    text-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    text-shadow: 1.5px 1.5px 1.5px rgba(0,0,0,0.5);
 }
 
 .box-shadowing {
@@ -135,12 +135,12 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: var(--gris);
+    background-color: var(--secundario);
 }
 
 .lore h3{
     font-size: 100px;
-    color: var(--blanco);
+    color: var(--terciario);
     font-family: sans-serif;
     font-weight: bold;
     margin-top: 50px;
@@ -158,7 +158,7 @@ html {
 
 /* Assets */
 .seccion-assets {
-    background-color: var(--tercero);
+    background-color: var(--principal);
 }
 
 .division {
@@ -167,7 +167,7 @@ html {
 
 .division h5{
     text-align: center;
-    color: var(--quinto);
+    color: var(--secundario);
     font-size: 50px;
     font-family: sans-serif;
 }
@@ -180,7 +180,7 @@ html {
 
 .assets h4 {
     font-size: 60px;
-    color: var(--blanco);
+    color: var(--terciario);
     font-family: sans-serif;
     font-weight: bold;
     margin-top: 50px;
@@ -202,13 +202,13 @@ html {
     position: relative;
     width: 320px;
     height: 550px;
-    background-color: #232323;
+    background-color: var(--terciario);
     border-radius: 20px;
     overflow: hidden;
     transition: .3s;
 }
 .tarjeta:hover {
-    background-color: var(--quinto);
+    background-color: var(--secundario);
     transition: .3s;
 }
 
