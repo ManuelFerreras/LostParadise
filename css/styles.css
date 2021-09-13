@@ -211,7 +211,6 @@ html {
     transition: .3s;
 }
 .tarjeta:hover {
-    background-color: var(--tarjetas);
     transition: .3s;
 }
 
