@@ -204,13 +204,13 @@ html {
     position: relative;
     width: 320px;
     height: 550px;
-    background-color: var(--tarjetas);
+    background-color: var(--secundario);
     border-radius: 20px;
     overflow: hidden;
     transition: .3s;
 }
 .tarjeta:hover {
-    background-color: var(--secundario);
+    background-color: var(--tarjetas);
     transition: .3s;
 }
 

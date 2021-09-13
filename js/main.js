@@ -3,7 +3,7 @@ const cargador = document.querySelector('.cargador');
 const contenidoPagina = document.querySelector('.contenido-pagina');
 const body = document.querySelector('body');
 
-
+/*
 function init() {
     setTimeout(() => {
         loader.style.opacity = 0;
@@ -19,10 +19,8 @@ function init() {
 }
 
 init();
+*/
 
-
-
-/*
 
 window.addEventListener('load', function() {
     loader.style.opacity = 0;
@@ -34,4 +32,3 @@ window.addEventListener('load', function() {
     contenidoPagina.style.opacity = 1;
 });
 
-*/
