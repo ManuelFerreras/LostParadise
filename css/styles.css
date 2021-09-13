@@ -169,7 +169,7 @@ html {
 
 .division h5{
     text-align: center;
-    color: var(--secundario);
+    color: var(--terciario);
     font-size: 50px;
     font-family: sans-serif;
 }
@@ -182,7 +182,7 @@ html {
 
 .assets h4 {
     font-size: 60px;
-    color: var(--terciario);
+    color: var(--secundario);
     font-family: sans-serif;
     font-weight: bold;
     margin-top: 50px;
