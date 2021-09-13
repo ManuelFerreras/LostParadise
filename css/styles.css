@@ -61,7 +61,7 @@ html {
 
 /* Header */
 .fondo-header {
-    background-color: var(--terciario);
+    background-color: var(--principal);
 }
 .fondo-header::after {      /* Horizontal Line */
     display: flex;
@@ -100,7 +100,7 @@ html {
 }
 .navegacion a:hover{
     transition: .3s;
-    color: var(--quinto);
+    color: var(--terciario);
 }
 
 
@@ -120,7 +120,7 @@ html {
     font-family: sans-serif;
     font-weight: 900;
     font-size: 40px;
-    color: var(--quinto);
+    color: var(--secundario);
 }
 
 
