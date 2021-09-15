@@ -12,8 +12,18 @@
     --legendary: #f1e423;
 
     --tarjetas: #ffb34dcc;
+
+    --mainFont: 'mainFont', sans-serif;
 }
 
+
+@font-face {
+    font-family: 'mainFont';
+    src: url('../font/mainFont.woff') format('woff2'),
+         url('../font/mainFont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /* Global */
@@ -27,6 +37,11 @@ body {
 
 html {
     background-color: var(--principal);
+}
+
+html, body {
+    font-family: var(--mainFont);
+    letter-spacing: 3px;
 }
 
 
@@ -74,7 +89,7 @@ html {
 }
 
 .header {
-    font-family: sans-serif;
+    font-family: 'mainFont';
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,7 +112,7 @@ html {
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 2px;
-    font-family: sans-serif;
+    font-family: var(--mainFont);
     transition: .2s;
     margin-right: 40px;
     padding: 0 20px;
@@ -151,7 +166,7 @@ html {
     position: absolute ;
     bottom: 50%;
     letter-spacing: 4px;
-    font-family: sans-serif;
+    font-family: var(--mainFont);
     font-weight: 900;
     font-size: 40px;
     color: var(--secundario);
@@ -190,7 +205,7 @@ html {
 .lore h3{
     font-size: 100px;
     color: var(--terciario);
-    font-family: sans-serif;
+    font-family: var(--mainFont);
     font-weight: bold;
     margin-top: 50px;
 }
@@ -198,7 +213,7 @@ html {
 .lore p{
     color: var(--quinto);
     font-size: 35px;
-    font-family: sans-serif;
+    font-family: var(--mainFont);
     letter-spacing: 1px;
     text-align: justify;
 }
@@ -219,7 +234,7 @@ html {
     text-align: center;
     color: var(--terciario);
     font-size: 50px;
-    font-family: sans-serif;
+    font-family: var(--mainFont);
 }
 
 .assets {
@@ -231,7 +246,7 @@ html {
 .assets h4 {
     font-size: 80px;
     color: var(--terciario);
-    font-family: sans-serif;
+    font-family: var(--mainFont);
     font-weight: bold;
     margin-top: 150px;
     text-align: center;
@@ -265,7 +280,7 @@ html {
 
 
 .tarjeta p{
-    font-family: sans-serif;
+    font-family: var(--mainFont);
     color: var(--quinto);
     font-size: 20px;
     transition: .3s;
