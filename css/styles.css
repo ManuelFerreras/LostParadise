@@ -141,6 +141,19 @@ html {
     z-index: 100;
 }
 
+.link-learnMore{
+    position: absolute;
+    bottom: -60vh;
+    color:var(--secundario);
+    text-decoration: none;
+    background-color: var(--principal);
+    border: var(--secundario) 5px solid;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
 #learn-div-ext{
     position: absolute;
     width: 170px;
