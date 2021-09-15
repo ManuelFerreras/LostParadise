@@ -66,7 +66,10 @@ html {
     background-color: var(--principal);
 }
 
-
+.header a {
+    text-decoration: none;
+    color: var(--secundario);
+}
 
 .header {
     font-family: sans-serif;
@@ -74,8 +77,8 @@ html {
     justify-content: space-between;
     align-items: center;
     color: var(--secundario);
-    height: 10vh;
-    font-size: 20px;
+    height: 8vh;
+    font-size: 18px;
 }
 
 .navegacion {
@@ -89,7 +92,7 @@ html {
     position: relative;
     text-decoration: none;
     color: var(--secundario);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     letter-spacing: 2px;
     font-family: sans-serif;
@@ -167,6 +170,7 @@ html {
     padding: 15px 25px;
     font-size: 16px;
     font-weight: bold;
+    border: var(--secundario) 0px solid;
 }
 .link-learnMore:hover {
     border: var(--secundario) 5px solid;
