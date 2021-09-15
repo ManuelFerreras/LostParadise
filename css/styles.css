@@ -65,14 +65,8 @@ html {
 .fondo-header {
     background-color: var(--principal);
 }
-.fondo-header::after {      /* Horizontal Line */
-    display: flex;
-    content: "";
-    border-top: .2rem solid var(--terciario);
-    width: 95%;
-    margin: 15px auto;
-    transform: translateY(-1rem);
-}
+
+
 
 .header {
     font-family: sans-serif;
@@ -92,20 +86,42 @@ html {
 }
 
 .navegacion a{
+    position: relative;
     text-decoration: none;
     color: var(--secundario);
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
     font-family: sans-serif;
     transition: .2s;
-    margin-right: 24px;
+    margin-right: 40px;
+    padding: 0 20px;
 }
 .navegacion a:last-of-type{
     margin-right: 0;
 }
+
+.navegacion a:after {
+    content: "";
+    position: absolute;
+    background-color: var(--secundario);
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
 .navegacion a:hover{
-    transition: .3s;
+    color: var(--terciario);
+    transition: .5s;
+}
+
+.navegacion a:hover::after {
+    width: 100%;
+    transition: 0.3s;
+    left: 0;
+    bottom: -10px;
     color: var(--terciario);
 }
 
@@ -147,34 +163,16 @@ html {
     color:var(--secundario);
     text-decoration: none;
     background-color: var(--principal);
-    border: var(--secundario) 5px solid;
+    transition: .2;
     padding: 15px 25px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-
+}
+.link-learnMore:hover {
+    border: var(--secundario) 5px solid;
+    transition: .3s;
 }
 
-#learn-div-ext{
-    position: absolute;
-    width: 170px;
-    height: 60px;
-    bottom: -60vh;
-    background-color: var(--secundario);
-}
-
-#learn-div-int{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    margin-top: 5px;
-    margin-left: 5px;
-    width: 160px;
-    height: 50px;
-    background-color: var(--principal);
-    color: var(--secundario);
-    
-}
 
 
 /* Lore */
