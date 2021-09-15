@@ -109,7 +109,7 @@ html, body {
     position: relative;
     text-decoration: none;
     color: var(--secundario);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     letter-spacing: 2px;
     font-family: var(--mainFont);
@@ -164,11 +164,11 @@ html, body {
 
 .intro-text h2 {
     position: absolute ;
-    bottom: 50%;
+    bottom: 45%;
     letter-spacing: 4px;
     font-family: var(--mainFont);
     font-weight: 900;
-    font-size: 40px;
+    font-size: 50px;
     color: var(--secundario);
     z-index: 100;
 }
@@ -181,7 +181,7 @@ html, body {
     background-color: var(--principal);
     transition: .2;
     padding: 15px 25px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     border: var(--secundario) 0px solid;
 }
@@ -250,6 +250,7 @@ html, body {
     font-weight: bold;
     margin-top: 150px;
     text-align: center;
+    letter-spacing: 10px;
 }
 
 .assets img {
@@ -282,10 +283,11 @@ html, body {
 .tarjeta p{
     font-family: var(--mainFont);
     color: var(--quinto);
-    font-size: 20px;
+    font-size: 24px;
     transition: .3s;
     background-color: transparent;
     text-align: center;
+    letter-spacing: 4px;
 }
 .tarjeta:hover p {
     color: var(--cuarto);
@@ -309,7 +311,7 @@ html, body {
 .tarjeta .contentBx h5 {
     position: relative;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
     color: var(--cuarto);
     font-size: 30px;
     font-weight: bold;
