@@ -65,6 +65,7 @@ html {
 /* Header */
 .fondo-header {
     background-color: var(--principal);
+    height: 8vh;
 }
 
 .header a {
@@ -133,26 +134,22 @@ html {
 
 /* Intro Text */
 .intro-text {
-    width: 100%;
-    height: auto;
+    height: 92vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    position: relative;
-
 }
 
 .intro-text img{
-    position: absolute;
-    top: 0;
-    left: 0;
+    height: 92vh;
+    max-width: 100%;
     min-width: 100%;
 }
 
 .intro-text h2 {
     position: absolute ;
-    bottom: -50vh;
+    bottom: 50%;
     letter-spacing: 4px;
     font-family: sans-serif;
     font-weight: 900;
@@ -163,7 +160,7 @@ html {
 
 .link-learnMore{
     position: absolute;
-    bottom: -60vh;
+    bottom: 40%;
     color:var(--secundario);
     text-decoration: none;
     background-color: var(--principal);
@@ -187,6 +184,7 @@ html {
     flex-direction: column;
     justify-content: space-evenly;
     background-color: var(--secundario);
+    overflow: hidden;
 }
 
 .lore h3{
@@ -210,6 +208,7 @@ html {
 /* Assets */
 .seccion-assets {
     background-color: var(--principal);
+    height: 100vh;
 }
 
 .division {
@@ -258,6 +257,7 @@ html {
     border-radius: 20px;
     overflow: hidden;
     transition: .3s;
+    transform-style: preserve-3d;
 }
 .tarjeta:hover {
     transition: .3s;
@@ -343,7 +343,6 @@ html {
 .tarjeta:hover .imgBx {
     top: 5%;
     transform: translateY(0%);
-    
 }
 
 .tarjeta .common{
@@ -372,4 +371,12 @@ html {
 }
 .tarjeta:hover .legendary {
     color: var(--legendary);
+}
+
+
+
+/* Footer */
+
+.fondo-footer {
+    background-color: black;
 }
