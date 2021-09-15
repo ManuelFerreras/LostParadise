@@ -191,6 +191,24 @@ html, body {
 }
 
 
+.link-whitepaper{
+    position: absolute;
+    bottom: 32.5%;
+    color:var(--principal);
+    text-decoration: none;
+    background-color: var(--secundario);
+    transition: .2;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border: var(--secundario) 0px solid;
+}
+.link-whitepaper:hover {
+    border: var(--principal) 5px solid;
+    transition: .3s;
+}
+
+
 
 /* Lore */
 .lore {
