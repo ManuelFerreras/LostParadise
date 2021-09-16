@@ -73,6 +73,14 @@ html, body {
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 
+.fondo-secundario {
+    background-color: var(--secundario);
+}
+
+.fondo-primario {
+    background-color: var(--principal);
+}
+
 
 
 
@@ -209,6 +217,34 @@ html, body {
 }
 
 
+/* Info */
+
+.info {
+    height: 100vh;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info h3 {
+    color: var(--secundario);
+    font-size: 64px;
+}
+
+.info p{
+    color: var(--terciario);
+    font-size: 24px;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.reverse h3 {
+    color: var(--principal);
+}
+
 
 /* Lore */
 .lore {
@@ -248,7 +284,7 @@ html, body {
     padding-bottom: 150px;
 }
 
-.division h5{
+.division h4{
     text-align: center;
     color: var(--terciario);
     font-size: 50px;
@@ -261,7 +297,7 @@ html, body {
     height: 100vh;
 }
 
-.assets h4 {
+.assets h3 {
     font-size: 80px;
     color: var(--terciario);
     font-family: var(--mainFont);
@@ -326,7 +362,7 @@ html, body {
     transition: 1.2s;
     z-index: 10;
 }
-.tarjeta .contentBx h5 {
+.tarjeta .contentBx h4 {
     position: relative;
     font-weight: 700;
     letter-spacing: 5px;
@@ -340,7 +376,7 @@ html, body {
     bottom: 15%;
 }
 
-.tarjeta .contentBx h5,
+.tarjeta .contentBx h4,
 .tarjeta .contentBx p {
     display: flex;
     justify-content: center;
@@ -350,7 +386,7 @@ html, body {
     opacity: 0;
     visibility: hidden;
 }
-.tarjeta:hover .contentBx h5 {
+.tarjeta:hover .contentBx h4 {
     opacity: 1;
     visibility: visible;
     transition-delay: 0.5s;
