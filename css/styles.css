@@ -89,11 +89,13 @@ html, body {
 .fondo-header {
     background-color: var(--principal);
     height: 8vh;
+    padding: 10px 0;
 }
 
 .header a {
     text-decoration: none;
     color: var(--secundario);
+    text-align: center;
 }
 
 .header {
@@ -117,7 +119,7 @@ html, body {
     position: relative;
     text-decoration: none;
     color: var(--secundario);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     font-family: var(--mainFont);
@@ -159,7 +161,7 @@ html, body {
 .intro-text {
     height: 92vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: space-evenly;
     align-items: center;
 }
@@ -407,13 +409,14 @@ html, body {
     top: 55%;
     transform: translateY(-45%);
     z-index: 10000;
-    width: 100%;
+    width: 80%;
     height: 220px;
     transition: 1s;
 }
 .tarjeta:hover .imgBx {
-    top: 5%;
+    top: 15%;
     transform: translateY(0%);
+    width: 60%;
 }
 
 .tarjeta .common{
