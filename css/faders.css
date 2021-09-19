@@ -8,3 +8,29 @@
   .fade-in.appear {
     opacity: 1;
   }
+
+
+.from-left {
+    -webkit-transform: translateX(-20%);
+    transform:  translateX(-20%);
+}
+
+.from-right {
+    -webkit-transform: translateX(20%);
+    transform: translateX(20%);
+}
+
+.from-left,
+.from-right {
+    transition: opacity 500ms ease-in, -webkit-transform 200ms ease-in;
+    transition: opacity 500ms ease-in, transform 200ms ease-in;
+    transition: opacity 500ms ease-in, transform 200ms ease-in, -webkit-transform 200ms ease-in;
+    opacity: 0;
+}
+
+.from-left.appear,
+.from-right.appear {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+}
