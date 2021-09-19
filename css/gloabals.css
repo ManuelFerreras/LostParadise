@@ -1,0 +1,18 @@
+/* Global Varbiables */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+html {
+    background-color: var(--principal);
+}
+
+html, body {
+    font-family: var(--mainFont);
+    letter-spacing: 3px;
+}

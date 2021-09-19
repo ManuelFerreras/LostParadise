@@ -1,0 +1,11 @@
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--principal), var(--terciario));
+    border-radius: 6px;
+}

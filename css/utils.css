@@ -1,0 +1,22 @@
+/* Utilities */
+
+.contenedor {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.shadowing {
+    text-shadow: 1.5px 1.5px 1.5px rgba(0,0,0,0.5);
+}
+
+.box-shadowing {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+
+.fondo-secundario {
+    background-color: var(--secundario);
+}
+
+.fondo-primario {
+    background-color: var(--principal);
+}

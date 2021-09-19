@@ -1,10 +1,4 @@
-@font-face {
-    font-family: 'mainFont';
-    src: url('../font/mainFont.woff') format('woff2'),
-         url('../font/mainFont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+/* Page Loader */
 
 .contenido-pagina {
     opacity: 0;

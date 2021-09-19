@@ -1,0 +1,18 @@
+/* Variables */
+
+:root {
+    /* --principal: #222222; */
+    --principal: #0c0d20;
+    --secundario: #ffb951;
+    --terciario: #dfdfdf;
+
+
+    --common: #616161;
+    --uncommon: #4bafbd;
+    --rare: #dd2a2a;
+    --legendary: #f1e423;
+
+    --tarjetas: #ffb34dcc;
+
+    --mainFont: 'mainFont', sans-serif;
+}
