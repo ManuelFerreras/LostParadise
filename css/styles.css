@@ -461,9 +461,19 @@ html, body {
     color: var(--terciario);
     font-family: var(--mainFont);
     font-weight: bold;
-    padding: 100px 0 0 0;
+    padding: 100px 0 100px 0;
     text-align: center;
     letter-spacing: 10px;
+}
+
+.divisions {
+    width: 45%;
+}
+
+.tokenomics .columns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .progress-info {
@@ -500,6 +510,7 @@ html, body {
 	width: 0;
 	opacity: 0;
 	transition: 1s ease 0.3s;
+    font-size: 16px;
 }
 
 
