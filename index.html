@@ -14,14 +14,13 @@
     <link rel="stylesheet" href="css/loader.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <link rel="stylesheet" href="css/utils.css">
+    <link rel="stylesheet" href="css/faders.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/cards.css">
 
     <!-- ICON -->
     <link rel="icon" href="img/billetito.png">
 
-    <!-- ScrollReveal Script -->
-    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
     <div class="cargador">
@@ -49,51 +48,51 @@
 
         <div class="intro-text">
             <img src="./img/fondo.gif" alt="Gif Fondo">
-            <h2 class="shadowing load-hidden first">First Ever Tycoon NFT Game With Realtime Earnings!</h2>
-            <a class="link-learnMore second" href="#">Learn More</a>
+            <h2 class="shadowing load-hidden fade-in">First Ever Tycoon NFT Game With Realtime Earnings!</h2>
+            <a class="link-learnMore" href="#">Learn More</a>
             <a class="link-whitepaper" href="#">WhitePaper</a>
         </div>
 
         
         <div class="contenedor">
             <div class="contenedor info">
-                <h3>Build</h3>
+                <h3 class="fade-in">Build</h3>
 
-                <p>Build your dream Tycoon Empire!</p>
+                <p class="fade-in">Build your dream Tycoon Empire!</p>
             </div>
         </div>
 
         <div class="fondo-secundario">
             <div class="contenedor info reverse">
-                <h3>Upgrade</h3>
+                <h3 class="fade-in">Upgrade</h3>
 
-                <p>Upgrade your buildings to maximise your earnings!</p>
+                <p class="fade-in">Upgrade your buildings to maximise your earnings!</p>
             </div>
         </div>
 
         <div class="contenedor">
             <div class="contenedor info">
-                <h3>Combine</h3>
+                <h3 class="fade-in">Combine</h3>
 
-                <p>Combine buildings in order to get new and better ones!</p>
+                <p class="fade-in">Combine buildings in order to get new and better ones!</p>
             </div>
         </div>
 
 
         <main class="lore">
             <div class="content contenedor">
-                <h3 class="shadowing">About</h3>
+                <h3 class="shadowing fade-in">About</h3>
 
-                <p>Lost Paradise is the first Crypto Tycoon game where your earn what you produce! Get yourself some nfts and start building your Tycoonist Empire! Upgrade, Combine, and Manage your own Cities!</p>
+                <p  class="fade-in">Lost Paradise is the first Crypto Tycoon game where your earn what you produce! Get yourself some nfts and start building your Tycoonist Empire! Upgrade, Combine, and Manage your own Cities!</p>
             </div>  
         </main> 
 
         <div class="seccion-assets">
             <div class="assets contenedor">
-                <h3 class="shadowing">NFTS</h3>
+                <h3 class="shadowing fade-in">NFTS</h3>
 
                 <div class="division">
-                    <div class="tarjetas">
+                    <div class="tarjetas fade-in">
                         <div class="tarjeta box-shadowing comun">
                             <div class="imgBx">
                                 <img src="img/Edificio_1.png" alt="House Image">
@@ -144,25 +143,25 @@
         </div>
 
         <div class="tokenomics">
-            <h3>Tokenomics</h3>
+            <h3  class="fade-in">Tokenomics</h3>
 
             <div class="columns contenedor">
                 <div class="divisions">
-                    <div class="progress-info">
+                    <div class="progress-info fade-in">
                         <h4>Team (70% Blocked With 5% Weekly Vesting)</h4>
                         <div class="progress">
                             <div class="progress-done" style="max-width: 20%;">20%</div>
                         </div>
                     </div>
 
-                    <div class="progress-info">
+                    <div class="progress-info fade-in">
                         <h4>Private Sale</h4>
                         <div class="progress">
                             <div class="progress-done" style="max-width: 5%;">5%</div>
                         </div>
                     </div>
 
-                    <div class="progress-info">
+                    <div class="progress-info fade-in">
                         <h4>Public Sale</h4>
                         <div class="progress">
                             <div class="progress-done" style="max-width: 15%;">15%</div>
@@ -172,21 +171,21 @@
 
                 <div class="divisions">
 
-                    <div class="progress-info">
+                    <div class="progress-info fade-in">
                         <h4>Advisors</h4>
                         <div class="progress">
                             <div class="progress-done" style="max-width: 15%;">15%</div>
                         </div>
                     </div>
 
-                    <div class="progress-info">
+                    <div class="progress-info fade-in">
                         <h4>Developement</h4>
                         <div class="progress">
                             <div class="progress-done" style="max-width: 5%;">5%</div>
                         </div>
                     </div>
 
-                    <div class="progress-info">
+                    <div class="progress-info fade-in">
                         <h4>In-Game Rewards & Staking</h4>
                         <div class="progress">
                             <div class="progress-done" style="max-width: 40%;">40%</div>
@@ -215,26 +214,13 @@
 
     <!-- JS Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/scrollEffects.js"></script>
     <script type="text/javascript" src="js/tilt.js"></script>
     <script type="text/javascript">
         VanillaTilt.init(document.querySelectorAll(".tarjeta"), {
             max: 25,
             speed: 400,
         });
-    </script>
-
-    <script>
-        //common reveal options to create reveal animations
-        ScrollReveal({
-            reset: true,
-            distance: '60px',
-            duration: 2500,
-            delay: 400
-        });
-
-        //target elements, and specify options to create reveal animations
-        ScrollReveal().reveal('.first', { delay: 500, origin: 'left' });
-
     </script>
 
 </body>
