@@ -157,6 +157,10 @@
 }
 
 .reverse h3 {
+    color: var(--terciario);
+}
+
+.reverse p {
     color: var(--principal);
 }
 
@@ -266,6 +270,14 @@
 .progress-info h4 {
     margin: 0;
     font-size: 24px;
+    opacity: 0;
+    animation: showText 0.5s 1.5s linear forwards;
+}
+
+@keyframes showText {
+    100% {
+        opacity: 100%;
+    }
 }
 
 .progress {
@@ -286,10 +298,18 @@
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	width: 0;
-	opacity: 0;
-	transition: 1s ease 0.3s;
+	width: 100%;
     font-size: 16px;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: fillBar 1s cubic-bezier(1,0,0.5,1) forwards;
+}
+
+@keyframes fillBar {
+    100% {
+        transform: scaleX(1);
+    }
 }
 
 

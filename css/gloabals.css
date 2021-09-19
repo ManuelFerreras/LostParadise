@@ -16,3 +16,7 @@ html, body {
     font-family: var(--mainFont);
     letter-spacing: 3px;
 }
+
+html.sr .load-hidden {
+    visibility: hidden;
+}

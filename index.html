@@ -19,6 +19,9 @@
 
     <!-- ICON -->
     <link rel="icon" href="img/billetito.png">
+
+    <!-- ScrollReveal Script -->
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
     <div class="cargador">
@@ -46,8 +49,8 @@
 
         <div class="intro-text">
             <img src="./img/fondo.gif" alt="Gif Fondo">
-            <h2 class="shadowing">First Ever Tycoon NFT Game With Realtime Earnings!</h2>
-            <a class="link-learnMore" href="#">Learn More</a>
+            <h2 class="shadowing load-hidden first">First Ever Tycoon NFT Game With Realtime Earnings!</h2>
+            <a class="link-learnMore second" href="#">Learn More</a>
             <a class="link-whitepaper" href="#">WhitePaper</a>
         </div>
 
@@ -79,10 +82,9 @@
 
         <main class="lore">
             <div class="content contenedor">
-                <h3 class="shadowing">LORE</h3>
+                <h3 class="shadowing">About</h3>
 
-                <p>Are you tired of playing Tycoon game, wasting your time without earning any money? You are at the right place!</p>
-                <p>Lost Paradise is the first Crypto Tycoon game where your earn what you produce! Get yourself some nfts and start building your Tycoonist Empire! Upgrade, Combine, and Manage your own Buildings!</p>
+                <p>Lost Paradise is the first Crypto Tycoon game where your earn what you produce! Get yourself some nfts and start building your Tycoonist Empire! Upgrade, Combine, and Manage your own Cities!</p>
             </div>  
         </main> 
 
@@ -149,21 +151,21 @@
                     <div class="progress-info">
                         <h4>Team (70% Blocked With 5% Weekly Vesting)</h4>
                         <div class="progress">
-                            <div class="progress-done" data-done="20">20%</div>
+                            <div class="progress-done" style="max-width: 20%;">20%</div>
                         </div>
                     </div>
 
                     <div class="progress-info">
                         <h4>Private Sale</h4>
                         <div class="progress">
-                            <div class="progress-done" data-done="5">5%</div>
+                            <div class="progress-done" style="max-width: 5%;">5%</div>
                         </div>
                     </div>
 
                     <div class="progress-info">
                         <h4>Public Sale</h4>
                         <div class="progress">
-                            <div class="progress-done" data-done="15">15%</div>
+                            <div class="progress-done" style="max-width: 15%;">15%</div>
                         </div>
                     </div>
                 </div>
@@ -173,21 +175,21 @@
                     <div class="progress-info">
                         <h4>Advisors</h4>
                         <div class="progress">
-                            <div class="progress-done" data-done="15">15%</div>
+                            <div class="progress-done" style="max-width: 15%;">15%</div>
                         </div>
                     </div>
 
                     <div class="progress-info">
                         <h4>Developement</h4>
                         <div class="progress">
-                            <div class="progress-done" data-done="5">5%</div>
+                            <div class="progress-done" style="max-width: 5%;">5%</div>
                         </div>
                     </div>
 
                     <div class="progress-info">
                         <h4>In-Game Rewards & Staking</h4>
                         <div class="progress">
-                            <div class="progress-done" data-done="40">40%</div>
+                            <div class="progress-done" style="max-width: 40%;">40%</div>
                         </div>
                     </div>
 
@@ -213,7 +215,6 @@
 
     <!-- JS Scripts -->
     <script src="js/main.js"></script>
-    <script src="js/progressBars.js"></script>
     <script type="text/javascript" src="js/tilt.js"></script>
     <script type="text/javascript">
         VanillaTilt.init(document.querySelectorAll(".tarjeta"), {
@@ -221,6 +222,20 @@
             speed: 400,
         });
     </script>
-    
+
+    <script>
+        //common reveal options to create reveal animations
+        ScrollReveal({
+            reset: true,
+            distance: '60px',
+            duration: 2500,
+            delay: 400
+        });
+
+        //target elements, and specify options to create reveal animations
+        ScrollReveal().reveal('.first', { delay: 500, origin: 'left' });
+
+    </script>
+
 </body>
 </html>
