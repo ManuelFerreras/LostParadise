@@ -1,4 +1,6 @@
-const progress = document.querySelector('.progress-done');
+const progress = document.querySelectorAll('.progress-done');
 
-progress.style.width = progress.getAttribute('data-done') + '%';
-progress.style.opacity = 1;
+for (const i in progress) {
+    progress[i].style.width = progress[i].getAttribute('data-done') + '%';
+    progress[i].style.opacity = 1;
+}

@@ -461,7 +461,7 @@ html, body {
     color: var(--terciario);
     font-family: var(--mainFont);
     font-weight: bold;
-    padding: 150px 0;
+    padding: 100px 0 0 0;
     text-align: center;
     letter-spacing: 10px;
 }
@@ -471,6 +471,7 @@ html, body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .progress-info h4 {
