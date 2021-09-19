@@ -1,7 +1,7 @@
 /* Header */
 .fondo-header {
     background-color: var(--principal);
-    height: 8vh;
+    height: 6vh;
     padding: 10px 0;
 }
 
@@ -17,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     color: var(--secundario);
-    height: 8vh;
+    height: 6vh;
     font-size: 18px;
 }
 

@@ -14,12 +14,12 @@
 
 .from-left {
     -webkit-transform: translateX(-20%);
-    transform:  translateX(-0%);
+    transform:  translateX(-20%);
 }
 
 .from-right {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
+    -webkit-transform: translateX(20%);
+    transform: translateX(20%);
 }
 
 .from-left,
