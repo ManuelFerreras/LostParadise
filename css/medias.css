@@ -148,3 +148,16 @@
         margin-bottom: 80px;
     }
 }
+
+@media (max-width: 600px) {
+    .navegacion {
+        flex-direction: column;
+    }
+    .navegacion a {
+        margin: 20px 0;
+    }
+    .footer {
+        flex-direction: column-reverse;
+        height: auto;
+    }
+}
