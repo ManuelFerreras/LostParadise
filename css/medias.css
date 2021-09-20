@@ -35,6 +35,14 @@
     .info {
         flex-direction: column;
         justify-content: center;
+        text-align: center;
+    }
+
+    .lore h3 {
+        font-size: 80px;
+    }
+    .lore p {
+        font-size: 32px;
     }
 }
 
@@ -63,11 +71,6 @@
         font-size: 34px;
     }
 
-    .link-learnMore,
-    .link-whitepaper {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 1024px) {
@@ -77,7 +80,31 @@
 
     .link-learnMore,
     .link-whitepaper {
-        padding: 6px 14px;
-        font-size: 10px;
+        padding: 10px 20px;
+        font-size: 14px;
     }
+
+    .link-whitepaper:hover,
+    .link-learnMore:hover {
+        border-width: 3px;
+    }
+
+    .lore h3 {
+        font-size: 60px;
+    }
+
+    .lore p {
+        font-size: 28px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .intro-text h2 {
+        width: 80%;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
+
+
 }

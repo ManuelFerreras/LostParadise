@@ -236,7 +236,7 @@
 /* Tokenomics */
 
 .tokenomics {
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--secundario);
 }
 
@@ -245,7 +245,7 @@
     color: var(--terciario);
     font-family: var(--mainFont);
     font-weight: bold;
-    padding: 100px 0 100px 0;
+    padding: 100px 0 6% 0;
     text-align: center;
     letter-spacing: 10px;
 }
@@ -312,7 +312,7 @@
         transform: scaleX(1);
     }
 }
-
+ 
 
 /* Footer */
 
