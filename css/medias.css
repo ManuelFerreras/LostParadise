@@ -100,6 +100,7 @@
 }
 
 @media (max-width: 768px) {
+
     .intro-text h2 {
         width: 80%;
         overflow-wrap: break-word;
@@ -141,5 +142,9 @@
 
     .divisions {
         width: 100%;
+    }
+
+    .ultimo {
+        margin-bottom: 80px;
     }
 }
