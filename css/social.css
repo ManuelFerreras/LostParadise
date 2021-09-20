@@ -1,0 +1,53 @@
+/* Social Nav */
+
+.social {
+    position: fixed;    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-290px, 0);
+}
+
+.social a {
+    color: var(--terciario);
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin: 5px;
+    padding: 20px;
+    width: 300px;
+    text-align: right;
+    border-radius: 50px;
+    transition: transform 1s;
+}
+
+.social a:hover {
+    transform: translate(140px, 0);
+}
+
+.social a i {
+    margin-left: 10px;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    transition: color 0.3s;
+}
+
+.social a:hover:nth-child(1) i {
+    color: #54A5DB;
+}
+
+.social a:hover:nth-child(2) i {
+    color: #27A5CC;
+}
+
+.social a:hover:nth-child(3) i {
+    color: #6C82CF;
+}
+
+.social a:hover:nth-child(4) i {
+    color: #000000;
+}
