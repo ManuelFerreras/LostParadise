@@ -132,10 +132,6 @@
         padding-bottom: 0;
     }
 
-    .tokenomics h3 {
-        font-size: 60px;
-    }
-
     .columns {
         flex-direction: column;
     }

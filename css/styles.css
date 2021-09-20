@@ -241,7 +241,7 @@
 }
 
 .tokenomics h3 {
-    font-size: 80px;
+    font-size: 8vmin;
     color: var(--terciario);
     font-family: var(--mainFont);
     font-weight: bold;
