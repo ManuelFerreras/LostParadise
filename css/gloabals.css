@@ -6,7 +6,7 @@ body {
     justify-content: center;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden;
+    
 }
 
 html {
@@ -16,6 +16,8 @@ html {
 html, body {
     font-family: var(--mainFont);
     letter-spacing: 3px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 html.sr .load-hidden {
