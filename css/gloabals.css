@@ -16,8 +16,6 @@ html {
 html, body {
     font-family: var(--mainFont);
     letter-spacing: 3px;
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
 html.sr .load-hidden {
