@@ -69,3 +69,15 @@
         font-size: 14px;
     }
 }
+
+@media (max-width: 1024px) {
+    .intro-text h2 {
+        font-size: 24px;
+    }
+
+    .link-learnMore,
+    .link-whitepaper {
+        padding: 6px 14px;
+        font-size: 10px;
+    }
+}
