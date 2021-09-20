@@ -1,0 +1,71 @@
+/* Media Querys */
+
+@media (max-width:1660px) {
+    .tarjetas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        column-gap: -10%;
+        row-gap: 50px;
+    }
+
+    .tarjetas .tarjeta{
+        justify-self: center;
+        align-self: center;
+    }
+
+}
+
+@media (max-width: 1366px) {
+    .intro-text h2 {
+        font-size: 40px;
+    }
+
+    .link-learnMore,
+    .link-whitepaper {
+        padding: 12px 22px;
+        font-size: 16px;
+    }
+
+    .link-whitepaper:hover,
+    .link-learnMore:hover {
+        border-width: 4px;
+    }
+
+    .info {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .fondo-header {
+        height: auto;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+    .header h1 {
+        margin-bottom: 40px;
+    }
+
+    .navegacion {
+        width: auto;
+        padding-bottom: 20px;
+    }
+
+    .intro-text {
+        height: 85vh;
+    }
+
+    .intro-text h2 {
+        font-size: 34px;
+    }
+
+    .link-learnMore,
+    .link-whitepaper {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

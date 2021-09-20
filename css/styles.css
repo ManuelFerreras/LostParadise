@@ -17,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     color: var(--secundario);
-    height: 6vh;
+    height: 100%;
     font-size: 18px;
 }
 
@@ -196,7 +196,7 @@
 /* Assets */
 .seccion-assets {
     background-color: var(--principal);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .division {
@@ -213,7 +213,7 @@
 .assets {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .assets h3 {
@@ -230,6 +230,7 @@
     max-width: 100%;
     height: auto;
 }
+
 
 
 /* Tokenomics */
