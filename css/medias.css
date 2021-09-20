@@ -106,5 +106,40 @@
         text-align: center;
     }
 
+    .content {
+        text-align: center;
+    }
 
+    .content p{
+        text-align: center;
+    }
+
+    .tarjetas {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tarjeta {
+        margin-bottom: 40px;
+    }
+
+    .tarjeta:nth-last-child() {
+        margin-bottom: 0;
+    }
+
+    .division {
+        padding-bottom: 0;
+    }
+
+    .tokenomics h3 {
+        font-size: 60px;
+    }
+
+    .columns {
+        flex-direction: column;
+    }
+
+    .divisions {
+        width: 100%;
+    }
 }
