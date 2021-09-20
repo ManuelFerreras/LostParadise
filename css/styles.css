@@ -1,7 +1,13 @@
 /* Header */
+.encabezado {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .fondo-header {
     background-color: var(--principal);
-    height: 6vh;
+    height: 8%;
     padding: 10px 0;
 }
 
@@ -72,10 +78,10 @@
 
 /* Intro Text */
 .intro-text {
-    height: 92vh;
+    height: 92%;
     display: flex;
     flex-direction: column; 
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     background-image: url("../img/fondo.gif");
     background-position: center;
@@ -84,27 +90,16 @@
 }
 
 
-
-.intro-text img{
-    height: 92vh;
-    max-width: 100%;
-    min-width: 100%;
-}
-
 .intro-text h2 {
-    position: absolute ;
-    bottom: 45%;
     letter-spacing: 4px;
     font-family: var(--mainFont);
     font-weight: 900;
     font-size: 50px;
     color: var(--secundario);
-    z-index: 100;
+    margin-bottom: 80px;
 }
 
 .link-learnMore{
-    position: absolute;
-    bottom: 40%;
     color:var(--secundario);
     text-decoration: none;
     background-color: var(--principal);
@@ -113,6 +108,7 @@
     font-size: 18px;
     font-weight: bold;
     border: var(--secundario) 0px solid;
+    margin-bottom: 40px;
 }
 .link-learnMore:hover {
     border: var(--secundario) 5px solid;
@@ -121,8 +117,6 @@
 
 
 .link-whitepaper{
-    position: absolute;
-    bottom: 32.5%;
     color:var(--principal);
     text-decoration: none;
     background-color: var(--secundario);
