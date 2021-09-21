@@ -311,7 +311,24 @@
         transform: scaleX(1);
     }
 }
+
+
+/* Presale */
  
+.presale {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.presale h3 {
+    text-align: center;
+    color: var(--secundario);
+    font-size: 8vmin;
+}
+
 
 /* Footer */
 
@@ -319,4 +336,8 @@
     background-color: var(--principal);
     height: 8vh;
     padding: 10px 0;
+}
+
+.footer {
+    flex-direction: row-reverse;
 }

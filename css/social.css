@@ -15,18 +15,21 @@
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
-    display: block;
+    justify-content: end;
+    display: flex;
     margin: 5px;
     padding: 20px;
     width: 300px;
     text-align: right;
     border-radius: 50px;
     transition: transform 1s;
+    align-items: center;
 }
 
 .social a:hover {
     transform: translate(140px, 0);
 }
+
 
 .social a i {
     margin-left: 10px;
