@@ -156,11 +156,11 @@
 }
 
 .reverse h3 {
-    color: var(--terciario);
+    color: var(--principal);
 }
 
 .reverse p {
-    color: var(--principal);
+    color: var(--terciario);
 }
 
 
