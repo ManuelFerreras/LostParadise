@@ -151,6 +151,7 @@
         align-items: center;
         display: none;
         width: 100%;
+        transition: display 1s;
     }
     .navegacion.show {
         display: flex;
