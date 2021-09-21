@@ -15,9 +15,9 @@
 }
 
 .boton:hover {
-    color: var(--terciario);
+    color: var(--principal);
     background-color: var(--secundario);
-    box-shadow: 0 0 10px var(--secundario), 0 0 40px var(--secundario), 0 0 80px var(--secundario);
+    box-shadow: 0 0 80px 1px var(--secundario);
     transition-delay: 1s;
 }
 
