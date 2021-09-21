@@ -25,6 +25,7 @@
     color: var(--secundario);
     height: 100%;
     font-size: 18px;
+    flex-wrap: wrap;
 }
 
 .navegacion {
@@ -72,6 +73,18 @@
     left: 0;
     bottom: -10px;
     color: var(--terciario);
+}
+
+.hamburguer {
+    background-color: transparent;
+    border: 0;
+    color: var(--terciario);
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+}
+.hamburguer:focus {
+    outline: none;
 }
 
 
