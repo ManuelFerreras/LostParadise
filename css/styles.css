@@ -100,7 +100,7 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    background: url("../img/fondo2.gif") repeat fixed;
+    background: url("../img/fondo2.gif") no-repeat fixed;
     background-size: cover;
 }
 
