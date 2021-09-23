@@ -100,7 +100,7 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    background-image: url("../img/fondo.gif");
+    background-image: url("../img/fondo2.gif");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -338,6 +338,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+}
+
+.bg {
+    background-image: url(../img/fondo.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .presale h3 {
