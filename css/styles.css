@@ -103,6 +103,7 @@
     background: url("../img/fondo2.gif") no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 
