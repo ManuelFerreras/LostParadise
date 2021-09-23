@@ -24,7 +24,7 @@
     align-items: center;
     color: var(--secundario);
     height: auto;
-    font-size: 18px;
+    font-size: 24px;
     flex-wrap: wrap;
 }
 
@@ -43,8 +43,8 @@
     position: relative;
     text-decoration: none;
     color: var(--secundario);
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: lighter;
     letter-spacing: 2px;
     font-family: var(--mainFont);
     transition: .2s;
@@ -100,9 +100,7 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    background-image: url("../img/fondo2.gif");
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("../img/fondo2.gif") repeat fixed;
     background-size: cover;
 }
 
@@ -111,7 +109,7 @@
     letter-spacing: 4px;
     font-family: var(--mainFont);
     font-weight: 900;
-    font-size: 50px;
+    font-size: 60px;
     color: var(--secundario);
     margin-bottom: 80px;
 }
@@ -122,8 +120,8 @@
     background-color: var(--principal);
     transition: .2;
     padding: 15px 25px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: lighter;
     border: var(--secundario) 0px solid;
     margin-bottom: 40px;
 }
@@ -139,8 +137,8 @@
     background-color: var(--secundario);
     transition: .2;
     padding: 15px 25px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: lighter;
     border: var(--secundario) 0px solid;
 }
 .link-whitepaper:hover {
@@ -200,11 +198,12 @@
 }
 
 .lore p{
-    color: var(--quinto);
+    color: var(--principal);
     font-size: 35px;
     font-family: var(--mainFont);
     letter-spacing: 1px;
     text-align: justify;
+    font-weight: lighter;
 }
 
 
@@ -236,7 +235,7 @@
     font-size: 80px;
     color: var(--terciario);
     font-family: var(--mainFont);
-    font-weight: bold;
+    font-weight: lighter;
     margin-top: 150px;
     text-align: center;
     letter-spacing: 10px;
@@ -260,7 +259,7 @@
     font-size: 8vmin;
     color: var(--terciario);
     font-family: var(--mainFont);
-    font-weight: bold;
+    font-weight: lighter;
     padding: 100px 0 6% 0;
     text-align: center;
     letter-spacing: 10px;
@@ -286,9 +285,11 @@
 
 .progress-info h4 {
     margin: 0;
-    font-size: 24px;
+    font-size: 30px;
     opacity: 0;
+    font-weight: lighter;
     animation: showText 0.5s 1.5s linear forwards;
+    color: var(--principal);
 }
 
 @keyframes showText {
@@ -342,9 +343,7 @@
 }
 
 .bg {
-    background-image: url(../img/fondo.gif);
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url(../img/fondo.gif) repeat fixed 100%;
     background-size: cover;
 }
 
@@ -353,6 +352,7 @@
     color: var(--secundario);
     font-size: 8vmin;
     letter-spacing: 1vmin;
+    font-weight: lighter;
 }
 
 
