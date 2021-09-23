@@ -102,6 +102,7 @@
     align-items: center;
     background: url("../img/fondo2.gif") no-repeat fixed;
     background-size: cover;
+    background-position: center;
 }
 
 
