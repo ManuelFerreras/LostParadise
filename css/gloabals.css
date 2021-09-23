@@ -21,3 +21,7 @@ html, body {
 html.sr .load-hidden {
     visibility: hidden;
 }
+
+img {
+    max-width: 100%;
+}

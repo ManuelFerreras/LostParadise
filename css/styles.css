@@ -7,7 +7,7 @@
 
 .fondo-header {
     background-color: var(--principal);
-    height: 8%;
+    height: auto;
     padding: 10px 0;
 }
 
@@ -23,9 +23,13 @@
     justify-content: space-between;
     align-items: center;
     color: var(--secundario);
-    height: 100%;
+    height: auto;
     font-size: 18px;
     flex-wrap: wrap;
+}
+
+.header a {
+    max-width: 30vmin;
 }
 
 .navegacion {
