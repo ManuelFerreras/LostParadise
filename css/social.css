@@ -7,13 +7,14 @@
     flex-direction: column;
     justify-content: center;
     transform: translate(-290px, 0);
+    z-index: 101;
 }
 
 .social a {
     color: var(--terciario);
     background: rgba(0, 0, 0, 0.4);
     font-size: 20px;
-    font-weight: 600;
+    font-weight: lighter;
     text-decoration: none;
     justify-content: flex-end;
     display: flex;

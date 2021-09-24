@@ -9,6 +9,10 @@
     background-color: var(--principal);
     height: auto;
     padding: 10px 0;
+    position: fixed;
+    transform: translate(0, 0);
+    width: 100%;
+    z-index: 100;
 }
 
 .header a {
@@ -29,6 +33,10 @@
     padding: 10px 0;
 }
 
+.header img {
+    width: 24vmin;
+}
+
 .header a {
     max-width: 40vmin;
 }
@@ -36,7 +44,7 @@
 .navegacion {
     display: flex;
     justify-content: space-between;
-    width: 45%;
+    width: auto;
     
 }
 
@@ -44,7 +52,7 @@
     position: relative;
     text-decoration: none;
     color: var(--secundario);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: lighter;
     letter-spacing: 2px;
     font-family: var(--mainFont);
@@ -96,7 +104,7 @@
 
 /* Intro Text */
 .intro-text {
-    height: 92%;
+    height: 100%;
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -111,7 +119,7 @@
 .intro-text h2 {
     letter-spacing: 4px;
     font-family: var(--mainFont);
-    font-weight: 900;
+    font-weight: lighter;
     font-size: 60px;
     color: var(--secundario);
     margin-bottom: 80px;
@@ -196,7 +204,7 @@
     font-size: 100px;
     color: var(--terciario);
     font-family: var(--mainFont);
-    font-weight: bold;
+    font-weight: lighter;
     margin-top: 50px;
 }
 
@@ -365,6 +373,9 @@
     background-color: var(--principal);
     height: 8vh;
     padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer {
