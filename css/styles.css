@@ -26,6 +26,7 @@
     height: auto;
     font-size: 24px;
     flex-wrap: wrap;
+    padding: 10px 0;
 }
 
 .header a {
@@ -100,7 +101,7 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    background: url("../img/fondo2.gif") no-repeat;
+    background: url("../img/fondo.gif") no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
