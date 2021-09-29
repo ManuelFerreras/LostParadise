@@ -2,9 +2,13 @@
 
 :root {
     /* --principal: #222222; */
-    --principal: #0c0d20;
-    --secundario: #ffb951;
+    --principal: #2ea167;
+    --secundario: rgb(255, 226, 163);
     --terciario: #dfdfdf;
+
+    --principalO: #0c0d20;
+    --secundarioO: #ffb951;
+    --terciarioO: #fef8ec;
 
 
     --common: #616161;

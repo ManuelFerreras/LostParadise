@@ -360,10 +360,14 @@
 
 .presale h3 {
     text-align: center;
-    color: var(--secundario);
+    color: var(--secundarioO);
     font-size: 8vmin;
     letter-spacing: 1vmin;
     font-weight: lighter;
+}
+
+.presale a {
+    color: var(--terciarioO);
 }
 
 
