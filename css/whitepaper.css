@@ -1,0 +1,32 @@
+html,
+body {
+    background-color: var(--terciario);
+}
+
+main {
+    height: 100vh;
+    width: 100%;
+    background: rgb(12,13,32);
+    background-image: linear-gradient(135deg, rgba(12,13,32,1) 0%, rgb(10, 10, 87) 100%);
+    color: var(--terciario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main h1 {
+    font-size: 8vmin;
+}
+
+main p{
+    font-size: 4vmin;
+}
+
+
+.contents {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
