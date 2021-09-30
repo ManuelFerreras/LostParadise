@@ -13,14 +13,21 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-attachment: fixed;
 }
 
 main h1 {
-    font-size: 8vmin;
+    width:60vmin;
 }
 
 main p{
     font-size: 4vmin;
+    letter-spacing: 6px;
+    cursor: default;
+}
+
+main p span {
+    color: var(--secundario);
 }
 
 
