@@ -16,6 +16,7 @@ html {
 html, body {
     font-family: var(--mainFont);
     letter-spacing: 3px;
+    font-weight: lighter;
 }
 
 html.sr .load-hidden {
