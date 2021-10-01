@@ -62,11 +62,37 @@ main p span {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: linear-gradient(135deg, var(--secundario) 0%, rgb(100 73 32) 100%);
+    background-image: linear-gradient(135deg, var(--secundario) 0%, rgb(187 135 56) 100%);
 }
 
 .contents h2 {
     margin-top: 8vmin;
-    font-size: 4vmin;
+    font-size: 6vmin;
+    font-weight: lighter;
+}
+
+
+.intro {
+    height: 100vh;
+    background: rgb(12,13,32);
+    background-image: linear-gradient(135deg, rgba(12,13,32,1) 0%, rgb(10, 10, 87) 100%);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.intro h2 {
+    text-align: center;
+    color: var(--secundario);
+    margin: 8vmin 0;
+    font-size: 6vmin;
+    font-weight: lighter;
+}
+
+.intro p {
+    color: var(--terciario);
+    font-size: 2vmin;
+    line-height: 4vmin;
+    letter-spacing: 2px;
     font-weight: lighter;
 }

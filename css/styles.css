@@ -131,10 +131,15 @@
     background-color: var(--principal);
     transition: .2;
     padding: 15px 25px;
-    font-size: 24px;
+    font-size: 2vmin;
     font-weight: lighter;
     border: var(--secundario) 0px solid;
     margin-bottom: 40px;
+    width: 20vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .link-learnMore:hover {
     border: var(--secundario) 5px solid;
@@ -148,9 +153,14 @@
     background-color: var(--secundario);
     transition: .2;
     padding: 15px 25px;
-    font-size: 24px;
+    font-size: 2vmin;
     font-weight: lighter;
     border: var(--secundario) 0px solid;
+    width: 20vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .link-whitepaper:hover {
     border: var(--principal) 5px solid;
@@ -360,14 +370,14 @@
 
 .presale h3 {
     text-align: center;
-    color: var(--secundarioO);
+    color: var(--secundario);
     font-size: 8vmin;
     letter-spacing: 1vmin;
     font-weight: lighter;
 }
 
 .presale a {
-    color: var(--terciarioO);
+    color: var(--terciario);
 }
 
 
@@ -375,7 +385,7 @@
 
 .fondo-footer {
     background-color: var(--principal);
-    height: 8vh;
+    height: 5fvh;
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -384,4 +394,8 @@
 
 .footer {
     flex-direction: row-reverse;
+}
+
+.footer img{
+    width: 30vmin;
 }
