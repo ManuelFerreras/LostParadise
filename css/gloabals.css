@@ -34,4 +34,10 @@ html, body{
 
 * {
     margin: 0;
+    font-weight: lighter;
+}
+
+a {
+    color: black;
+    text-decoration: none;
 }

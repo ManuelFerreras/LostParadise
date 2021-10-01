@@ -66,7 +66,7 @@ main p span {
 }
 
 .contents h2 {
-    margin-top: 8vmin;
+    margin: 8vmin 0;
     font-size: 6vmin;
     font-weight: lighter;
 }
@@ -95,4 +95,15 @@ main p span {
     line-height: 4vmin;
     letter-spacing: 2px;
     font-weight: lighter;
+}
+
+ol {
+    width: 100%;
+    list-style-type:decimal;
+    font-size: 2vmin;
+}
+
+ol li a{
+    color: var(--terciario);
+    font-size: 2.4vmin;
 }
