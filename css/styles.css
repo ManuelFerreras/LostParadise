@@ -6,7 +6,7 @@
 }
 
 .fondo-header {
-    background-color: var(--principal);
+    background-image: var(--bg-principal);
     height: auto;
     padding: 10px 0;
     position: fixed;
@@ -67,7 +67,7 @@
 .navegacion a:after {
     content: "";
     position: absolute;
-    background-color: var(--secundario);
+    background-image: var(--bg-secundario);
     height: 3px;
     width: 0%;
     left: 0;
@@ -128,7 +128,7 @@
 .link-learnMore{
     color:var(--secundario);
     text-decoration: none;
-    background-color: var(--principal);
+    background-image: var(--bg-principal);
     transition: .2;
     padding: 15px 25px;
     font-size: 2vmin;
@@ -150,7 +150,7 @@
 .link-whitepaper{
     color:var(--principal);
     text-decoration: none;
-    background-color: var(--secundario);
+    background-image: var(--bg-secundario);
     transition: .2;
     padding: 15px 25px;
     font-size: 2vmin;
@@ -206,7 +206,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: var(--secundario);
+    background-image: var(--bg-secundario);
     overflow: hidden;
 }
 
@@ -231,7 +231,7 @@
 
 /* Assets */
 .seccion-assets {
-    background-color: var(--principal);
+    background-image: var(--bg-principal);
     min-height: 100vh;
 }
 
@@ -273,7 +273,7 @@
 
 .tokenomics {
     min-height: 100vh;
-    background-color: var(--secundario);
+    background-image: var(--bg-secundario);
 }
 
 .tokenomics h3 {
@@ -384,7 +384,7 @@
 /* Footer */
 
 .fondo-footer {
-    background-color: var(--principal);
+    background-image: var(--bg-principal);
     height: 5fvh;
     padding: 10px 0;
     display: flex;

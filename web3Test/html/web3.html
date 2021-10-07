@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Paradise</title>
+
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="../../css/gloabals.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../css/web3.css">
+
+    <!-- JS Imports -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/web3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/lostParadise_abi.js"></script>
+
+</head>
+<body>
+    <div class="header">
+        <div class="contenedor">
+            <h1>Lost Paradise</h1>
+
+            <div class="test">
+
+                <div class="connection">
+                    <a class="boton" id="login">Connect to Metamask</a>
+                    <a id="accounts" class="boton">Get Current Account</a>
+                    <a id="showBuildingsButton" class="boton">Show Current Account's Buildings</a>
+                </div>
+
+                <div class="getForm">
+                    <a id="createBuilding" class="boton">Create Building</a>
+                </div>
+
+                <div class="setForm">
+                    <a id="findBuildingInfo" class="boton">Get Building Info From ID</a>
+                    <input type="text" id="buildingId" placeholder="Building's Id To Find:">
+                </div>
+
+            </div> 
+        </div>
+    </div>
+
+    <div class="buildings">
+        <h2>Address Buildings</h2>
+
+        <div id="buildings"></div>
+    </div>
+
+    <script src="../js/web3Test.js"></script>
+</body>
+</html>

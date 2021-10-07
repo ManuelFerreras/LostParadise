@@ -1,15 +1,13 @@
 /* Variables */
 
 :root {
-    /* --principal: #222222; */
-    --principal: #2ea167;
-    --secundario: rgb(255, 226, 163);
-    --terciario: #dfdfdf;
-
+    
     --principal: #0c0d20;
     --secundario: #ffb951;
     --terciario: #fef8ec;
 
+    --bg-principal: linear-gradient(135deg, rgba(12,13,32,1) 0%, rgb(10, 10, 87) 100%);
+    --bg-secundario: linear-gradient(135deg, var(--secundario) 0%, rgb(187 135 56) 100%);
 
     --common: #616161;
     --uncommon: #4bafbd;
