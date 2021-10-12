@@ -1,3 +1,7 @@
+img{
+    max-width: 100%;
+}
+
 h1 {
     text-align: center;
     font-weight: bold;
@@ -67,17 +71,20 @@ input {
     padding: 8vmin 0;
 }
 .building {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+    margin: auto auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 4vmin 4vmin;
+    background-color: var(--principal);
+    color: var(--terciario);
 }
 .building h3{
     text-align: center;
 }
 .building p{
     text-align: center;
-    margin: 10px 0;
 }
 .building a{
     margin: 10px 0;
@@ -88,6 +95,12 @@ input {
     color: white;
 }
 
+.group {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 
 .boton{
     color:var(--principal);
@@ -109,5 +122,16 @@ input {
 
 .boton:hover {
     transition: .3s;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttons a {
     cursor: pointer;
 }
