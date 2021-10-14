@@ -8,6 +8,7 @@ const popupMenu = document.querySelector('.transferBuilding');
 const popupMenuCross = document.querySelector('.cross');
 const transferButton = document.querySelector('.transferButton');
 const transferToAddresLe = document.querySelector('#addressTo');
+const approveTokenButton = document.querySelector('#approveToken');
 
 var lostParadise;
 var userAccount;
@@ -41,6 +42,11 @@ function startApp() {
 
 popupMenuCross.addEventListener('click', function() {
   popupMenu.classList.add("invisible");
+})
+
+approveTokenButton.addEventListener('click', function() {
+  lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
+  .then(alert("Approved Succesfully"));
 })
 
 loginButton.addEventListener('click', async function() {
