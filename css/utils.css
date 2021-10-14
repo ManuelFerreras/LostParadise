@@ -20,3 +20,7 @@
 .fondo-primario {
     background-color: var(--principal);
 }
+
+.center-text {
+    text-align: center;
+}

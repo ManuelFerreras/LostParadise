@@ -1,26 +1,39 @@
-img{
-    max-width: 100%;
+/* Header */
+.top {
+    width: 100%;
+} 
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 8vh;
+    color: var(--secundario);
 }
 
-h1 {
-    text-align: center;
-    font-weight: bold;
-}
-
-.contenedor {
-    max-width: 80%;
-    margin: auto auto;
-}
-
-.test {
+/* Login */
+.login {
+    height: 92vh;
+    color: var(--terciario);
+    background-color: var(--secundario);
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    height: 100%;
+    width: 100%;
 }
+
+.loginText {
+    margin-bottom: 5vmin;
+}
+
+.login p {
+    font-size: 32px;
+}
+
 .connection {
-    margin-bottom: 8vmin;
+    margin-bottom: 0;
 }
 .getForm {
     margin-bottom: 8vmin;
@@ -36,14 +49,15 @@ h1 {
     align-items: center;
 }
 
-.header {
+/* .headerr { Old Header
     height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: var(--principal);
     color: var(--secundario);
     width: 100%;
-}
+    
+} */
 
 input {
     margin: 1vmin 0;
@@ -111,24 +125,32 @@ input {
 .boton{
     color:var(--principal);
     text-decoration: none;
-    background-color: var(--secundario);
+    background-color: var(--principal);
     transition: .2;
     padding: 15px 25px;
     font-size: 1.5vmin;
     font-weight: lighter;
     border: var(--principal) 0px solid;
-    margin-bottom: 40px;
-    width: 20vmin;
+    width: 32vmin;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
+    border-radius: 25px;
 }
 
 .boton:hover {
-    transition: .3s;
     cursor: pointer;
+}
+
+.boton img {
+    max-width: 6vmin;
+}
+
+.boton p {
+    color: var(--terciario);
+    font-size: 2vmin;
 }
 
 .buttons {
