@@ -1,9 +1,13 @@
 const provider = 'https://ropsten.infura.io/v3/a948f49a8c1e4781ba21e99ad9a4703e';
-const lostParadiseContractAddress = "0xaa497f7337709AaC8Ba68619ceB09E679C418395";
+const lostParadiseContractAddress = "0xC856CEB9986824788F3B86b58119e78a4131Ab08";
 
 const loginButton = document.querySelector('#login');
 const createBuildingButton = document.querySelector('#createBuilding');
 const showAddressButton = document.querySelector('#showBuildingsButton');
+const popupMenu = document.querySelector('.transferBuilding');
+const popupMenuCross = document.querySelector('.cross');
+const transferButton = document.querySelector('.transferButton');
+const transferToAddresLe = document.querySelector('#addressTo');
 
 var lostParadise;
 var userAccount;
@@ -24,7 +28,6 @@ addEventListener('load', function() {
   } else {
     // Handle the case where the user doesn't have Metamask installed
     // Probably show them a message prompting them to install Metamask
-    console.log("Failed. Please Install Metamask")
   }
 
   // Now you can start your app & access web3 freely:
@@ -35,6 +38,10 @@ addEventListener('load', function() {
 function startApp() {
   lostParadise = new web3js.eth.Contract(lostParadiseABI, lostParadiseContractAddress);
 }
+
+popupMenuCross.addEventListener('click', function() {
+  popupMenu.classList.add("invisible");
+})
 
 loginButton.addEventListener('click', async function() {
   await ethereum.request({ method: 'eth_requestAccounts' })
@@ -51,11 +58,9 @@ loginButton.addEventListener('click', async function() {
 });
 
 createBuildingButton.addEventListener('click', function() {
-
   lostParadise.methods.mintRandomBuilding()
   .send({ from: userAccount })
   .on("receipt", function (receipt) {
-      console.log('Building Created.');
   })
   .then(getBuildingsByOwnerJs)
   .then(showBuilding)
@@ -68,18 +73,28 @@ showAddressButton.addEventListener('click', function() {
   showAddressBuildings();
 });
 
+transferButton.addEventListener('click', function() {
+  if (transferToAddresLe.value != "") {
+    var id = popupMenu.querySelector('.buildingNumber').getAttribute('value');
+    lostParadise.methods.transferFrom(userAccount, transferToAddresLe.value, tokenId)
+    .send({ from: userAccount })
+    .on("receipt", function (receipt) {
+      console.log(receipt);
+    })
+  }
+});
+
 
 async function showBuilding(ids) {
   $("#buildings").empty();
-  console.log(ids);
   
   for(id of ids) {
     await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
     .then(function(building) {
       $("#buildings").append(`
-      <div class="building" value="${building[5]}">
+      <div class="building" value="${building[2]}">
         <div class="group">
-          <h3>Building #${building[5]}</h3>
+          <h3>Building #${building[2]}</h3>
           <div class="type">
             <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
           </div>
@@ -88,34 +103,34 @@ async function showBuilding(ids) {
         <div class="group">
           <div class="income">
             <p>Production</p>
-            <p>${building[1]} LPS / 8hs</p>
+            <p>${building[0][2]} LPS / 8hs</p>
           </div>
         
 
           <div class="started">
             <p>Cicle Started</p>
-            <p class="startedCicleTime">${building[2]} Seconds Ago</p>
+            <p class="startedCicleTime">${building[0][4]} Seconds Ago</p>
           </div>
         </div>
 
         <div class="group">
           <div class="used">
             <p>Is Being Used</p>
-            <p class="isUsed">${building[4]}</p>
+            <p class="isUsed">${building[0][6]}</p>
           </div>
         
 
           <div class="claimable">
             <p>Claimable Income</p>
-            <p class="claimableBuildingLps">${building[6]} LPS</p>
+            <p class="claimableBuildingLps">${building[3]} LPS</p>
           </div>
         </div>
 
         <div class="buttons">
-          <a id="useBuilding" value="${building[5]}">Use Building</a>
-          <a id="deactivateBuilding" value="${building[5]}">Deactivate Building</a>
-          <a id="claimLps" value="${building[5]}">Claim LPS</a>
-          <a id="transferBuilding" value="${building[5]}">Transfer Building</a>
+          <a id="useBuilding" value="${building[2]}">Use Building</a>
+          <a id="deactivateBuilding" value="${building[2]}">Deactivate Building</a>
+          <a id="claimLps" value="${building[2]}">Claim LPS</a>
+          <a id="transferBuilding" value="${building[2]}">Transfer Building</a>
         </div>
         
       </div>`
@@ -138,10 +153,7 @@ function updateButtons() {
 
     button.addEventListener('click', function() {
       lostParadise.methods.useBuilding(button.getAttribute('value'))
-      .send( {from: userAccount} )
-      .on("receipt", function () {
-        console.log('Building Set as Used.');
-      })
+      .send( {from: userAccount} );
     });
 
   });
@@ -151,10 +163,7 @@ function updateButtons() {
 
     button.addEventListener('click', function() {
       lostParadise.methods.deactivateBuilding(button.getAttribute('value'))
-      .send( {from: userAccount} )
-      .on("receipt", function () {
-        console.log('Building Set as Unused.');
-      })
+      .send( {from: userAccount} );
     });
 
   });
@@ -164,16 +173,20 @@ function updateButtons() {
 
     button.addEventListener('click', function() {
       lostParadise.methods.withdrawBuildingEarnings(button.getAttribute('value'))
-      .send( {from: userAccount} )
-      .on("receipt", function () {
-        console.log("Building's Generated LPS Withdrawed Successfully.");
-      })
+      .send( {from: userAccount} );
+    });
+
+  });
+
+  transferButtons = document.querySelectorAll('#transferBuilding');
+  transferButtons.forEach(button => {
+
+    button.addEventListener('click', function() {
+      openTransferMenu(button.getAttribute('value'));
     });
 
   });
   
-  
-  // TODO Transfer PopUp Menu
 }
 
 
@@ -187,9 +200,8 @@ function checkAccmulatedIncome() {
     lostParadise.methods.returnBuildingEarnings(buildingId)
     .call({from: userAccount})
     .then(function(response) {
-      claimText.innerText = response;
+      claimText.innerText = response + " LPS";
     })
-    .then(console.log("Updated Earnings"));
   })
 
   setTimeout(checkAccmulatedIncome, 5000);
@@ -205,9 +217,8 @@ function checkStartedTime() {
     lostParadise.methods.returnBuildingStartTime(buildingId)
     .call({from: userAccount})
     .then(function(response) {
-      startedTime.innerText = response;
+      startedTime.innerText = response + " Seconds Ago";
     })
-    .then(console.log("Updated Time"));
   })
 
   setTimeout(checkStartedTime, 5000);
@@ -225,8 +236,15 @@ function checkUsing() {
     .then(function(response) {
       isUsed.innerText = response;
     })
-    .then(console.log("Updated Using"));
   })
 
   setTimeout(checkUsing, 5000);
 }
+
+
+function openTransferMenu(tokenId) {
+  popupMenu.querySelector('.buildingNumber').innerText = `Transfer Building #${tokenId}`;
+  popupMenu.querySelector('.buildingNumber').setAttribute('value', tokenId);
+  popupMenu.classList.remove("invisible");
+}
+

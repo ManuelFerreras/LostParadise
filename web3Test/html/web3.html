@@ -7,9 +7,10 @@
     <title>Lost Paradise</title>
 
     <!-- CSS Imports -->
+    <link rel="stylesheet" href="../../css/customFont.css">
+    <link rel="stylesheet" href="../../css/variables.css">
     <link rel="stylesheet" href="../../css/gloabals.css">
     <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/variables.css">
     <link rel="stylesheet" href="../css/web3.css">
 
     <!-- JS Imports -->
@@ -17,8 +18,26 @@
     <script language="javascript" type="text/javascript" src="../js/web3.min.js"></script>
     <script language="javascript" type="text/javascript" src="../js/lostParadise_abi.js"></script>
 
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
 </head>
 <body>
+    
+    <div class="transferBuilding invisible">
+        <i class="fas fa-times cross"></i>
+
+        <h2 class="buildingNumber">Transfer Building #</h2>
+
+        <div class="addressToInput">
+            <input id="addressTo" type="text" placeholder="Address To">
+            <label class="inputLabel" for="addressTo">Address To</label>
+        </div>
+
+        <a class="boton transferButton">Transfer</a>
+    </div>
+
     <div class="header">
         <div class="contenedor">
             <h1>Lost Paradise</h1>
