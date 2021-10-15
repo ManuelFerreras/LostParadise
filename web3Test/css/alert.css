@@ -41,7 +41,8 @@ body {
 /* Alert */
 .alert {
     padding: 20px 40px;
-    min-width: 420px;
+    width: 420px;
+    max-width: 100%;
     border-radius: 6px;
     overflow: hidden;
     opacity: 0;
