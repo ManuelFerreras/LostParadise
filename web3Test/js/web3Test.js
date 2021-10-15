@@ -19,6 +19,10 @@ var transferButtons;
 var interval;
 var buildingsShowed;
 
+var alertId = 0;
+
+
+
 addEventListener('load', function() {
 
   // Checking if Web3 has been injected by the browser (Mist/MetaMask)
@@ -29,6 +33,7 @@ addEventListener('load', function() {
   } else {
     // Handle the case where the user doesn't have Metamask installed
     // Probably show them a message prompting them to install Metamask
+    errorAlert("No Wallet Detected! Please Install Metamask.");
   }
 
   // Now you can start your app & access web3 freely:
@@ -44,16 +49,17 @@ popupMenuCross.addEventListener('click', function() {
   popupMenu.classList.add("invisible");
 })
 
-approveTokenButton.addEventListener('click', function() {
-  lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
-  .then(alert("Approved Succesfully"));
-})
+// approveTokenButton.addEventListener('click', function() {
+//   lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
+//   .then(alert("Approved Succesfully"));
+// })
 
 loginButton.addEventListener('click', async function() {
   await ethereum.request({ method: 'eth_requestAccounts' })
   .then(function(result) {
     userAccount = result[0];
   })
+  .then(successAlert)
   .then(getBuildingsByOwnerJs)
   .then(showBuilding)
   .then(updateButtons);
@@ -63,32 +69,32 @@ loginButton.addEventListener('click', async function() {
   checkUsing();
 });
 
-createBuildingButton.addEventListener('click', function() {
-  lostParadise.methods.mintRandomBuilding()
-  .send({ from: userAccount })
-  .on("receipt", function (receipt) {
-  })
-  .then(getBuildingsByOwnerJs)
-  .then(showBuilding)
-  .then(updateButtons);
+// createBuildingButton.addEventListener('click', function() {
+//   lostParadise.methods.mintRandomBuilding()
+//   .send({ from: userAccount })
+//   .on("receipt", function (receipt) {
+//   })
+//   .then(getBuildingsByOwnerJs)
+//   .then(showBuilding)
+//   .then(updateButtons);
 
-})
+// })
 
 
-showAddressButton.addEventListener('click', function() {
-  showAddressBuildings();
-});
+// showAddressButton.addEventListener('click', function() {
+//   showAddressBuildings();
+// });
 
-transferButton.addEventListener('click', function() {
-  if (transferToAddresLe.value != "") {
-    var id = popupMenu.querySelector('.buildingNumber').getAttribute('value');
-    lostParadise.methods.transferFrom(userAccount, transferToAddresLe.value, tokenId)
-    .send({ from: userAccount })
-    .on("receipt", function (receipt) {
-      console.log(receipt);
-    })
-  }
-});
+// transferButton.addEventListener('click', function() {
+//   if (transferToAddresLe.value != "") {
+//     var id = popupMenu.querySelector('.buildingNumber').getAttribute('value');
+//     lostParadise.methods.transferFrom(userAccount, transferToAddresLe.value, tokenId)
+//     .send({ from: userAccount })
+//     .on("receipt", function (receipt) {
+//       console.log(receipt);
+//     })
+//   }
+// });
 
 
 async function showBuilding(ids) {
@@ -254,3 +260,76 @@ function openTransferMenu(tokenId) {
   popupMenu.classList.remove("invisible");
 }
 
+
+// Alert Creation
+function successAlert() {
+  var divId = 'successAlert'+alertId;
+  var closeId = 'successClose'+alertId;
+  $(".alerts").append(`
+  <div class="alert show showAlert successAlert" id="${divId}">
+    <span class="fas fa-exclamation-circle successCircle"></span>
+    <span class="msg successFont">Login: Successful</span>
+    <span class="closeBtn successClose" id="${closeId}">
+        <span class="fas fa-times successCross"></span>
+    </span>
+  </div>`);
+
+  setTimeout(function() {
+    $("#" + divId).removeClass("show");
+    $("#" + divId).addClass("hide");
+    setTimeout(function() {
+      $("#" + divId).remove();
+    }, 1000);
+  }, 3000);
+}
+
+function errorAlert() {
+  var divId = 'errorAlert'+alertId;
+  var closeId = 'errorClose'+alertId;
+  $(".alerts").append(`
+  <div class="alert show showAlert errorAlert" id="${divId}">
+    <span class="fas fa-exclamation-circle errorCircle"></span>
+    <span class="msg errorFont">Login: errorful</span>
+    <span class="closeBtn errorClose" id="${closeId}">
+        <span class="fas fa-times errorCross"></span>
+    </span>
+  </div>`);
+
+  setTimeout(function() {
+    $("#" + divId).removeClass("show");
+    $("#" + divId).addClass("hide");
+    setTimeout(function() {
+      $("#" + divId).remove();
+    }, 1000);
+  }, 3000);
+}
+
+function warningAlert() {
+  var divId = 'warningAlert'+alertId;
+  var closeId = 'warningClose'+alertId;
+  $(".alerts").append(`
+  <div class="alert show showAlert warningAlert" id="${divId}">
+    <span class="fas fa-exclamation-circle warningCircle"></span>
+    <span class="msg warningFont">Login: warningful</span>
+    <span class="closeBtn warningClose" id="${closeId}">
+        <span class="fas fa-times warningCross"></span>
+    </span>
+  </div>`);
+
+  setTimeout(function() {
+    $("#" + divId).removeClass("show");
+    $("#" + divId).addClass("hide");
+    setTimeout(function() {
+      $("#" + divId).remove();
+    }, 1000);
+  }, 3000);
+}
+
+$('.closeBtn').click(function() {
+  var id = $(this).attr('id');
+  $("#" + id).parent().removeClass("show");
+  $("#" + id).parent().addClass("hide");
+  setTimeout(function() {
+    $("#" + id).parent().remove();
+  }, 1000);
+})

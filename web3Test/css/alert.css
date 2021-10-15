@@ -1,0 +1,190 @@
+/* Used Variables */
+:root {
+    --warningBgColor: #ffdb9b;
+    --warningBdColor: #ffa502;
+    --warningCircleColor: #ce8500;
+    --warningFontColor: #ce8500;
+    --warningCloseBtnColor: #ffd080;
+    --warningCloseBtnHoverColor: #ffc766;
+    --warningCrossColor: #ce8500;
+
+    --successBgColor: #C4F4D5;
+    --successBdColor: #16D567;
+    --successCircleColor: #12B258;
+    --successFontColor: #12B258;
+    --successCloseBtnColor: #94EBBA;
+    --successCloseBtnHoverColor: #71e9a5;
+    --successCrossColor: #12B258;
+
+    --errorBgColor: #FFE2E2;
+    --errorBdColor: #EF4759;
+    --errorCircleColor: #FF454F;
+    --errorFontColor: #FF454F;
+    --errorCloseBtnColor: #FF9CA0;
+    --errorCloseBtnHoverColor: #ff8286;
+    --errorCrossColor: #FF454F;
+}
+
+/* Not Showing the Horizontal Scrollbar  */
+body {
+    overflow: hidden;
+}
+
+.alerts {
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/* Alert */
+.alert {
+    padding: 20px 40px;
+    min-width: 420px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    margin-bottom: 2vmin;
+}
+
+.alert.showAlert {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.alert .fa-exclamation-circle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5vmin;
+}
+
+.alert .msg {
+    padding: 0 20px;
+    font-size: 1.5vmin;
+}
+
+.alert .closeBtn {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px 18px;
+}
+
+.alert .closeBtn:hover {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.alert .closeBtn .fa-times {
+    font-size: 2vmin;
+    line-height: 3vmin;
+}
+
+/* Alert Animation */
+.alert.show {
+    animation: showSlide 1s ease forwards;
+}
+
+.alert.hide {
+    animation: hideSlide 1s ease forwards;
+}
+
+@keyframes showSlide {
+    0% {
+        transform: translateX(100%);
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+@keyframes hideSlide {
+    0% {
+        transform: translateX(-10px);
+    }
+    40% {
+        transform: translateX(0%);
+    }
+    80% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/*** Type Of Alerts ***/
+
+/* Warning Alert Setup */
+.warningAlert {
+    background-color: var(--warningBgColor);
+    border-left: 6px solid var(--warningBdColor);
+}
+.warningCircle {
+    color: var(--warningCircleColor);
+}
+.warningFont {
+    color: var(--warningFontColor);
+}
+.warningClose {
+    background-color: var(--warningCloseBtnColor);
+}
+.warningClose:hover {
+    background-color: var(--warningCloseBtnHoverColor);
+}
+.warningCross {
+    color: var(--warningCrossColor);
+}
+
+/* success Alert Setup */
+.successAlert {
+    background-color: var(--successBgColor);
+    border-left: 6px solid var(--successBdColor);
+}
+.successCircle {
+    color: var(--successCircleColor);
+}
+.successFont {
+    color: var(--successFontColor);
+}
+.successClose {
+    background-color: var(--successCloseBtnColor);
+}
+.successClose:hover {
+    background-color: var(--successCloseBtnHoverColor);
+}
+.successCross {
+    color: var(--successCrossColor);
+}
+
+/* error Alert Setup */
+.errorAlert {
+    background-color: var(--errorBgColor);
+    border-left: 6px solid var(--errorBdColor);
+}
+.errorCircle {
+    color: var(--errorCircleColor);
+}
+.errorFont {
+    color: var(--errorFontColor);
+}
+.errorClose {
+    background-color: var(--errorCloseBtnColor);
+}
+.errorClose:hover {
+    background-color: var(--errorCloseBtnHoverColor);
+}
+.errorCross {
+    color: var(--errorCrossColor);
+}
