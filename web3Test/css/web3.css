@@ -33,6 +33,7 @@
     transition: .2s;
     margin-right: 40px;
     padding: 0 20px;
+    cursor: pointer;
 }
 .navegacion a:last-of-type{
     margin-right: 0;

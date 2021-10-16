@@ -63,6 +63,8 @@ loginButton.addEventListener('click', async function() {
     console.log("Loginned");
     successAlert("Login Completed")
     $('.login').remove();
+    document.querySelector(".accountAddress").innerText = userAccount.substring(0, 4) + "..." + userAccount.substring(userAccount.length - 6, userAccount.length);
+    $('.accountAddress').removeClass("invisible");
     $('.buildings').removeClass("invisible");
     $('.navegacion').removeClass("invisible");
   })
@@ -269,6 +271,12 @@ function openTransferMenu(tokenId) {
   popupMenu.querySelector('.buildingNumber').setAttribute('value', tokenId);
   popupMenu.classList.remove("invisible");
 }
+
+
+// Check Metamask Account Change
+window.ethereum.on('accountsChanged', function (accounts) {
+  window.location.reload();
+})
 
 
 // Alert Creation
