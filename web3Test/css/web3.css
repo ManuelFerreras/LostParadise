@@ -26,10 +26,11 @@
 
 .loginText {
     margin-bottom: 5vmin;
+    font-size: 4vmin;
 }
 
-.login p {
-    font-size: 32px;
+.login .loginMetaText {
+    font-size: 2vmin;
 }
 
 .connection {
