@@ -64,7 +64,7 @@ loginButton.addEventListener('click', async function() {
     successAlert("Login Completed")
     $('.login').remove();
     document.querySelector(".accountAddress").innerText = userAccount.substring(0, 4) + "..." + userAccount.substring(userAccount.length - 6, userAccount.length);
-    $('.accountAddress').removeClass("invisible");
+    $('.address').removeClass("invisible");
     $('.buildings').removeClass("invisible");
     $('.navegacion').removeClass("invisible");
   })
@@ -75,6 +75,11 @@ loginButton.addEventListener('click', async function() {
   checkAccmulatedIncome();
   checkStartedTime();
   checkUsing();
+
+  document.querySelector('.fa-clone').addEventListener('click', function() {
+    navigator.clipboard.writeText(userAccount);
+    successAlert("Copied To Clipboard!")
+  });
 });
 
 // createBuildingButton.addEventListener('click', function() {

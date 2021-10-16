@@ -60,6 +60,28 @@
     color: var(--terciario);
 }
 
+.address {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectedA {
+    color: var(--secundario);
+}
+
+.fa-clone {
+    cursor: pointer;
+    font-size: 1.6vmin;
+    z-index: 100;
+    margin-left: 1.6vmin;
+}
+
+.selectedA {
+    color: var(--secundario);
+}
+
 /* Login */
 .login {
     height: 92vh;
