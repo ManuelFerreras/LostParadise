@@ -294,13 +294,7 @@ var lostParadiseABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_target",
-				"type": "address"
-			}
-		],
+		"inputs": [],
 		"name": "getAccountCurrencyAllowance",
 		"outputs": [
 			{

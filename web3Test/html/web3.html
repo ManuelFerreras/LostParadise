@@ -29,20 +29,6 @@
 
 </head>
 <body>
-    
-    <div class="transferBuilding invisible">
-        <i class="fas fa-times cross"></i>
-
-        <h2 class="buildingNumber">Transfer Building #</h2>
-
-        <div class="addressToInput">
-            <input id="addressTo" type="text" placeholder="Address To">
-            <label class="inputLabel" for="addressTo">Address To</label>
-        </div>
-
-        <a class="boton transferButton">Transfer</a>
-    </div>
-
     <div class="alerts">
     </div>
 
@@ -53,7 +39,7 @@
             <nav class="navegacion invisible">
                 <a>Marketplace</a>
                 <a class="selectedA">Paradise</a>
-                <a>Shop</a>
+                <a id="shopBtn">Shop</a>
             </nav>
 
             <div class="address invisible">
@@ -67,7 +53,7 @@
         <div class="content">
             <p class="center-text loginText">Login</p>
 
-            <a id="login" class="boton">
+            <a id="login" class="LoginButton">
                 <img src="../img/metamask.png" alt="">
                 <p class="loginMetaText">Login With Metamask</p>
             </a>

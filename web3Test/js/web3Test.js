@@ -1,12 +1,6 @@
-const lostParadiseContractAddress = "0x1B1061aB24d22226849047C4Ed965955303ff311";
+const lostParadiseContractAddress = "0x36149c77A43f7E7422EfBAE6b823eD1C78c9F4B0";
 
 const loginButton = document.querySelector('#login');
-const createBuildingButton = document.querySelector('#createBuilding');
-const showAddressButton = document.querySelector('#showBuildingsButton');
-const popupMenu = document.querySelector('.transferBuilding');
-const popupMenuCross = document.querySelector('.cross');
-const transferButton = document.querySelector('.transferButton');
-const transferToAddresLe = document.querySelector('#addressTo');
 const approveTokenButton = document.querySelector('#approveToken');
 
 var lostParadise;
@@ -19,54 +13,33 @@ var interval;
 var buildingsShowed;
 
 var alertId = 0;
+var transferMenuOpenned = false;
+var shopMenuOpenned = false;
 
 
 
 addEventListener('load', function() {
-
-  // Checking if Web3 has been injected by the browser (Mist/MetaMask)
   if (typeof web3 !== 'undefined') {
-    // Use Mist/MetaMask's provider
     web3js = new Web3(window.ethereum);
 
   } else {
-    // Handle the case where the user doesn't have Metamask installed
-    // Probably show them a message prompting them to install Metamask
     errorAlert("Please Install Metamask.");
   }
-
-  // Now you can start your app & access web3 freely:
-  startApp();
-
+  lostParadise = new web3js.eth.Contract(lostParadiseABI, lostParadiseContractAddress);
 })
 
-function startApp() {
-  lostParadise = new web3js.eth.Contract(lostParadiseABI, lostParadiseContractAddress);
+function approveToken() {
+  lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
+  .then(successAlert("Approved Succesfully"));
 }
 
-popupMenuCross.addEventListener('click', function() {
-  popupMenu.classList.add("invisible");
-})
-
-// approveTokenButton.addEventListener('click', function() {
-//   lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
-//   .then(alert("Approved Succesfully"));
-// })
-
+// Login Event
 loginButton.addEventListener('click', async function() {
   await ethereum.request({ method: 'eth_requestAccounts' })
   .then(function(result) {
     userAccount = result[0];
   })
-  .then(function() {
-    console.log("Loginned");
-    successAlert("Login Completed")
-    $('.login').remove();
-    document.querySelector(".accountAddress").innerText = userAccount.substring(0, 4) + "..." + userAccount.substring(userAccount.length - 6, userAccount.length);
-    $('.address').removeClass("invisible");
-    $('.buildings').removeClass("invisible");
-    $('.navegacion').removeClass("invisible");
-  })
+  .then(login)
   .then(getBuildingsByOwnerJs)
   .then(showBuilding)
   .then(updateButtons);
@@ -81,37 +54,29 @@ loginButton.addEventListener('click', async function() {
   });
 });
 
-// createBuildingButton.addEventListener('click', function() {
-//   lostParadise.methods.mintRandomBuilding()
-//   .send({ from: userAccount })
-//   .on("receipt", function (receipt) {
-//   })
-//   .then(getBuildingsByOwnerJs)
-//   .then(showBuilding)
-//   .then(updateButtons);
+function mintBuilding() {
+  lostParadise.methods.mintRandomBuilding()
+  .send({ from: userAccount })
+  .on("receipt", function (receipt) {
+  })
+  .then(getBuildingsByOwnerJs)
+  .then(showBuilding)
+  .then(updateButtons);
+}
 
-// })
-
-
-// showAddressButton.addEventListener('click', function() {
-//   showAddressBuildings();
-// });
-
-// transferButton.addEventListener('click', function() {
-//   if (transferToAddresLe.value != "") {
-//     var id = popupMenu.querySelector('.buildingNumber').getAttribute('value');
-//     lostParadise.methods.transferFrom(userAccount, transferToAddresLe.value, tokenId)
-//     .send({ from: userAccount })
-//     .on("receipt", function (receipt) {
-//       console.log(receipt);
-//     })
-//   }
-// });
+// Login System
+function login() {
+  successAlert("Login Completed")
+  $('.login').remove();
+  document.querySelector(".accountAddress").innerText = userAccount.substring(0, 4) + "..." + userAccount.substring(userAccount.length - 6, userAccount.length);
+  $('.address').removeClass("invisible");
+  $('.buildings').removeClass("invisible");
+  $('.navegacion').removeClass("invisible");
+}
 
 
+// Updates Owner's Buildings List.
 async function showBuilding(ids) {
-  console.log(ids);
-
   $("#buildings").empty();
   
   for(id of ids) {
@@ -166,15 +131,18 @@ async function showBuilding(ids) {
   }
 }
 
+// Retrieves Certain Building Info.
 function searchBuildingById(id) {
   lostParadise.methods.searchBuildingById(id).call( {from: userAccount} );
 }
 
+// Retrieves array of Owned Buildings.
 function getBuildingsByOwnerJs() {
-  console.log("getBuildingsByOwnerJs");
   return lostParadise.methods.getBuildingsByOwner(userAccount).call( {from: userAccount} );
 }
 
+
+// Update Buttons Based on Owner's Buildings.
 function updateButtons() {
   useButtons = document.querySelectorAll('#useBuilding');
   useButtons.forEach(button => {
@@ -218,6 +186,7 @@ function updateButtons() {
 }
 
 
+// Auto Updates Owner's Buildings Accumulated Incomes.
 function checkAccmulatedIncome() {
   buildingsShowed = document.querySelectorAll('.building');
 
@@ -235,6 +204,7 @@ function checkAccmulatedIncome() {
   setTimeout(checkAccmulatedIncome, 5000);
 }
 
+// Auto Updates Owner's Buildings Cicle Starting Time.
 function checkStartedTime() {
   buildingsShowed = document.querySelectorAll('.building');
 
@@ -252,6 +222,7 @@ function checkStartedTime() {
   setTimeout(checkStartedTime, 5000);
 }
 
+// Auto Updates Owner's Buildings Used State.
 function checkUsing() {
   buildingsShowed = document.querySelectorAll('.building');
 
@@ -269,11 +240,82 @@ function checkUsing() {
   setTimeout(checkUsing, 5000);
 }
 
+// Shop Menu Opening
+$('#shopBtn').click(async function() {
+  if (!shopMenuOpenned) {
+    shopMenuOpenned = true;
 
-function openTransferMenu(tokenId) {
-  popupMenu.querySelector('.buildingNumber').innerText = `Transfer Building #${tokenId}`;
-  popupMenu.querySelector('.buildingNumber').setAttribute('value', tokenId);
-  popupMenu.classList.remove("invisible");
+    
+    console.log(allowance);
+    $('body').append(`
+      <div class="menu">
+          <i class="fas fa-times cross"></i>
+          <h2>Shop Menu</h2>
+      </div>` 
+    );
+
+    var allowance = await lostParadise.methods.getAccountCurrencyAllowance().call({from: userAccount});
+    if (allowance > 0) {
+      $('.menu').append(`
+        <a class="boton buySlotBtn">Buy Slot<br><span class="price">5000 LPS</span></a>
+
+        <a class="boton mintBuildingButton">Mint Building<br><span class="price">10000 LPS</span></a>
+      `);
+
+      $('.buySlotBtn').click(function() {}); //TODO
+  
+      $('.mintBuildingButton').click(function() {
+        mintBuilding();
+      });
+
+    } else {
+      $('.menu').append(`
+      <a class="boton approveBtn">Approve LPS</a>
+      `);
+
+      $('.approveBtn').click(function() {
+        approveToken();
+      });
+    }
+
+    $('.fa-times').click(function() {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+    });
+
+  } else {
+    warningAlert("Already Opened!");
+  }
+});
+
+// Transfer Menu Opening
+function openTransferMenu(buildingId) {
+  if (!transferMenuOpenned){
+    transferMenuOpenned = true;
+
+    $('body').append(`
+      <div class="menu">
+          <i class="fas fa-times cross"></i>
+
+          <h2 class="buildingNumber" value="${buildingId}">Transfer Building #${buildingId}</h2>
+
+          <div class="addressToInput">
+              <input id="addressTo" type="text" placeholder="Address To">
+              <label class="inputLabel" for="addressTo">Address To</label>
+          </div>
+
+          <a class="boton transferButton">Transfer</a>
+      </div>`
+    );
+
+    $('.fa-times').click(function() {
+      $('.menu').remove();
+      transferMenuOpenned = false;
+    });
+  } else {
+    warningAlert("Already Opened!");
+  }
+
 }
 
 
@@ -347,6 +389,7 @@ function warningAlert(body) {
   }, 3000);
 }
 
+// Close Alert
 $('.closeBtn').click(function() {
   var id = $(this).attr('id');
   $("#" + id).parent().removeClass("show");
