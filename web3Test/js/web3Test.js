@@ -59,7 +59,7 @@ loginButton.addEventListener('click', async function() {
   .then(function(result) {
     userAccount = result[0];
   })
-  .then(successAlert)
+  .then(successAlert("Login Completed"))
   .then(getBuildingsByOwnerJs)
   .then(showBuilding)
   .then(updateButtons);
@@ -262,13 +262,13 @@ function openTransferMenu(tokenId) {
 
 
 // Alert Creation
-function successAlert() {
+function successAlert(body) {
   var divId = 'successAlert'+alertId;
   var closeId = 'successClose'+alertId;
   $(".alerts").append(`
   <div class="alert show showAlert successAlert" id="${divId}">
     <span class="fas fa-exclamation-circle successCircle"></span>
-    <span class="msg successFont">Login: Successful</span>
+    <span class="msg successFont">Success: ${body}</span>
     <span class="closeBtn successClose" id="${closeId}">
         <span class="fas fa-times successCross"></span>
     </span>
@@ -283,13 +283,13 @@ function successAlert() {
   }, 3000);
 }
 
-function errorAlert() {
+function errorAlert(body) {
   var divId = 'errorAlert'+alertId;
   var closeId = 'errorClose'+alertId;
   $(".alerts").append(`
   <div class="alert show showAlert errorAlert" id="${divId}">
     <span class="fas fa-exclamation-circle errorCircle"></span>
-    <span class="msg errorFont">Login: errorful</span>
+    <span class="msg errorFont">Error: ${body}</span>
     <span class="closeBtn errorClose" id="${closeId}">
         <span class="fas fa-times errorCross"></span>
     </span>
@@ -304,13 +304,13 @@ function errorAlert() {
   }, 3000);
 }
 
-function warningAlert() {
+function warningAlert(body) {
   var divId = 'warningAlert'+alertId;
   var closeId = 'warningClose'+alertId;
   $(".alerts").append(`
   <div class="alert show showAlert warningAlert" id="${divId}">
     <span class="fas fa-exclamation-circle warningCircle"></span>
-    <span class="msg warningFont">Login: warningful</span>
+    <span class="msg warningFont">Warning: ${body}</span>
     <span class="closeBtn warningClose" id="${closeId}">
         <span class="fas fa-times warningCross"></span>
     </span>
