@@ -25,14 +25,12 @@
     --errorCrossColor: #FF454F;
 }
 
-/* Not Showing the Horizontal Scrollbar  */
-body {
-    overflow: hidden;
-}
 
 .alerts {
-    position: absolute;
+    position: fixed;
     right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     height: 100vh;
     display: flex;
     flex-direction: column-reverse;

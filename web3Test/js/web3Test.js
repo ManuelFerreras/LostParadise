@@ -1,5 +1,5 @@
 const provider = 'https://ropsten.infura.io/v3/a948f49a8c1e4781ba21e99ad9a4703e';
-const lostParadiseContractAddress = "0x166Aae5056854D8EB9E495230b540eCe644bA0E1";
+const lostParadiseContractAddress = "0x1B1061aB24d22226849047C4Ed965955303ff311";
 
 const loginButton = document.querySelector('#login');
 const createBuildingButton = document.querySelector('#createBuilding');
@@ -59,7 +59,13 @@ loginButton.addEventListener('click', async function() {
   .then(function(result) {
     userAccount = result[0];
   })
-  .then(successAlert("Login Completed"))
+  .then(function() {
+    console.log("Loginned");
+    successAlert("Login Completed")
+    $('.login').remove();
+    $('.buildings').removeClass("invisible");
+    $('.navegacion').removeClass("invisible");
+  })
   .then(getBuildingsByOwnerJs)
   .then(showBuilding)
   .then(updateButtons);
@@ -98,11 +104,14 @@ loginButton.addEventListener('click', async function() {
 
 
 async function showBuilding(ids) {
+  console.log(ids);
+
   $("#buildings").empty();
   
   for(id of ids) {
     await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
     .then(function(building) {
+      console.log(building);
       $("#buildings").append(`
       <div class="building" value="${building[2]}">
         <div class="group">
@@ -156,6 +165,7 @@ function searchBuildingById(id) {
 }
 
 function getBuildingsByOwnerJs() {
+  console.log("getBuildingsByOwnerJs");
   return lostParadise.methods.getBuildingsByOwner(userAccount).call( {from: userAccount} );
 }
 
