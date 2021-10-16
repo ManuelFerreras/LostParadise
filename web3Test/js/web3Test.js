@@ -15,6 +15,7 @@ var buildingsShowed;
 var alertId = 0;
 var transferMenuOpenned = false;
 var shopMenuOpenned = false;
+var waitingResponce = false;
 
 
 
@@ -29,8 +30,19 @@ addEventListener('load', function() {
 })
 
 function approveToken() {
-  lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
-  .then(successAlert("Approved Succesfully"));
+  try {
+    if (!waitingResponce){
+      waitingResponce = true;
+      lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
+      .then(successAlert("Approved Succesfully"))
+      .then(() => {waitingResponce = false;});
+    } else {
+      errorAlert("Action In Progress!");
+    }
+  } catch (error) {
+    errorAlert(error);
+    waitingResponce = false;
+  }
 }
 
 // Login Event
@@ -55,13 +67,25 @@ loginButton.addEventListener('click', async function() {
 });
 
 function mintBuilding() {
-  lostParadise.methods.mintRandomBuilding()
-  .send({ from: userAccount })
-  .on("receipt", function (receipt) {
-  })
-  .then(getBuildingsByOwnerJs)
-  .then(showBuilding)
-  .then(updateButtons);
+  try {
+    if (!waitingResponce) {
+      waitingResponce = true;
+      lostParadise.methods.mintRandomBuilding()
+      .send({ from: userAccount })
+      .on("receipt", function (receipt) {
+        successAlert("Building Minted.");
+      })
+      .then(getBuildingsByOwnerJs)
+      .then(showBuilding)
+      .then(updateButtons)
+      .then(() => {waitingResponce = false;});
+    } else {
+      errorAlert("Action In Progress!");
+    }
+  } catch (error) {
+    errorAlert(error);
+    waitingResponce = false;
+  }
 }
 
 // Login System
@@ -148,8 +172,19 @@ function updateButtons() {
   useButtons.forEach(button => {
 
     button.addEventListener('click', function() {
-      lostParadise.methods.useBuilding(button.getAttribute('value'))
-      .send( {from: userAccount} );
+      try {
+        if (!waitingResponce) {
+          waitingResponce = true;
+          lostParadise.methods.useBuilding(button.getAttribute('value'))
+          .send( {from: userAccount} )
+          .on('receipt', () => {waitingResponce = false;});
+        } else {
+          errorAlert("Action In Progress!");
+        }
+      } catch (error) {
+        errorAlert(error);
+        waitingResponce = false;
+      }
     });
 
   });
@@ -158,8 +193,19 @@ function updateButtons() {
   deactivateButtons.forEach(button => {
 
     button.addEventListener('click', function() {
-      lostParadise.methods.deactivateBuilding(button.getAttribute('value'))
-      .send( {from: userAccount} );
+      try {
+        if (!waitingResponce) {
+          waitingResponce = true;
+          lostParadise.methods.deactivateBuilding(button.getAttribute('value'))
+          .send( {from: userAccount} )
+          .on('receipt', () => {waitingResponce = false;});
+        } else {
+          errorAlert("Action In Progress!");
+        }
+      } catch (error) {
+        errorAlert(error);
+        waitingResponce = false;
+      }
     });
 
   });
@@ -168,8 +214,19 @@ function updateButtons() {
   claimButtons.forEach(button => {
 
     button.addEventListener('click', function() {
-      lostParadise.methods.withdrawBuildingEarnings(button.getAttribute('value'))
-      .send( {from: userAccount} );
+      try {
+        if (!waitingResponce) {
+          waitingResponce = true;
+          lostParadise.methods.withdrawBuildingEarnings(button.getAttribute('value'))
+          .send( {from: userAccount} )
+          .on('receipt', () => {waitingResponce = false;});
+        } else {
+          errorAlert("Action In Progress!");
+        }
+      } catch (error) {
+        errorAlert(error);
+        waitingResponce = false;
+      }
     });
 
   });
