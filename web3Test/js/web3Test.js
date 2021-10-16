@@ -1,4 +1,3 @@
-const provider = 'https://ropsten.infura.io/v3/a948f49a8c1e4781ba21e99ad9a4703e';
 const lostParadiseContractAddress = "0x1B1061aB24d22226849047C4Ed965955303ff311";
 
 const loginButton = document.querySelector('#login');
