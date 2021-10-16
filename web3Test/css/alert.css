@@ -42,6 +42,7 @@ body {
 .alert {
     padding: 20px 40px;
     min-width: 420px;
+    width: auto;
     max-width: 40%;
     border-radius: 6px;
     overflow: hidden;
