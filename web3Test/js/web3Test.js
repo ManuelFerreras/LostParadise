@@ -60,8 +60,6 @@ loginButton.addEventListener('click', async function() {
   .then(updateButtons)
   .catch(err => errorAlert(err["message"]));
 
-  checkAccmulatedIncome();
-  checkStartedTime();
 
   document.querySelector('.fa-clone').addEventListener('click', function() {
     navigator.clipboard.writeText(userAccount);
@@ -164,27 +162,7 @@ async function showBuilding(ids) {
             <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
           </div>
           <p class="production ${building[0][0]}">${building[0][2]} LPS / HR</p>
-      </div>
-
-        <div class="group">
-          <div class="started">
-            <p>Cicle Started</p>
-            <p class="startedCicleTime">${building[0][4]} Seconds Ago</p>
-          </div>
-
-          <div class="claimable">
-            <p>Claimable Income</p>
-            <p class="claimableBuildingLps">${building[3]} LPS</p>
-          </div>
         </div>
-
-        <div class="buttons">
-          <a id="useBuilding" value="${building[2]}">Use Building</a>
-          <a id="deactivateBuilding" value="${building[2]}">Deactivate Building</a>
-          <a id="claimLps" value="${building[2]}">Claim LPS</a>
-          <a id="transferBuilding" value="${building[2]}">Transfer Building</a>
-        </div>
-        
       </div>`
       );
     })

@@ -116,7 +116,7 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    transform: translate(-25.5vmin, -50%);
+    transform: translate(-28.5vmin, -50%);
     height: 100vh;
     display: flex;
     flex-direction: center;
@@ -126,10 +126,11 @@
 
 .social a {
     cursor: pointer;
+    height: 2vh;
 }
 
 .social a:hover {
-    transform: translate(8vmin, 0);
+    transform: translate(10vmin, 0);
 }
 
 .social a i {
@@ -178,13 +179,10 @@
 }
 .building,
 .buildingStructure {
-    width: 80%;
+    width: 50vmin;
     margin: auto auto;
-    height: 50vmin;
+    height: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 4vmin 4vmin;
-    background-image: var(--bg-principal);
     color: var(--terciario);
     border-radius: 50px;
 }
@@ -214,6 +212,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-image: var(--bg-principal);
 }
 
 .addBuilding {
@@ -230,9 +229,9 @@
 
 .addBuilding i {
     text-align: center;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.329);
     font-size: 4vmin;
-    padding: 4vmin;
+    padding: 3vmin;
     border-radius: 50%;
     cursor: pointer;
 }
