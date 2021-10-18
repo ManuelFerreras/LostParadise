@@ -1,6 +1,17 @@
 var lostParadiseABI = [
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "mintBuildingPrice_",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "mintSlotPrice_",
+				"type": "uint256"
+			}
+		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
 	},
@@ -127,6 +138,25 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "target_",
+				"type": "address"
+			}
+		],
+		"name": "LPSBalanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "_approved",
 				"type": "address"
 			},
@@ -168,19 +198,6 @@ var lostParadiseABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -194,74 +211,6 @@ var lostParadiseABI = [
 				"internalType": "address",
 				"name": "",
 				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "buildingToSlot",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "buildings",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "rareness",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "dna",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "income",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "finishTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "startTime",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "maxStorage",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "used",
-				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -402,6 +351,19 @@ var lostParadiseABI = [
 	},
 	{
 		"inputs": [],
+		"name": "mintRandomSlot",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "name",
 		"outputs": [
 			{
@@ -421,25 +383,6 @@ var lostParadiseABI = [
 				"internalType": "address",
 				"name": "",
 				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "target_",
-				"type": "address"
-			}
-		],
-		"name": "ownerBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -653,6 +596,19 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "newPrice_",
+				"type": "uint256"
+			}
+		],
+		"name": "setBuildingMintingPrice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "newModule_",
 				"type": "uint256"
 			}
@@ -665,20 +621,14 @@ var lostParadiseABI = [
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "slotsToOwner",
-		"outputs": [
-			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "newPrice_",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
+		"name": "setSlotMintingPrice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

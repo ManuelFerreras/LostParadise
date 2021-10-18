@@ -11,11 +11,12 @@
 
     <!-- CSS Imports -->
     <link rel="stylesheet" href="../../css/customFont.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/variables.css">
     <link rel="stylesheet" href="../../css/gloabals.css">
     <link rel="stylesheet" href="../../css/scrollbar.css">
     <link rel="stylesheet" href="../../css/utils.css">
-    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/social.css">
     <link rel="stylesheet" href="../css/alert.css">
     <link rel="stylesheet" href="../css/web3.css">
 
@@ -32,14 +33,19 @@
     <div class="alerts">
     </div>
 
+    <div class="paradiseButtons social invisible">
+        <a id="shopBtn">Shop<i class="fas fa-shopping-basket"></i></a>
+        <a id="inventoryBtn">Inv.<i class="fas fa-boxes"></i></a>
+        <a id="labBtn">Lab<i class="fas fa-flask"></i></a>
+    </div>
+
     <div class="top">
         <div class="header contenedor">
             <h1><span class="halfColor">Lost</span>Paradise</h1>
 
             <nav class="navegacion invisible">
-                <a>Marketplace</a>
-                <a class="selectedA">Paradise</a>
-                <a id="shopBtn">Shop</a>
+                <a class="marketplaceBtn">Marketplace</a>
+                <a class="paradiseBtn selectedA">Paradise</a>
             </nav>
 
             <div class="address invisible">
@@ -61,9 +67,15 @@
     </div>
 
     <div class="buildings invisible">
-        <h2> Buildings</h2>
+        <h2>Paradise</h2>
 
         <div id="buildings"></div>
+    </div>
+
+    <div class="marketplace invisible">
+        <h2>Marketplace</h2>
+
+        <div id="marketplace"></div>
     </div>
 
     <script src="../js/web3Test.js"></script>

@@ -35,14 +35,14 @@
     display: flex;
     flex-direction: column-reverse;
     max-width: 80%;
+    margin-right: 10vmin;
 }
 
 /* Alert */
 .alert {
     padding: 20px 40px;
     min-width: 420px;
-    width: auto;
-    max-width: 40%;
+    width: 100%;
     border-radius: 6px;
     overflow: hidden;
     opacity: 0;

@@ -1,4 +1,4 @@
-const lostParadiseContractAddress = "0x36149c77A43f7E7422EfBAE6b823eD1C78c9F4B0";
+const lostParadiseContractAddress = "0x6ea49ad77d52fb0C9C315D066bA4154f2389b9D0";
 
 const loginButton = document.querySelector('#login');
 const approveTokenButton = document.querySelector('#approveToken');
@@ -30,18 +30,21 @@ addEventListener('load', function() {
 })
 
 function approveToken() {
-  try {
-    if (!waitingResponce){
-      waitingResponce = true;
-      lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
-      .then(successAlert("Approved Succesfully"))
-      .then(() => {waitingResponce = false;});
-    } else {
-      errorAlert("Action In Progress!");
-    }
-  } catch (error) {
-    errorAlert(error);
-    waitingResponce = false;
+  if (!waitingResponce){
+    waitingResponce = true;
+    lostParadise.methods.approveCurrencyUsage().send({ from: userAccount })
+    .on('receipt', () => {
+      successAlert("Approved Succesfully");
+      $('.menu').remove();
+      shopMenuOpenned = false;
+    })
+    .then(() => {waitingResponce = false;})
+    .catch(err => {
+      errorAlert(err["message"]);
+      waitingResponce = false;
+    })
+  } else {
+    errorAlert("Pending Transaction! Please Wait.");
   }
 }
 
@@ -54,11 +57,11 @@ loginButton.addEventListener('click', async function() {
   .then(login)
   .then(getBuildingsByOwnerJs)
   .then(showBuilding)
-  .then(updateButtons);
+  .then(updateButtons)
+  .catch(err => errorAlert(err["message"]));
 
   checkAccmulatedIncome();
   checkStartedTime();
-  checkUsing();
 
   document.querySelector('.fa-clone').addEventListener('click', function() {
     navigator.clipboard.writeText(userAccount);
@@ -67,24 +70,50 @@ loginButton.addEventListener('click', async function() {
 });
 
 function mintBuilding() {
-  try {
     if (!waitingResponce) {
       waitingResponce = true;
       lostParadise.methods.mintRandomBuilding()
       .send({ from: userAccount })
-      .on("receipt", function (receipt) {
+      .on("receipt", () => {
         successAlert("Building Minted.");
+        $('.menu').remove();
+        shopMenuOpenned = false;
       })
       .then(getBuildingsByOwnerJs)
       .then(showBuilding)
       .then(updateButtons)
-      .then(() => {waitingResponce = false;});
+      .then(() => waitingResponce = false)
+      .catch(err => {
+        errorAlert(err["message"])
+        waitingResponce = false;
+      });
+
     } else {
-      errorAlert("Action In Progress!");
+      errorAlert("Pending Transaction! Please Wait.");
     }
-  } catch (error) {
-    errorAlert(error);
-    waitingResponce = false;
+}
+
+function mintSlot() {
+  if (!waitingResponce) {
+    waitingResponce = true;
+    lostParadise.methods.mintRandomSlot()
+    .send({ from: userAccount })
+    .on("receipt", () => {
+      successAlert("Slot Minted.");
+      $('.menu').remove();
+      shopMenuOpenned = false;
+    })
+    .then(getBuildingsByOwnerJs)
+    .then(showBuilding)
+    .then(updateButtons)
+    .then(() => waitingResponce = false)
+    .catch(err => {
+      errorAlert(err["message"])
+      waitingResponce = false;
+    });
+
+  } else {
+    errorAlert("Pending Transaction! Please Wait.");
   }
 }
 
@@ -95,8 +124,28 @@ function login() {
   document.querySelector(".accountAddress").innerText = userAccount.substring(0, 4) + "..." + userAccount.substring(userAccount.length - 6, userAccount.length);
   $('.address').removeClass("invisible");
   $('.buildings').removeClass("invisible");
+  $('.social').removeClass("invisible");
   $('.navegacion').removeClass("invisible");
 }
+
+$('.marketplaceBtn').click(function() {
+  $('.buildings').addClass("invisible");
+  $('.social').addClass("invisible");
+  $('.marketplace').removeClass("invisible");
+  $('.menu').remove();
+  shopMenuOpenned = false;
+  $('.marketplaceBtn').addClass("selectedA");
+  $('.paradiseBtn').removeClass("selectedA");
+
+});
+
+$('.paradiseBtn').click(function() {
+  $('.marketplace').addClass("invisible");
+  $('.buildings').removeClass("invisible");
+  $('.social').removeClass("invisible");
+  $('.marketplaceBtn').removeClass("selectedA");
+  $('.paradiseBtn').addClass("selectedA");
+});
 
 
 // Updates Owner's Buildings List.
@@ -106,35 +155,22 @@ async function showBuilding(ids) {
   for(id of ids) {
     await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
     .then(function(building) {
-      console.log(building);
       $("#buildings").append(`
       <div class="building" value="${building[2]}">
-        <div class="group">
-          <h3>Building #${building[2]}</h3>
+        <div class="group ${building[0][0]}Type">
+          <h3 class="${building[0][0]}">Building #${building[2]}</h3>
+          <p class="${building[0][0]}">${building[0][0]}</p>
           <div class="type">
             <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
           </div>
+          <p class="production ${building[0][0]}">${building[0][2]} LPS / HR</p>
       </div>
 
         <div class="group">
-          <div class="income">
-            <p>Production</p>
-            <p>${building[0][2]} LPS / 8hs</p>
-          </div>
-        
-
           <div class="started">
             <p>Cicle Started</p>
             <p class="startedCicleTime">${building[0][4]} Seconds Ago</p>
           </div>
-        </div>
-
-        <div class="group">
-          <div class="used">
-            <p>Is Being Used</p>
-            <p class="isUsed">${building[0][6]}</p>
-          </div>
-        
 
           <div class="claimable">
             <p>Claimable Income</p>
@@ -151,18 +187,27 @@ async function showBuilding(ids) {
         
       </div>`
       );
-    });
+    })
+    .catch(err => errorAlert(err["message"]));
   }
+
+  $("#buildings").append(`
+      <div class="buildingStructure addBuilding">
+        <h3>Add Slot</h3>
+        <i class="fas fa-plus"></i>
+      </div>`
+  );
 }
 
 // Retrieves Certain Building Info.
 function searchBuildingById(id) {
-  lostParadise.methods.searchBuildingById(id).call( {from: userAccount} );
+  lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
+  .catch(err => errorAlert(err["message"]));
 }
 
 // Retrieves array of Owned Buildings.
 function getBuildingsByOwnerJs() {
-  return lostParadise.methods.getBuildingsByOwner(userAccount).call( {from: userAccount} );
+  return lostParadise.methods.getBuildingsByOwner(userAccount).call( {from: userAccount} ).catch(err => errorAlert(err["message"]));
 }
 
 
@@ -172,18 +217,17 @@ function updateButtons() {
   useButtons.forEach(button => {
 
     button.addEventListener('click', function() {
-      try {
-        if (!waitingResponce) {
-          waitingResponce = true;
-          lostParadise.methods.useBuilding(button.getAttribute('value'))
-          .send( {from: userAccount} )
-          .on('receipt', () => {waitingResponce = false;});
-        } else {
-          errorAlert("Action In Progress!");
-        }
-      } catch (error) {
-        errorAlert(error);
-        waitingResponce = false;
+      if (!waitingResponce) {
+        waitingResponce = true;
+        lostParadise.methods.useBuilding(button.getAttribute('value'))
+        .send( {from: userAccount} )
+        .on('receipt', () => {waitingResponce = false;})
+        .catch(err => {
+          errorAlert(err["message"]);
+          waitingResponce = false;
+        });
+      } else {
+        errorAlert("Pending Transaction! Please Wait.");
       }
     });
 
@@ -193,18 +237,17 @@ function updateButtons() {
   deactivateButtons.forEach(button => {
 
     button.addEventListener('click', function() {
-      try {
-        if (!waitingResponce) {
-          waitingResponce = true;
-          lostParadise.methods.deactivateBuilding(button.getAttribute('value'))
-          .send( {from: userAccount} )
-          .on('receipt', () => {waitingResponce = false;});
-        } else {
-          errorAlert("Action In Progress!");
-        }
-      } catch (error) {
-        errorAlert(error);
-        waitingResponce = false;
+      if (!waitingResponce) {
+        waitingResponce = true;
+        lostParadise.methods.deactivateBuilding(button.getAttribute('value'))
+        .send( {from: userAccount} )
+        .on('receipt', () => {waitingResponce = false;})
+        .catch(err => {
+          errorAlert(err["message"]);
+          waitingResponce = false;
+        });
+      } else {
+        errorAlert("Pending Transaction! Please Wait.");
       }
     });
 
@@ -214,18 +257,17 @@ function updateButtons() {
   claimButtons.forEach(button => {
 
     button.addEventListener('click', function() {
-      try {
-        if (!waitingResponce) {
-          waitingResponce = true;
-          lostParadise.methods.withdrawBuildingEarnings(button.getAttribute('value'))
-          .send( {from: userAccount} )
-          .on('receipt', () => {waitingResponce = false;});
-        } else {
-          errorAlert("Action In Progress!");
-        }
-      } catch (error) {
-        errorAlert(error);
-        waitingResponce = false;
+      if (!waitingResponce) {
+        waitingResponce = true;
+        lostParadise.methods.withdrawBuildingEarnings(button.getAttribute('value'))
+        .send( {from: userAccount} )
+        .on('receipt', () => {waitingResponce = false;})
+        .catch(err => {
+          errorAlert(err["message"]);
+          waitingResponce = false;
+        });
+      } else {
+        errorAlert("Pending Transaction! Please Wait.");
       }
     });
 
@@ -256,6 +298,7 @@ function checkAccmulatedIncome() {
     .then(function(response) {
       claimText.innerText = response + " LPS";
     })
+    .catch(err => errorAlert(err["message"]));
   })
 
   setTimeout(checkAccmulatedIncome, 5000);
@@ -274,27 +317,10 @@ function checkStartedTime() {
     .then(function(response) {
       startedTime.innerText = response + " Seconds Ago";
     })
+    .catch(err => errorAlert(err["message"]));
   })
 
   setTimeout(checkStartedTime, 5000);
-}
-
-// Auto Updates Owner's Buildings Used State.
-function checkUsing() {
-  buildingsShowed = document.querySelectorAll('.building');
-
-  buildingsShowed.forEach(buildingObj => {
-    var isUsed = buildingObj.querySelector('.isUsed');
-    var buildingId = buildingObj.getAttribute('value');
-
-    lostParadise.methods.isUsed(buildingId)
-    .call({from: userAccount})
-    .then(function(response) {
-      isUsed.innerText = response;
-    })
-  })
-
-  setTimeout(checkUsing, 5000);
 }
 
 // Shop Menu Opening
@@ -302,8 +328,6 @@ $('#shopBtn').click(async function() {
   if (!shopMenuOpenned) {
     shopMenuOpenned = true;
 
-    
-    console.log(allowance);
     $('body').append(`
       <div class="menu">
           <i class="fas fa-times cross"></i>
@@ -311,7 +335,7 @@ $('#shopBtn').click(async function() {
       </div>` 
     );
 
-    var allowance = await lostParadise.methods.getAccountCurrencyAllowance().call({from: userAccount});
+    var allowance = await lostParadise.methods.getAccountCurrencyAllowance().call({from: userAccount}).catch(err => errorAlert(err["message"]));
     if (allowance > 0) {
       $('.menu').append(`
         <a class="boton buySlotBtn">Buy Slot<br><span class="price">5000 LPS</span></a>
@@ -319,7 +343,9 @@ $('#shopBtn').click(async function() {
         <a class="boton mintBuildingButton">Mint Building<br><span class="price">10000 LPS</span></a>
       `);
 
-      $('.buySlotBtn').click(function() {}); //TODO
+      $('.buySlotBtn').click(function() {
+        mintSlot();
+      }); //TODO
   
       $('.mintBuildingButton').click(function() {
         mintBuilding();
@@ -379,6 +405,7 @@ function openTransferMenu(buildingId) {
 // Check Metamask Account Change
 window.ethereum.on('accountsChanged', function (accounts) {
   window.location.reload();
+  warningAlert("Account Changed!");
 })
 
 
