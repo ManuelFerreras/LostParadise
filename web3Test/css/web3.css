@@ -155,15 +155,14 @@
     color: var(--secundario);
 }
 
-
-/* Buildings Menu */
-.buildings {
+/* Slots Menu */
+.slots {
     min-height: 100vh;
     background-color: var(--secundario);
     color: var(--principal);
     width: 100%;
 }
-.buildings h2 {
+.slots h2 {
     text-align: center;
     font-size: 4vmin;
     padding: 40px 0;
@@ -171,17 +170,54 @@
     color: var(--principal);
 }
 
-#buildings {
+#slots {
     display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(3, 1fr);
     gap: 100px 0;
     padding: 8vmin 0;
 }
+.slot,
+.slotStructure {
+    width: 50vmin;
+    margin: auto auto;
+    height: 65vh;
+    display: grid;
+    color: var(--terciario);
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.slotStructure {
+    background-color: transparent;
+}
+
+.slot h3{
+    text-align: center;
+    font-size: 3vmin;
+}
+.slot p{
+    text-align: center;
+    font-size: 2vmin;
+    font-weight: lighter;
+}
+.slot a{
+    margin: 10px 0;
+    background-color: gray;
+    padding: 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.8vmin;
+    text-align: center;
+}
+
+
+/* Buildings Menu */
 .building,
 .buildingStructure {
     width: 50vmin;
     margin: auto auto;
-    height: auto;
+    height: 100%;
     display: grid;
     color: var(--terciario);
     border-radius: 50px;
@@ -215,21 +251,36 @@
     background-image: var(--bg-principal);
 }
 
+.group h3 {
+    margin-top: 1vmin;
+}
+
+.group .production{
+    margin-bottom: 1vmin;
+}
+
 .addBuilding {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: none;
+    background-color: rgb(178 129 57);
 }
 
-.addBuilding h3 {
+.addSlot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addBuilding h3, .addSlot h3 {
     margin-bottom: 4vmin;
 }
 
-.addBuilding i {
+.addBuilding i, .addSlot i {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.329);
+    background-color: rgba(0, 0, 0, 0.6);
     font-size: 4vmin;
     padding: 3vmin;
     border-radius: 50%;
@@ -329,10 +380,9 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -20vh; 
-    margin-left: -20%; 
     height: 40vh;
     width: 40%;
+    transform: translate(-50%, -50%);
     background-color: rgba(0,0,0,0.9);
     display: flex;
     flex-direction: column;
@@ -340,9 +390,23 @@
     justify-content: space-evenly;
     border-radius: 50px;
     color: var(--secundario);
+    z-index: 10;
 }
 .menu h2{
     font-size: 3vmin;
+}
+
+.inventory {
+    width: 80%;
+    min-height: 80vh;
+    height: 80%;
+    overflow: scroll;
+}
+
+#buildings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5vmin;
 }
 
 
@@ -372,7 +436,7 @@
     position: absolute;
     font-size: 3vmin;
     right: 5%;
-    top: 5%;
+    top: 3%;
     cursor: pointer;
 }
 
@@ -469,4 +533,66 @@
     text-align: end;
     margin-right: 3vmin;
     font-size: 1.6vmin;
+}
+
+.group .producted {
+    text-align: center;
+    font-size: 1.6vmin;
+    margin: 2vmin 0;
+}
+
+.building, .slot {
+    position: relative;
+    z-index: 2;
+}
+
+.typeOfSlot {
+    position: absolute;
+    bottom: -6%;
+    width: 100%;
+    background-color: black;
+    height: 20%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.typeOfSlot p {
+    font-size: 1.6vmin;
+    margin-bottom: 0.5vmin;
+}
+.slot .group {
+    background-image: none;
+}
+
+.invBuildingType {
+    margin: 0 auto;
+}
+.invBuildingType img {
+    width: 30vmin;
+}
+
+.invBuilding {
+    width: auto;
+}
+.invMenu {
+    justify-content: start;
+}
+.invMenu h2 {
+    padding: 3vmin 0;
+}
+
+.buildingFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buildingFooter #claimBtn {
+    margin: 0vmin 0vmin 2vmin 2vmin;
+    background-image: var(--bg-secundario);
 }

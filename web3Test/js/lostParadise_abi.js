@@ -217,6 +217,44 @@ var lostParadiseABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "buildingToSlot",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "buildingId_",
+				"type": "uint256"
+			}
+		],
+		"name": "checkTypes",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "multiplier_",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "currency",
 		"outputs": [
@@ -233,7 +271,7 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_id",
+				"name": "buildingId_",
 				"type": "uint256"
 			}
 		],
@@ -283,6 +321,25 @@ var lostParadiseABI = [
 			}
 		],
 		"name": "getBuildingsByOwner",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"name": "getSlotsByOwner",
 		"outputs": [
 			{
 				"internalType": "uint256[]",
@@ -418,7 +475,7 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_buildingId",
+				"name": "buildingId_",
 				"type": "uint256"
 			}
 		],
@@ -507,7 +564,7 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_id",
+				"name": "buildingId_",
 				"type": "uint256"
 			}
 		],
@@ -515,11 +572,6 @@ var lostParadiseABI = [
 		"outputs": [
 			{
 				"components": [
-					{
-						"internalType": "string",
-						"name": "rareness",
-						"type": "string"
-					},
 					{
 						"internalType": "uint256",
 						"name": "dna",
@@ -549,6 +601,16 @@ var lostParadiseABI = [
 						"internalType": "bool",
 						"name": "used",
 						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "rareness",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "typeOfBuilding",
+						"type": "string"
 					}
 				],
 				"internalType": "struct BuildingsContract.Building",
@@ -564,6 +626,42 @@ var lostParadiseABI = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "slotId_",
+				"type": "uint256"
+			}
+		],
+		"name": "searchSlotById",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "typeOfSlot",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "used",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct BuildingsContract.Slot",
+				"name": "",
+				"type": "tuple"
 			},
 			{
 				"internalType": "uint256",
@@ -629,6 +727,25 @@ var lostParadiseABI = [
 		"name": "setSlotMintingPrice",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "slotToBuilding",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -722,7 +839,12 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_id",
+				"name": "buildingId_",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "slotId_",
 				"type": "uint256"
 			}
 		],
@@ -735,7 +857,7 @@ var lostParadiseABI = [
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_buildingId",
+				"name": "buildingId_",
 				"type": "uint256"
 			}
 		],

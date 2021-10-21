@@ -29,13 +29,13 @@
 .alerts {
     position: fixed;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 100vh;
+    bottom: 0%;
+    height: auto;
     display: flex;
     flex-direction: column-reverse;
     max-width: 80%;
     margin-right: 10vmin;
+    z-index: 1000;
 }
 
 /* Alert */
@@ -48,6 +48,7 @@
     opacity: 0;
     pointer-events: none;
     margin-bottom: 2vmin;
+    z-index: 1000;
 }
 
 .alert.showAlert {
