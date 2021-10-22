@@ -180,7 +180,8 @@
 .slotStructure {
     width: 50vmin;
     margin: auto auto;
-    height: 65vh;
+    height: 100%;
+    min-height: 65vh;
     display: grid;
     color: var(--terciario);
     border-radius: 50px;
@@ -586,13 +587,17 @@
 }
 
 .buildingFooter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
     align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vmin;
+}
+
+.buildingFooter .buildingInfoBtn, .buildingFooter .useBuilding {
+    margin: 0vmin 0vmin 2vmin 2vmin;
+    background-image: var(--bg-secundario);
 }
 
 .buildingFooter #claimBtn {
-    margin: 0vmin 0vmin 2vmin 2vmin;
     background-image: var(--bg-secundario);
 }

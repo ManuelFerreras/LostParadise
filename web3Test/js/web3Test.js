@@ -1,4 +1,4 @@
-const lostParadiseContractAddress = "0xF606131b851015820FA5F674d67aa670800df128";
+const lostParadiseContractAddress = "0x9b03295cC082445Bf0e30066176c7EBb857F14b0";
 
 const loginButton = document.querySelector('#login');
 const approveTokenButton = document.querySelector('#approveToken');
@@ -172,7 +172,8 @@ async function showSlots(ids) {
               </div>
 
               <div class="buildingFooter">
-                <a class="boton" id="claimBtn" value="${building[2]}">Claim Earnings</a>
+                <a class="boton" id="claimBtn" value="${building[2]}">Claim</a>
+                <a class="boton" id="claimBtn" value="${building[2]}">Upgrade</a>
                 <div class="buildingProductionInfo">
                   <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
                   <p class="production ${building[0][6]}">Max. ${building[0][4]} LPS</p>
@@ -197,7 +198,7 @@ async function showSlots(ids) {
 
             <div class="buildingStructure addBuilding">
               <h3>Add Building</h3>
-              <i class="fas fa-plus"></i>
+              <i class="fas fa-plus addBuildingBtn" value="${slot[1]}"></i>
             </div>
           </div>
 
@@ -218,11 +219,15 @@ async function showSlots(ids) {
       </div>`
   );
 
+  $('.addBuildingBtn').click(function() {
+    openInventoryForUse($(this).attr('value'));
+  });
+
   $('.addSlot').click(openShop);
 }
 
 // Updates Owner's Slots List.
-async function showBuildings(ids) {
+async function showBuildingsInInventory(ids) {
   for(id of ids) {
     await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
     .then(function(building) {
@@ -235,14 +240,87 @@ async function showBuildings(ids) {
             <div class="type invBuildingType">
               <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
             </div>
-            <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
+            <div class="buildingFooter">
+              <a class="boton buildingInfoBtn" id="" value="${building[2]}">Actions</a>
+              <div class="buildingProductionInfo">
+                <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
+                <p class="production ${building[0][6]}">Max. ${building[0][4]} LPS</p>
+              </div>
+            </div>
           </div>
         </div>`
       );
     })
     .catch(err => errorAlert(err["message"]));
   }
+  $('.buildingInfoBtn').click(async function() {
+    $('.menu').remove();
+    shopMenuOpenned = false;
+  
+    $('body').append(`
+      <div class="menu">
+          <i class="fas fa-times cross"></i>
+          <h2>Building #${$(this).attr('value')}</h2>
+      </div>` 
+    );
+  
+    $('.menu').append(`
+      <a class="boton transferBuildingBtn">Transfer Building</a>
+
+      <a class="boton lostOnMarketplaceButton">List on Marketplace</a>
+
+      <a class="boton placeBuildingBtn">Place in Slot</a>
+    `);
+  
+    $('.fa-times').click(function() {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+    });
+
+    $('.transferBuildingBtn').click(() => {
+      openTransferMenu($(this).attr('value'));
+    })
+
+    $('.placeBuildingBtn').click(() => {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+
+      warningAlert("To place a Building, First Select The Slot!");
+    });
+  });
+  
 }
+
+// Updates Owner's Slots List.
+async function showBuildingsForUse(ids) {
+  for(id of ids) {
+    await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
+    .then(function(building) {
+      $("#buildings").append(`
+        <div class="building invBuilding" value="${building[2]}">
+          <div class="group ${building[0][6]}Type">
+            <h3 class="${building[0][6]}">Building #${building[2]}</h3>
+            <p class="${building[0][6]}">${building[0][6]}</p>
+            <p class="${building[0][6]}">${building[0][7]}</p>
+            <div class="type invBuildingType">
+              <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
+            </div>
+            <div class="buildingFooter">
+              <a class="boton useBuilding" id="" value="${building[2]}"><span class="SlotId" value="${$(this).attr('value')}"></span>Use</a>
+              <div class="buildingProductionInfo">
+                <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
+                <p class="production ${building[0][6]}">Max. ${building[0][4]} LPS</p>
+              </div>
+            </div>
+          </div>
+        </div>`
+      );
+    })
+    .catch(err => errorAlert(err["message"]));
+  }  
+}
+
+
 
 // Retrieves Certain Building Info.
 function searchBuildingById(id) {
@@ -378,14 +456,68 @@ async function openInventory() {
     );
 
     await lostParadise.methods.getBuildingsByOwner(userAccount).call({from: userAccount})
-    .then(showBuildings);
+    .then(showBuildingsInInventory);
 
     $('.closeInventory').click(function() {
       $('.menu').remove();
       shopMenuOpenned = false;
     });
   } else {
-    warningAlert("Already Opened!");
+    $('.menu').remove();
+    shopMenuOpenned = false;
+    openInventory();
+  }
+}
+
+async function openInventoryForUse(slotId) {
+  if (!shopMenuOpenned) {
+    shopMenuOpenned = true;
+
+    $('body').append(`
+      <div class="menu inventory invMenu">
+          <i class="fas fa-times cross closeInventory"></i>
+          <h2>Inventory</h2>
+
+          <div id="buildings" value="${slotId}"></div>
+      </div>` 
+    );
+
+    await lostParadise.methods.getBuildingsByOwner(userAccount).call({from: userAccount})
+    .then(showBuildingsForUse);
+
+    $('.useBuilding').click(async function() {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+    
+      if (!waitingResponce) {
+        console.log(slotId);
+        lostParadise.methods.useBuilding($(this).attr('value'), slotId).send({ from: userAccount })
+        .on("receipt", () => {
+          successAlert("Building Set as Used!");
+          $('.menu').remove();
+          shopMenuOpenned = false;
+        })
+        .then(getSlotsByOwnerJs)
+        .then(showSlots)
+        .then(updateButtons)
+        .then(() => waitingResponce = false)
+        .catch(err => {
+          errorAlert(err["message"])
+          waitingResponce = false;
+        });
+      } else {
+        warningAlert("Transaction Pending!");
+      }
+    });
+
+    $('.closeInventory').click(function() {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+    });
+  } else {
+    $('.menu').remove();
+    shopMenuOpenned = false;
+    openInventoryForUse(slotId);
   }
 }
 
@@ -432,7 +564,9 @@ async function openShop() {
     });
 
   } else {
-    warningAlert("Already Opened!");
+    $('.menu').remove();
+    shopMenuOpenned = false;
+    openShop();
   }
 }
 
@@ -461,11 +595,34 @@ function openTransferMenu(buildingId) {
       transferMenuOpenned = false;
     });
   } else {
-    warningAlert("Already Opened!");
+    $('.menu').remove();
+    transferMenuOpenned = false;
+    openTransferMenu();
   }
 
-}
+  $('.transferButton').click(function() {
+    if (!waitingResponce) {
+      waitingResponce = true;
+      lostParadise.methods.transferFrom(userAccount, $('#addressTo').val(), buildingId).send({ from: userAccount })
+      .on('receipt', function() {
+        successAlert(`Building #${buildingId} Transfered Successfully!`);
+        $('.menu').remove();
+        shopMenuOpenned = false;
+      })
+      .then(getSlotsByOwnerJs)
+      .then(showSlots)
+      .then(() => waitingResponce = false)
+      .catch(err => {
+        errorAlert(err["message"])
+        waitingResponce = false;
+      });
 
+    } else {
+      errorAlert("Pending Transaction! Please Wait.");
+    }
+  });
+
+}
 
 // Check Metamask Account Change
 window.ethereum.on('accountsChanged', function (accounts) {
@@ -557,5 +714,5 @@ async function updateClaimableEarnings() {
     lostParadise.methods.returnBuildingEarnings(text.getAttribute('value')).call({from: userAccount}).then(res => {text.innerText = `Claimable: ${res} LPS ${text.innerText.slice(text.innerText.search("/"), text.innerText.length)}`});
   } )
 
-  setTimeout(updateClaimableEarnings, 300);
+  setTimeout(updateClaimableEarnings, 3000);
 }
