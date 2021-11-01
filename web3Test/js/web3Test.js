@@ -12,6 +12,8 @@ var transferButtons;
 var interval;
 var buildingsShowed;
 
+var buildingsMeta;
+
 var alertId = 0;
 var transferMenuOpenned = false;
 var shopMenuOpenned = false;
@@ -22,6 +24,10 @@ var waitingResponce = false;
 addEventListener('load', function() {
   if (typeof web3 !== 'undefined') {
     web3js = new Web3(window.ethereum);
+
+    $.getJSON('https://gateway.pinata.cloud/ipfs/QmWrU8CoU1JnSAfoufKF7DZebpobViEAkNeaJ1g8bkgxLp', function(data) {
+      buildingsMeta = data;
+    });
 
   } else {
     errorAlert("Please Install Metamask.");
@@ -168,7 +174,7 @@ async function showSlots(ids) {
               <p class="${building[0][6]}">${building[0][6]}</p>
               <p class="${building[0][6]}">${building[0][7]}</p>
               <div class="type">
-                <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
+                <img src="${buildingsMeta[building[0][0]]}">
               </div>
 
               <div class="buildingFooter">

@@ -1,0 +1,11 @@
+// Type
+1 = House
+2 = Hotel
+3 = Market
+4 = Dojo
+
+// Part Pos
+1st = Ceiling
+2nd = Body
+3rd = Basement
+4th = Door
