@@ -532,7 +532,7 @@
 
 .building .production {
     text-align: end;
-    margin-right: 3vmin;
+    margin-right: 1vmin;
     font-size: 1.6vmin;
 }
 
@@ -593,6 +593,15 @@
     gap: 2vmin;
 }
 
+.buildingFooterInv {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.buildingFooterInv a {
+    background-image: var(--bg-secundario);
+}
+
 .buildingFooter .buildingInfoBtn, .buildingFooter .useBuilding {
     margin: 0vmin 0vmin 2vmin 2vmin;
     background-image: var(--bg-secundario);
@@ -600,4 +609,5 @@
 
 .buildingFooter #claimBtn {
     background-image: var(--bg-secundario);
+    margin: 0 1vmin;
 }

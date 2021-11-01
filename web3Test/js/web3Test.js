@@ -1,15 +1,13 @@
-const lostParadiseContractAddress = "0x9b03295cC082445Bf0e30066176c7EBb857F14b0";
+const lostParadiseContractAddress = "0x81037b6cF5eeFB592d2cD32f1aF9b9242b17F791";
 
 const loginButton = document.querySelector('#login');
 const approveTokenButton = document.querySelector('#approveToken');
 
 var lostParadise;
 var userAccount;
-var useButtons;
 var deactivateButtons;
 var claimButtons;
-var transferButtons;
-var interval;
+var upgradeButtons;
 var buildingsShowed;
 
 var buildingsMeta;
@@ -169,24 +167,24 @@ async function showSlots(ids) {
           $("#slots").append(`
           <div class="building" value="${building[2]}">
             <i class="fas fa-times cross" id="deactivateBuilding" value="${building[2]}"></i>
-            <div class="group ${building[0][6]}Type">
-              <h3 class="${building[0][6]}">Building #${building[2]}</h3>
-              <p class="${building[0][6]}">${building[0][6]}</p>
-              <p class="${building[0][6]}">${building[0][7]}</p>
+            <div class="group ${building[0][7]}Type">
+              <h3 class="${building[0][7]}">Building #${building[2]}</h3>
+              <p class="${building[0][7]}">${building[0][7]}</p>
+              <p class="${building[0][7]}">${building[0][8]}</p>
               <div class="type">
                 <img src="${buildingsMeta[building[0][0]]}">
               </div>
 
               <div class="buildingFooter">
                 <a class="boton" id="claimBtn" value="${building[2]}">Claim</a>
-                <a class="boton" id="claimBtn" value="${building[2]}">Upgrade</a>
+                <a class="boton" id="upgradeBtn" value="${building[2]}">Upgrade</a>
                 <div class="buildingProductionInfo">
-                  <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
-                  <p class="production ${building[0][6]}">Max. ${building[0][4]} LPS</p>
+                  <p class="production ${building[0][7]}">${building[0][1]} LPS / HR</p>
+                  <p class="production ${building[0][7]}">Max. ${building[0][4]} LPS</p>
                 </div>
               </div>
 
-              <p class="producted ${building[0][6]}" value="${building[2]}">Claimable: ${productedByBuilding} LPS / ${building[0][4]} LPS</p>
+              <p class="producted ${building[0][7]}" value="${building[2]}">Claimable: ${productedByBuilding} LPS / ${building[0][4]} LPS</p>
             </div>
 
             <div class="typeOfSlot">
@@ -239,18 +237,18 @@ async function showBuildingsInInventory(ids) {
     .then(function(building) {
       $("#buildings").append(`
         <div class="building invBuilding" value="${building[2]}">
-          <div class="group ${building[0][6]}Type">
-            <h3 class="${building[0][6]}">Building #${building[2]}</h3>
-            <p class="${building[0][6]}">${building[0][6]}</p>
-            <p class="${building[0][6]}">${building[0][7]}</p>
+          <div class="group ${building[0][7]}Type">
+            <h3 class="${building[0][7]}">Building #${building[2]}</h3>
+            <p class="${building[0][7]}">${building[0][7]}</p>
+            <p class="${building[0][7]}">${building[0][8]}</p>
             <div class="type invBuildingType">
               <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
             </div>
-            <div class="buildingFooter">
+            <div class="buildingFooterInv">
               <a class="boton buildingInfoBtn" id="" value="${building[2]}">Actions</a>
               <div class="buildingProductionInfo">
-                <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
-                <p class="production ${building[0][6]}">Max. ${building[0][4]} LPS</p>
+                <p class="production ${building[0][7]}">${building[0][1]} LPS / HR</p>
+                <p class="production ${building[0][7]}">Max. ${building[0][4]} LPS</p>
               </div>
             </div>
           </div>
@@ -273,9 +271,11 @@ async function showBuildingsInInventory(ids) {
     $('.menu').append(`
       <a class="boton transferBuildingBtn">Transfer Building</a>
 
-      <a class="boton lostOnMarketplaceButton">List on Marketplace</a>
+      <a class="boton listOnMarketplaceButton">List on Marketplace</a>
 
       <a class="boton placeBuildingBtn">Place in Slot</a>
+
+      <a class="boton upgradeBuildingBtn">Upgrade Building</a>
     `);
   
     $('.fa-times').click(function() {
@@ -293,6 +293,20 @@ async function showBuildingsInInventory(ids) {
 
       warningAlert("To place a Building, First Select The Slot!");
     });
+
+    $('.listOnMarketplaceButton').click(() => {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+
+      // TODO
+    });
+
+    $('.upgradeBuildingBtn').click(() => {
+      $('.menu').remove();
+      shopMenuOpenned = false;
+
+      // TODO
+    });
   });
   
 }
@@ -304,18 +318,18 @@ async function showBuildingsForUse(ids) {
     .then(function(building) {
       $("#buildings").append(`
         <div class="building invBuilding" value="${building[2]}">
-          <div class="group ${building[0][6]}Type">
-            <h3 class="${building[0][6]}">Building #${building[2]}</h3>
-            <p class="${building[0][6]}">${building[0][6]}</p>
-            <p class="${building[0][6]}">${building[0][7]}</p>
+          <div class="group ${building[0][7]}Type">
+            <h3 class="${building[0][7]}">Building #${building[2]}</h3>
+            <p class="${building[0][7]}">${building[0][7]}</p>
+            <p class="${building[0][7]}">${building[0][8]}</p>
             <div class="type invBuildingType">
               <img src="https://gateway.pinata.cloud/ipfs/QmNM9HNuuFbtnQt8eu8pkMXcGSLAViZrMfA7E7c3y6r3nJ">
             </div>
             <div class="buildingFooter">
               <a class="boton useBuilding" id="" value="${building[2]}"><span class="SlotId" value="${$(this).attr('value')}"></span>Use</a>
               <div class="buildingProductionInfo">
-                <p class="production ${building[0][6]}">${building[0][1]} LPS / HR</p>
-                <p class="production ${building[0][6]}">Max. ${building[0][4]} LPS</p>
+                <p class="production ${building[0][7]}">${building[0][1]} LPS / HR</p>
+                <p class="production ${building[0][7]}">Max. ${building[0][4]} LPS</p>
               </div>
             </div>
           </div>
@@ -376,6 +390,31 @@ function updateButtons() {
 
   claimButtons = document.querySelectorAll('#claimBtn');
   claimButtons.forEach(button => {
+
+    button.addEventListener('click', function() {
+      if (!waitingResponce) {
+        waitingResponce = true;
+        lostParadise.methods.withdrawBuildingEarnings(button.getAttribute('value'))
+        .send( {from: userAccount} )
+        .on('receipt', () => {
+          waitingResponce = false;
+        })
+        .then(getSlotsByOwnerJs)
+        .then(showSlots)
+        .then(updateButtons)
+        .catch(err => {
+          errorAlert(err["message"]);
+          waitingResponce = false;
+        });
+      } else {
+        errorAlert("Pending Transaction! Please Wait.");
+      }
+    });
+
+  });
+
+  upgradeButtons = document.querySelectorAll('#claimBtn');
+  upgradeButtons.forEach(button => {
 
     button.addEventListener('click', function() {
       if (!waitingResponce) {
