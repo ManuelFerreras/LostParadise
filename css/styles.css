@@ -364,15 +364,30 @@
     
 }
 
+.parent {
+    position: relative;
+    height: 100vh;
+}
+
 .bg {
     background: url(../img/fondo.gif) repeat fixed 100%;
     background-size: cover;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.presale {
+    position: absolute;
+    width: 100%;
 }
 
 .presale h3 {
     text-align: center;
     color: var(--secundario);
-    font-size: 8vmin;
+    font-size: 10vmin;
     letter-spacing: 1vmin;
     font-weight: lighter;
 }
@@ -381,6 +396,13 @@
     color: var(--terciario);
 }
 
+.presale h4 {
+    text-align: center;
+    color: var(--secundario);
+    font-size: 3vmin;
+    letter-spacing: 1vmin;
+    font-weight: lighter;
+}
 
 /* Footer */
 
