@@ -29,14 +29,8 @@ contract LPSToken is ERC20, Ownable {
         _setRewardsPoolContract(payable(_rewardsPoolContract));
         
         _mint(rewardsPoolContract, totalTokenSupply); // 100M
-        _mint(testAddress, 100000 * 10 ** 18); // Testing
         _mint(0xD27b2CB449845Ab3f6608aDb9fa11ee98067d2A7, 100000 * 10 ** 18); // Testing
-        _mint(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, 100000 * 10 ** 18); // Testing
-        _mint(0x10e7669e101532Fcb5FDa7D57597D3Ba8e0637ca, 100000 * 10 ** 18); // Testing
-        _mint(0xeB2c640c6879B8B4d42c287dcdba44656E86C0DF, 100000 * 10 ** 18); // Testing
 
-        _mint(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2, 100000 * 10 ** 18); // Testing
-        _mint(0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db, 100000 * 10 ** 18); // Testing
 
         _mint(address(this), availableTokensICO * 10 ** 18); // ICO
 
@@ -84,9 +78,9 @@ contract LPSToken is ERC20, Ownable {
     
     function start(
         uint duration,
-        uint _price,
-        uint _minPurchase,
-        uint _maxPurchase)
+        uint _price, // In WEI
+        uint _minPurchase, // Amount of min tokens
+        uint _maxPurchase) // // Amount of max tokens
         external
         onlyAdmin() 
         icoNotActive() {
@@ -112,6 +106,8 @@ contract LPSToken is ERC20, Ownable {
             msg.sender,
             quantity
         ));
+
+        availableTokensICO = availableTokensICO.sub(quantity);
     }
     
     function release()
