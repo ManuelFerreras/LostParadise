@@ -169,6 +169,9 @@
 }
 
 /* Info */
+.relative {
+    position: relative;
+}
 
 .info {
     height: 100vh;
@@ -258,7 +261,7 @@
     color: var(--terciario);
     font-family: var(--mainFont);
     font-weight: lighter;
-    margin-top: 150px;
+    margin: 50px;
     text-align: center;
     letter-spacing: 10px;
 }
@@ -367,13 +370,12 @@
 .parent {
     position: relative;
     height: 100vh;
+    background: url(../img/fondo.gif) repeat fixed 100%;
+    background-size: cover;
 }
 
 .bg {
-    background: url(../img/fondo.gif) repeat fixed 100%;
-    background-size: cover;
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
     height: 100vh;
     position: absolute;
     width: 100%;
@@ -382,6 +384,9 @@
 .presale {
     position: absolute;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .presale h3 {
@@ -403,6 +408,46 @@
     letter-spacing: 1vmin;
     font-weight: lighter;
 }
+
+/* Input */
+.ico-information h4 {
+    margin-bottom: 2vmin;
+}
+
+.input-group {
+    width: 40%;
+}
+
+.input-group label {
+    color: var(--terciario);
+}
+
+.ico-input-amount {
+    background: none;
+    border: 2px solid var(--input-color);
+    border-radius: .3rem;
+    font-family: 'mainFont';
+    font-weight: lighter;
+    font-size: 2.5vmin;
+    letter-spacing: 3px;
+    color: var(--terciario);
+    outline: none;
+    padding: .75rem;
+    width: 100%;
+    
+}
+
+.ico-input-amount:hover {
+    border-color: var(--secundario);
+    color: var(--secundario);
+}
+
+.ico-input-amount:focus {
+    border-color: var(--secundario);
+    color: var(--secundario);
+}
+
+
 
 /* Footer */
 

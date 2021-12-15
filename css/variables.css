@@ -17,4 +17,8 @@
     --tarjetas: #ffb34dcc;
 
     --mainFont: 'mainFont', sans-serif;
+
+    --input-color: #e1e5ee;
+    --input-color-hover: #999999;
+    --input-color-focus: #474747;
 }

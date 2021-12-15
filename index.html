@@ -28,6 +28,10 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
+    <!-- Scripts -->
+    <script language="javascript" type="text/javascript" src="js/web3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/lostParadise_abi.js"></script>
+
 </head>
 <body>
     <div class="cargador">
@@ -57,32 +61,38 @@
                 </button>
 
                 <nav class="navegacion">
-                    <a href="#">About</a>
+                    <a href="#start">Start</a>
+                    <a href="#about">About</a>
                     <a href="#nfts">Nfts</a>
-                    <a href="#">Tokenomics</a>
-                    <a href="#">Team</a>
-                    <a href="#">Presale</a>
+                    <a href="#tokenomics">Tokenomics</a>
+                    <a href="#team">Team</a>
+                    <a href="#ico">ICO</a>
                     <a href="whitepaper.html">ParadisePaper</a>
                 </nav>
             </div>
         </div>
 
-        <div class="encabezado">
+        <div class="encabezado" id="start">
+            
             <div class="intro-text">
                 <!-- <img src="./img/fondo.gif" alt="Gif Fondo"> -->
                 <h2 class="shadowing load-hidden fade-in">First Ever Tycoon NFT Game With Realtime Earnings!</h2>
 
-                <a class="link-learnMore" href="#">Presale</a>
+                <a class="link-whitepaper link-learnMore" href="#ico">Presale</a>
+                <a class="link-learnMore" href="web3Test/html/web3.html">Play!</a>
                 <a class="link-whitepaper" href="whitepaper.html">ParadisePaper</a>
             </div>
         </div>
 
-        
-        <div class="contenedor">
-            <div class="contenedor info outOfScreen">
-                <h3 class="slide-in from-left">Build</h3>
+        <div class="relative">
+            <div id="particles" style="position:absolute;top:0;bottom:0;left:0;right:0;"></div>
+            <div class="contenedor relative">
+                
+                <div class="contenedor info outOfScreen">
+                    <h3 class="slide-in from-left">Build</h3>
 
-                <p class="slide-in from-right">Build your dream Tycoon Empire!</p>
+                    <p class="slide-in from-right">Build your dream Tycoon Empire!</p>
+                </div>
             </div>
         </div>
 
@@ -103,7 +113,7 @@
         </div>
 
 
-        <main class="lore">
+        <main class="lore" id="about">
             <div class="content contenedor">
                 <h3 class="shadowing fade-in">About</h3>
 
@@ -119,7 +129,7 @@
                     <div class="tarjetas fade-in">
                         <div class="tarjeta box-shadowing comun izquierda">
                             <div class="imgBx">
-                                <img src="img/Buildings/House/sample.png" alt="House Image">
+                                <img src="img/samples/purehouse.png" alt="House Image">
                             </div>
                             <p class="shadowing common">Pure House</p>
 
@@ -130,7 +140,7 @@
                         </div>
                         <div class="tarjeta box-shadowing derecha">
                             <div class="imgBx">
-                                <img src="img/Buildings/Hotel/sample.png" alt="Hotel Image">
+                                <img src="img/samples/purehotel.png" alt="Hotel Image">
                             </div>
                             <p class="shadowing uncommon">Pure Hotel</p>
 
@@ -141,9 +151,9 @@
                         </div>
                         <div class="tarjeta box-shadowing izquierda">
                             <div class="imgBx">
-                                <img src="img/Buildings/Business/sample.png" alt="Business Image">
+                                <img src="img/samples/puremarket.png" alt="Market Image">
                             </div>
-                            <p class="shadowing rare">Pure Business</p>
+                            <p class="shadowing rare">Pure Market</p>
 
                             <div class="contentBx">
                                 <h4>Production:</h4>
@@ -152,7 +162,7 @@
                         </div>
                         <div class="tarjeta box-shadowing derecha">
                             <div class="imgBx">
-                                <img src="img/Buildings/Turistic/sample.png" alt="Dojo Image">
+                                <img src="img/samples/puredojo.png" alt="Dojo Image">
                             </div>
                             <p class="shadowing legendary">Pure Dojo</p>
 
@@ -166,7 +176,7 @@
             </div>
         </div>
 
-        <div class="tokenomics">
+        <div class="tokenomics" id="tokenomics">
             <h3  class="fade-in">Tokenomics</h3>
 
             <div class="columns contenedor">
@@ -220,18 +230,21 @@
             </div>
         </div>
 
-        <div class="parent">
+        <div class="parent" id="ico">
             <div class="bg"></div>
             <div class="presale">
                 <h3>LPS ICO</h3>
-                <h4 id="ico-tokens">Tokens Left:</h4>
-                <h4 id="ico-time">Time Left:</h4>
-                <h4 id="ico-price">Token Price: BNB / 1 YOGI</h4>
-                <h4 id="ico-amount">Min Purchase: 1 YOGI - Max Purchase: 1 YOGI</h4>
-                <div class="input-group">
-                    <input type="number" min="0" class="form-control" placeholder="Amount of Yogi Tokens To Buy" aria-label="Amount of Yogi Tokens To Buy" aria-describedby="basic-addon2" id="ico-amount-buy">
+                <div class="ico-information">
+                    <h4 id="ico-tokens">Tokens Left:</h4>
+                    <h4 id="ico-time">Time Left:</h4>
+                    <h4 id="ico-price">Token Price: 1 BNB = 15000 LPS</h4>
+                    <h4 id="ico-amount">Min Purchase: 1500 LPS - Max Purchase: 30000 LPS</h4>
                 </div>
-                <a href="#" class="boton">
+                <div class="input-group">
+                    <label for="ico-amount-buy">Amount of LPS tokens to buy</label>
+                    <input type="number" min="0" class="ico-input-amount" placeholder="0" aria-label="Amount of LPS Tokens To Buy" aria-describedby="basic-addon2" id="ico-amount-buy">
+                </div>
+                <a href="#" class="boton" id="buy-tokens">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -250,6 +263,9 @@
 
 
     <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
     <script src="js/scrollEffects.js"></script>
     <script src="js/hamburguer.js"></script>
@@ -261,6 +277,10 @@
             speed: 30,
         });
     </script>
+    <script src="js/buyIco.js"></script>
+
+    <script src="js/partcicle.min.js"></script>
+    <script src="js/particles.js"></script>
 
 </body>
 </html>
