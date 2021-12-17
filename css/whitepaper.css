@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translate(10vh, 80vh);
+    transform: translate(6vh, 80vh);
     z-index: 101;
     color: white;
     cursor: pointer;
@@ -58,7 +58,9 @@ main p span {
 
 
 .contents {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 10vmin;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,17 +73,54 @@ main p span {
     font-weight: lighter;
 }
 
-
-.intro {
-    height: 100vh;
-    background: rgb(12,13,32);
-    background-image: linear-gradient(135deg, rgba(12,13,32,1) 0%, rgb(10, 10, 87) 100%);
-    display: flex;
-    flex-direction: column;
-
+.entrada-main h3 {
+    color: var(--secundario);
+    margin: 8vmin 0 2vmin 0;
+    font-size: 4vmin;
+    font-weight: lighter;
 }
 
-.intro h2 {
+.entrada-secundaria h3 {
+    color: var(--principal);
+    margin: 8vmin 0 2vmin 0;
+    font-size: 4vmin;
+    font-weight: lighter;
+}
+
+.entrada-main h4 {
+    color: var(--secundario);
+    margin: 8vmin 0 2vmin 0;
+    font-size: 2vmin;
+    font-weight: lighter;
+}
+
+.entrada-secundaria h4 {
+    color: var(--principal);
+    margin: 8vmin 0 2vmin 0;
+    font-size: 2vmin;
+    font-weight: lighter;
+}
+
+
+.entrada {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 10vmin;
+}
+
+.entrada-main {
+    background: rgb(12,13,32);
+    background-image: linear-gradient(135deg, rgba(12,13,32,1) 0%, rgb(10, 10, 87) 100%);
+}
+
+.entrada-secundaria {
+    background: rgb(12,13,32);
+    background-image: linear-gradient(135deg, var(--secundario) 0%, rgb(187 135 56) 100%);
+}
+
+.entrada-main h2 {
     text-align: center;
     color: var(--secundario);
     margin: 8vmin 0;
@@ -89,7 +128,15 @@ main p span {
     font-weight: lighter;
 }
 
-.intro p {
+.entrada-secundaria h2 {
+    text-align: center;
+    color: var(--principal);
+    margin: 8vmin 0;
+    font-size: 6vmin;
+    font-weight: lighter;
+}
+
+.entrada p {
     color: var(--terciario);
     font-size: 2vmin;
     line-height: 4vmin;
@@ -105,4 +152,18 @@ ol {
 ol li a{
     color: var(--terciario);
     font-size: 2.4vmin;
+}
+
+.layer-one {
+    margin-top: 3vmin;
+}
+
+ul li {
+    color: var(--principal);
+    margin-bottom: 2vmin;
+    font-size: 2vmin;
+}
+
+.important {
+    color: var(--principal);
 }
