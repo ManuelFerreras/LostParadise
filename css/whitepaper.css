@@ -158,9 +158,15 @@ ol li a{
     margin-top: 3vmin;
 }
 
-ul li {
+.entrada-main ul li {
+    color: var(--secundario);
+    margin-bottom: 1vmin;
+    font-size: 2vmin;
+}
+
+.entrada-secundaria ul li {
     color: var(--principal);
-    margin-bottom: 2vmin;
+    margin-bottom: 1vmin;
     font-size: 2vmin;
 }
 
