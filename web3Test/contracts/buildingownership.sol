@@ -1,10 +1,10 @@
 pragma solidity >=0.8.0;
 
-import "./buildingusage.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "BuildingUsage.sol";
+import "ERC721.sol";
 
 
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 
 contract buildingOwnerShip is BuildingUsage, ERC721 {
 

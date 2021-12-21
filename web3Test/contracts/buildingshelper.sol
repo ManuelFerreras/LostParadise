@@ -1,8 +1,8 @@
 pragma solidity >=0.8.0;
 
-import "./basebuilding.sol";
+import "BaseBuilding.sol";
 
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 
 contract BuildingHelper is BuildingsContract {
     

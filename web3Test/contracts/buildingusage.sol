@@ -1,8 +1,8 @@
 pragma solidity >=0.8.0;
 
-import "./buildingshelper.sol";
+import "BuildingsHelper.sol";
 
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 
 contract BuildingUsage is BuildingHelper {
     using SafeMath for uint;

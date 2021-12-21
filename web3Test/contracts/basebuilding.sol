@@ -1,21 +1,23 @@
 pragma solidity >=0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
-import "./lps.sol";
+import "Ownable.sol";
+import "ReentrancyGuard.sol";
+import "ERC721.sol";
+import "ERC20.sol";
+import "SafeMath.sol";
+import "Strings.sol";
+import "lps.sol";
 
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 
-contract BuildingsContract is Ownable, ReentrancyGuard {
+contract BuildingsContract is Ownable, ReentrancyGuard, ERC721 {
     using SafeMath for uint256;
     using Strings for uint256;
     using Strings for string;
 
     event NewBuilding(uint buildingId, string typeOfBuilding, uint income);
+
+    string internal _baseTokenURI;
     
     uint dnaDigits = 4;
     uint dnaModulus = 10 ** dnaDigits;
@@ -57,9 +59,11 @@ contract BuildingsContract is Ownable, ReentrancyGuard {
     mapping (uint => uint) public slotToBuilding; // Returns Building Asigned To Slot.
     mapping (address => uint) internal slotsOwnerCount;
     
-    constructor() {
-        currency = new LPSToken(address(this));
+    constructor(string memory _baseUri) ERC721('Lost Paradise Buildings', 'LPSB') {
+        currency = new LPSToken(address(this), 10000000);
         decimals = currency.getTokendecimals();
+
+        _baseTokenURI = _baseUri;
     }
 
     
@@ -74,6 +78,14 @@ contract BuildingsContract is Ownable, ReentrancyGuard {
     }
     
     // Mints a New Building and Sends it To Owner
+    function _baseURI() internal view virtual override returns (string memory) {
+        return _baseTokenURI;
+    }
+
+    function setBaseURI(string memory baseURI) public onlyOwner {
+        _baseTokenURI = baseURI;
+    }
+
     function _mintSlot(string memory type_) internal {
         slots.push(Slot(type_, false));
         slotToOwner[slots.length - 1] = msg.sender;
