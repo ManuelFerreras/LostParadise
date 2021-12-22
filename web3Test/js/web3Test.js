@@ -10,6 +10,7 @@ var claimButtons;
 var upgradeButtons;
 var buildingsShowed;
 
+
 var alertId = 0;
 var transferMenuOpenned = false;
 var shopMenuOpenned = false;
@@ -17,9 +18,21 @@ var waitingResponce = false;
 
 
 
-addEventListener('load', function() {
+addEventListener('load', async function() {
   if (typeof web3 !== 'undefined') {
     web3js = new Web3(window.ethereum);
+
+    await web3js.eth.net.getId().then(res => {
+      if (res != 137) {
+
+        window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
+        });
+
+      }
+    });
+    
   } else {
     errorAlert("Please Install Metamask.");
   }
@@ -662,6 +675,7 @@ function openTransferMenu(buildingId) {
 
 }
 
+
 // Check Metamask Account Change
 window.ethereum.on('accountsChanged', function (accounts) {
   window.location.reload();
@@ -691,6 +705,7 @@ function successAlert(body) {
   }, 3000);
 }
 
+
 function errorAlert(body) {
   var divId = 'errorAlert'+alertId;
   var closeId = 'errorClose'+alertId;
@@ -711,6 +726,7 @@ function errorAlert(body) {
     }, 1000);
   }, 3000);
 }
+
 
 function warningAlert(body) {
   var divId = 'warningAlert'+alertId;
@@ -733,6 +749,7 @@ function warningAlert(body) {
   }, 3000);
 }
 
+
 // Close Alert
 $('.closeBtn').click(function() {
   var id = $(this).attr('id');
@@ -741,7 +758,7 @@ $('.closeBtn').click(function() {
   setTimeout(function() {
     $("#" + id).parent().remove();
   }, 1000);
-})
+});
 
 
 // Update Buildings Generated Income
