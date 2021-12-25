@@ -178,7 +178,7 @@ async function showSlots(ids) {
               <p class="${building[0][7]}">${building[0][7]}</p>
               <p class="${building[0][7]}">${building[0][8]}</p>
               <div class="type">
-                <img src="https://gateway.pinata.cloud/ipfs/QmXuskhYLDT18K1g43mrt1PfttFvugKHLBUu79j7NveGCC">
+                <img src="https://gateway.pinata.cloud/ipfs/QmQzhht2me7ZvtPJMMqJGPALqws5rMQ4kScnTG4AT9gJtY/${building[0][0]}.png">
               </div>
 
               <div class="buildingFooter">
@@ -248,7 +248,7 @@ async function showBuildingsInInventory(ids) {
             <p class="${building[0][7]}">${building[0][7]}</p>
             <p class="${building[0][7]}">${building[0][8]}</p>
             <div class="type invBuildingType">
-              <img src="https://gateway.pinata.cloud/ipfs/QmXuskhYLDT18K1g43mrt1PfttFvugKHLBUu79j7NveGCC">
+              <img src="https://gateway.pinata.cloud/ipfs/QmQzhht2me7ZvtPJMMqJGPALqws5rMQ4kScnTG4AT9gJtY/${building[0][0]}.png">
             </div>
             <div class="buildingFooterInv">
               <a class="boton buildingInfoBtn" id="" value="${building[2]}">Actions</a>
@@ -329,7 +329,7 @@ async function showBuildingsForUse(ids) {
             <p class="${building[0][7]}">${building[0][7]}</p>
             <p class="${building[0][7]}">${building[0][8]}</p>
             <div class="type invBuildingType">
-              <img src="https://gateway.pinata.cloud/ipfs/QmXuskhYLDT18K1g43mrt1PfttFvugKHLBUu79j7NveGCC">
+              <img src="https://gateway.pinata.cloud/ipfs/QmQzhht2me7ZvtPJMMqJGPALqws5rMQ4kScnTG4AT9gJtY/${building[0][0]}.png">
             </div>
             <div class="buildingFooter">
               <a class="boton useBuilding" id="" value="${building[2]}"><span class="SlotId" value="${$(this).attr('value')}"></span>Use</a>
