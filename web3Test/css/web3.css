@@ -90,6 +90,12 @@
 }
 
 /* Login */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .login {
     height: 92vh;
     color: var(--terciario);

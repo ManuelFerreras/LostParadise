@@ -23,21 +23,21 @@ addEventListener('load', async function() {
     web3js = new Web3(window.ethereum);
 
     await web3js.eth.net.getId().then(res => {
-      if (res != 137) {
+      if (res != 3) {
 
-        window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
-        });
+        showWrongNetwork();
 
+      } else {
+        lostParadise = new web3js.eth.Contract(lostParadiseABI, lostParadiseContractAddress);
       }
     });
     
   } else {
     errorAlert("Please Install Metamask.");
   }
-  lostParadise = new web3js.eth.Contract(lostParadiseABI, lostParadiseContractAddress);
-})
+  
+});
+
 
 function approveToken() {
   if (!waitingResponce){
@@ -126,6 +126,7 @@ function mintSlot() {
   }
 }
 
+
 // Login System
 function login() {
   successAlert("Login Completed")
@@ -137,6 +138,8 @@ function login() {
   $('.navegacion').removeClass("invisible");
 }
 
+
+// Show Marketplace
 $('.marketplaceBtn').click(function() {
   $('.slots').addClass("invisible");
   $('.social').addClass("invisible");
@@ -148,6 +151,8 @@ $('.marketplaceBtn').click(function() {
 
 });
 
+
+// Show Dashboard
 $('.paradiseBtn').click(function() {
   $('.marketplace').addClass("invisible");
   $('.slots').removeClass("invisible");
@@ -155,6 +160,58 @@ $('.paradiseBtn').click(function() {
   $('.marketplaceBtn').removeClass("selectedA");
   $('.paradiseBtn').addClass("selectedA");
 });
+
+
+async function showWrongNetwork() {
+
+  $('.login').empty();
+  $('.login').append(`
+  
+    <div class="content">
+      <p class="center-text loginText">Wrong Network Selected</p>
+
+      <a id="change-network" class="LoginButton">
+          <p class="loginMetaText">Switch To Ropsten Network</p>
+      </a>
+    </div>
+
+  `);
+
+
+  $('#change-network').click(async function() {
+
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x3' }], // Change to 38 to use BSC Mainnet DEPLOYMENT
+      });
+    } catch (switchError) {
+      // This error code indicates that the chain has not been added to MetaMask.
+      if (switchError.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0x38',
+              chainName: 'Binance Smart Chain',
+              nativeCurrency: {
+                name: 'Binance Coin',
+                symbol: 'BNB',
+                decimals: 18
+              },
+              rpcUrls: ['https://bsc-dataseed.binance.org/'],
+              blockExplorerUrls: ['https://bscscan.com']
+            }]
+          });
+        } catch (addError) {
+          warningAlert("Error While Adding a New Network.");
+        }
+      }
+    }
+  });
+
+}
+
 
 // Updates Owner's Slots List.
 async function showSlots(ids) {
@@ -236,6 +293,56 @@ async function showSlots(ids) {
   $('.addSlot').click(openShop);
 }
 
+
+// Retrieves Certain Building Info.
+function searchBuildingById(id) {
+  lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
+  .catch(err => errorAlert(err["message"]));
+}
+
+
+// Retrieves array of Owned Buildings.
+function getBuildingsByOwnerJs() {
+  return lostParadise.methods.getBuildingsByOwner(userAccount).call( {from: userAccount} ).catch(err => errorAlert(err["message"]));
+}
+
+
+// Retrieves array of Owned Slots.
+function getSlotsByOwnerJs() {
+  return lostParadise.methods.getSlotsByOwner(userAccount).call( {from: userAccount} ).catch(err => errorAlert(err["message"]));
+}
+
+
+// Updates Owner's Slots List.
+async function showBuildingsForUse(ids) {
+  for(id of ids) {
+    await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
+    .then(function(building) {
+      $("#buildings").append(`
+        <div class="building invBuilding" value="${building[2]}">
+          <div class="group ${building[0][7]}Type">
+            <h3 class="${building[0][7]}">Building #${building[2]}</h3>
+            <p class="${building[0][7]}">${building[0][7]}</p>
+            <p class="${building[0][7]}">${building[0][8]}</p>
+            <div class="type invBuildingType">
+              <img src="https://gateway.pinata.cloud/ipfs/QmQzhht2me7ZvtPJMMqJGPALqws5rMQ4kScnTG4AT9gJtY/${building[0][0]}.png">
+            </div>
+            <div class="buildingFooter">
+              <a class="boton useBuilding" id="" value="${building[2]}"><span class="SlotId" value="${$(this).attr('value')}"></span>Use</a>
+              <div class="buildingProductionInfo">
+                <p class="production ${building[0][7]}">${building[0][1]} LPS / HR</p>
+                <p class="production ${building[0][7]}">Max. ${building[0][4]} LPS</p>
+              </div>
+            </div>
+          </div>
+        </div>`
+      );
+    })
+    .catch(err => errorAlert(err["message"]));
+  }  
+}
+
+
 // Updates Owner's Slots List.
 async function showBuildingsInInventory(ids) {
   for(id of ids) {
@@ -315,53 +422,6 @@ async function showBuildingsInInventory(ids) {
     });
   });
   
-}
-
-// Updates Owner's Slots List.
-async function showBuildingsForUse(ids) {
-  for(id of ids) {
-    await lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
-    .then(function(building) {
-      $("#buildings").append(`
-        <div class="building invBuilding" value="${building[2]}">
-          <div class="group ${building[0][7]}Type">
-            <h3 class="${building[0][7]}">Building #${building[2]}</h3>
-            <p class="${building[0][7]}">${building[0][7]}</p>
-            <p class="${building[0][7]}">${building[0][8]}</p>
-            <div class="type invBuildingType">
-              <img src="https://gateway.pinata.cloud/ipfs/QmQzhht2me7ZvtPJMMqJGPALqws5rMQ4kScnTG4AT9gJtY/${building[0][0]}.png">
-            </div>
-            <div class="buildingFooter">
-              <a class="boton useBuilding" id="" value="${building[2]}"><span class="SlotId" value="${$(this).attr('value')}"></span>Use</a>
-              <div class="buildingProductionInfo">
-                <p class="production ${building[0][7]}">${building[0][1]} LPS / HR</p>
-                <p class="production ${building[0][7]}">Max. ${building[0][4]} LPS</p>
-              </div>
-            </div>
-          </div>
-        </div>`
-      );
-    })
-    .catch(err => errorAlert(err["message"]));
-  }  
-}
-
-
-
-// Retrieves Certain Building Info.
-function searchBuildingById(id) {
-  lostParadise.methods.searchBuildingById(id).call( {from: userAccount} )
-  .catch(err => errorAlert(err["message"]));
-}
-
-// Retrieves array of Owned Buildings.
-function getBuildingsByOwnerJs() {
-  return lostParadise.methods.getBuildingsByOwner(userAccount).call( {from: userAccount} ).catch(err => errorAlert(err["message"]));
-}
-
-// Retrieves array of Owned Buildings.
-function getSlotsByOwnerJs() {
-  return lostParadise.methods.getSlotsByOwner(userAccount).call( {from: userAccount} ).catch(err => errorAlert(err["message"]));
 }
 
 
@@ -446,53 +506,25 @@ function updateButtons() {
 }
 
 
-// Auto Updates Owner's Buildings Accumulated Incomes.
-function checkAccmulatedIncome() {
-  buildingsShowed = document.querySelectorAll('.building');
 
-  buildingsShowed.forEach(buildingObj => {
-    var claimText = buildingObj.querySelector('.claimableBuildingLps');
-    var buildingId = buildingObj.getAttribute('value');
 
-    lostParadise.methods.returnBuildingEarnings(buildingId)
-    .call({from: userAccount})
-    .then(function(response) {
-      claimText.innerText = response + " LPS";
-    })
-    .catch(err => errorAlert(err["message"]));
-  })
 
-  setTimeout(checkAccmulatedIncome, 5000);
-}
 
-// Auto Updates Owner's Buildings Cicle Starting Time.
-function checkStartedTime() {
-  buildingsShowed = document.querySelectorAll('.building');
+// MENUS OPENING //
 
-  buildingsShowed.forEach(buildingObj => {
-    var startedTime = buildingObj.querySelector('.startedCicleTime');
-    var buildingId = buildingObj.getAttribute('value');
-
-    lostParadise.methods.returnBuildingStartTime(buildingId)
-    .call({from: userAccount})
-    .then(function(response) {
-      startedTime.innerText = response + " Seconds Ago";
-    })
-    .catch(err => errorAlert(err["message"]));
-  })
-
-  setTimeout(checkStartedTime, 5000);
-}
 
 // Shop Menu Opening
 $('#shopBtn').click(async function() {
   openShop();
 });
 
+
 $('#inventoryBtn').click(async function() {
   openInventory();
 });
 
+
+// Opens Normal Inventory
 async function openInventory() {
   if (!shopMenuOpenned) {
     shopMenuOpenned = true;
@@ -520,6 +552,8 @@ async function openInventory() {
   }
 }
 
+
+// Open Inventory With Use Buttons
 async function openInventoryForUse(slotId) {
   if (!shopMenuOpenned) {
     shopMenuOpenned = true;
@@ -572,6 +606,8 @@ async function openInventoryForUse(slotId) {
   }
 }
 
+
+// Open Shop Menu
 async function openShop() {
   if (!shopMenuOpenned) {
     shopMenuOpenned = true;
@@ -621,7 +657,8 @@ async function openShop() {
   }
 }
 
-// Transfer Menu Opening
+
+// Open Transfer Menu
 function openTransferMenu(buildingId) {
   if (!transferMenuOpenned){
     transferMenuOpenned = true;
@@ -676,14 +713,16 @@ function openTransferMenu(buildingId) {
 }
 
 
-// Check Metamask Account Change
-window.ethereum.on('accountsChanged', function (accounts) {
-  window.location.reload();
-  warningAlert("Account Changed!");
-})
 
 
-// Alert Creation
+
+
+
+// ALERTS CREATION //
+
+
+
+// Success Alert
 function successAlert(body) {
   var divId = 'successAlert'+alertId;
   var closeId = 'successClose'+alertId;
@@ -706,6 +745,7 @@ function successAlert(body) {
 }
 
 
+// Error Alert
 function errorAlert(body) {
   var divId = 'errorAlert'+alertId;
   var closeId = 'errorClose'+alertId;
@@ -728,6 +768,7 @@ function errorAlert(body) {
 }
 
 
+// Warning Alert
 function warningAlert(body) {
   var divId = 'warningAlert'+alertId;
   var closeId = 'warningClose'+alertId;
@@ -761,6 +802,29 @@ $('.closeBtn').click(function() {
 });
 
 
+
+
+
+
+// Listeners //
+
+
+// Check Metamask Account Change
+window.ethereum.on('accountsChanged', function (accounts) {
+  warningAlert("Account Changed!");
+  window.location.reload();
+})
+
+
+// Check Metamask Network Change
+ethereum.on('chainChanged', (chainId) => {
+
+  warningAlert("Network Changed!");
+  window.location.reload();
+  
+});
+
+
 // Update Buildings Generated Income
 async function updateClaimableEarnings() {
   var claimableTexts = document.querySelectorAll('.producted');
@@ -769,5 +833,45 @@ async function updateClaimableEarnings() {
     lostParadise.methods.returnBuildingEarnings(text.getAttribute('value')).call({from: userAccount}).then(res => {text.innerText = `Claimable: ${res} LPS ${text.innerText.slice(text.innerText.search("/"), text.innerText.length)}`});
   } )
 
-  setTimeout(updateClaimableEarnings, 3000);
+  setTimeout(updateClaimableEarnings, 1000);
+}
+
+
+// Auto Updates Owner's Buildings Cicle Starting Time.
+function checkStartedTime() {
+  buildingsShowed = document.querySelectorAll('.building');
+
+  buildingsShowed.forEach(buildingObj => {
+    var startedTime = buildingObj.querySelector('.startedCicleTime');
+    var buildingId = buildingObj.getAttribute('value');
+
+    lostParadise.methods.returnBuildingStartTime(buildingId)
+    .call({from: userAccount})
+    .then(function(response) {
+      startedTime.innerText = response + " Seconds Ago";
+    })
+    .catch(err => errorAlert(err["message"]));
+  })
+
+  setTimeout(checkStartedTime, 5000);
+}
+
+
+// Auto Updates Owner's Buildings Accumulated Incomes.
+function checkAccmulatedIncome() {
+  buildingsShowed = document.querySelectorAll('.building');
+
+  buildingsShowed.forEach(buildingObj => {
+    var claimText = buildingObj.querySelector('.claimableBuildingLps');
+    var buildingId = buildingObj.getAttribute('value');
+
+    lostParadise.methods.returnBuildingEarnings(buildingId)
+    .call({from: userAccount})
+    .then(function(response) {
+      claimText.innerText = response + " LPS";
+    })
+    .catch(err => errorAlert(err["message"]));
+  })
+
+  setTimeout(checkAccmulatedIncome, 1000);
 }
