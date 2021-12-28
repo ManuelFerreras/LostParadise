@@ -1,4 +1,4 @@
-const lostParadiseContractAddress = "0x81037b6cF5eeFB592d2cD32f1aF9b9242b17F791";
+const lostParadiseContractAddress = "0xf5eBF9A3b2A1e06180D9c5Dd26B5370e4dAC8f8d";
 
 const loginButton = document.querySelector('#login');
 const approveTokenButton = document.querySelector('#approveToken');

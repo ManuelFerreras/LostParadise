@@ -22,7 +22,7 @@
 
 .navegacion {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     width: auto;
     text-align: center;
 }
@@ -119,14 +119,13 @@
 /* Social Override */
 .social {
     position: fixed;
-    left: -23%;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
-    transform: translate(0, -50%);
+    transform: translate(-80%, -50%);
     height: 100vh;
     display: flex;
     flex-direction: center;
-    max-width: 80%;
     margin-right: 10vmin;
 }
 
