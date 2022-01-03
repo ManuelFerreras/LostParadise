@@ -1,4 +1,4 @@
-const lostParadiseContractAddress = "0xf5eBF9A3b2A1e06180D9c5Dd26B5370e4dAC8f8d";
+const lostParadiseContractAddress = "0xa9B28690B8FdB6a909a3d65e32Cc42790c9b1bcB";
 
 const loginButton = document.querySelector('#login');
 const approveTokenButton = document.querySelector('#approveToken');
@@ -221,7 +221,7 @@ async function showSlots(ids) {
     await lostParadise.methods.searchSlotById(id).call( {from: userAccount} )
     .then(async function(slot) {
       if (slot[0][1] == true) {
-        var buildingId = await lostParadise.methods.slotToBuilding(+slot[1] + 1).call({from: userAccount});
+        var buildingId = await lostParadise.methods.slotToBuilding(slot[1]).call({from: userAccount});
 
         var productedByBuilding = await lostParadise.methods.returnBuildingEarnings(buildingId).call({from:userAccount}).then(res => {return res;});
 
@@ -479,7 +479,9 @@ function updateButtons() {
 
   });
 
-  upgradeButtons = document.querySelectorAll('#claimBtn');
+
+  // TODO
+  upgradeButtons = document.querySelectorAll('#upgradeBtn');
   upgradeButtons.forEach(button => {
 
     button.addEventListener('click', function() {

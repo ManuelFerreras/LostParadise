@@ -173,3 +173,7 @@ ol li a{
 .important {
     color: var(--principal);
 }
+
+.main-important {
+    color: var(--secundario);
+}
