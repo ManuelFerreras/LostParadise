@@ -116,6 +116,12 @@
     background-attachment: fixed;
 }
 
+@media screen and (max-width:768px) {
+    .intro-text {
+        background-attachment: initial;
+    }
+}
+
 
 .intro-text h2 {
     letter-spacing: 4px;
