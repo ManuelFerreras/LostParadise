@@ -105,7 +105,7 @@
 
 /* Intro Text */
 .intro-text {
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -171,6 +171,7 @@
 /* Info */
 .relative {
     position: relative;
+    background-image: var(--bg-principal);
 }
 
 .info {
@@ -179,6 +180,7 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .info h3 {
@@ -396,7 +398,7 @@
 .presale h3, .whitelist h3 {
     text-align: center;
     color: var(--secundario);
-    font-size: 10vmin;
+    font-size: 8vmin;
     letter-spacing: 1vmin;
     font-weight: lighter;
 }
@@ -415,6 +417,11 @@
     font-size: 3vmin;
     letter-spacing: 1vmin;
     font-weight: lighter;
+}
+
+/* Seccion Team */
+.seccion-team {
+    min-height: 100vh;
 }
 
 /* Input */
@@ -453,6 +460,59 @@
 .ico-input-amount:focus {
     border-color: var(--secundario);
     color: var(--secundario);
+}
+
+/* Team */
+.team-block {
+    background-image: var(--bg-principal);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.team-block h3 {
+    font-size: 4rem;
+    margin: 4rem 0;
+    color: var(--secundario);
+    width: 100%;
+    text-align: center;
+}
+
+.team-block p {
+    font-size: 1.2rem;
+    width: 80%;
+    color: white;
+    text-align: center;
+}
+
+.team-block-info {
+    margin-bottom: 6vmin;
+}
+
+.team-block-info .inner-box img {
+    max-width: 100%;
+}
+
+.team-block-info .inner-box h4 {
+    font-size: 1rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--secundario);
+}
+
+
+.team-block-info p {
+    font-size: 0.8rem;
+    width: 80%;
+    color: white;
+    text-align: center;
+    margin: 0;
+    width: 100%;
 }
 
 

@@ -1,167 +1,68 @@
 pragma solidity >= 0.8.0;
+// SPDX-License-Identifier: MIT
 
-import "ERC20.sol";
-import "IERC20.sol";
-import "SafeMath.sol";
-import "Ownable.sol";
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
  
- 
-// "SPDX-License-Identifier: UNLICENSED"
 
 contract LPSToken is ERC20, Ownable {
     using SafeMath for uint256;
-    
-    string public tokenname = "Lost Paradise Token Test";
-    string public tokensymbol = "LPST";
+     
+    string public tokenname = "Lost Paradise Token";
+    string public tokensymbol = "LPS";
     uint8 public tokendecimals = 18;
-    uint256 public totalTokenSupply = 100000000 * 10 ** tokendecimals;
-    uint256 public earningsPoolTokenSupply = totalTokenSupply.div(100).mul(40);
-    uint256 public availableTokensICO;
-    
+    uint256 public totalTokenSupply = 1000000000 * 10 ** 18;
+  
     address public admin;
-    address payable rewardsPoolContract;
+
+    address private _rewardsVaultAddress = 0x5e7E506cc235aa66bBCb0C977045f464FC6694C7;
+    address private _publicSaleAddress = 0x25C20C94A0020E34E99e1EF5Dc8B0150bf145649;
+    address private _privateSaleAddress = 0xDd7DaB7476D68386941d50E020Ac5b8fD2E660c9; // ICO contract
+    address private _fundingAddress = 0xeE37f9700E3E15FA65657cBC46F4d53CD291BFf3;
+
+    uint public tokensForOwnersLeft;
+    uint public lastTeamTokensClaim;
+    uint public tokensGivenToOwnersPerClaim;
     
-    address testAddress = 0x83D05B63aE85b5de69828B0412ff195f0CB3759A;
     
-    mapping(address => uint256) balances;
-    mapping(address => mapping (address => uint256)) allowed;
-    
-    constructor(address _rewardsPoolContract, uint256 _availableTokensICO) ERC20(tokenname, tokensymbol) {
-        _setRewardsPoolContract(payable(_rewardsPoolContract));
+    constructor() ERC20(tokenname, tokensymbol) {
         
-        _mint(rewardsPoolContract, totalTokenSupply); // 100M
-        _mint(0xD27b2CB449845Ab3f6608aDb9fa11ee98067d2A7, 100000 * 10 ** 18); // Testing
+        _mint(address(this), totalTokenSupply.mul(25).div(1000));
 
+        _mint(_rewardsVaultAddress, totalTokenSupply.mul(80).div(100)); // 80%
+        _mint(_publicSaleAddress, totalTokenSupply.div(10)); // 10%
+        _mint(_privateSaleAddress, totalTokenSupply.div(20)); // 5%
+        _mint(_fundingAddress, totalTokenSupply.div(40)); // 2.5%
 
-        _mint(address(this), availableTokensICO * 10 ** 18); // ICO
-
+        tokensForOwnersLeft = balanceOf(address(this)); // 2.5%
+        tokensGivenToOwnersPerClaim = balanceOf(address(this)) / 12;
+        
         admin = msg.sender;
+        lastTeamTokensClaim = 4 weeks;
 
-        availableTokensICO = _availableTokensICO * 10 ** 18;
     }
-    
-    
-    function _setRewardsPoolContract(address payable _rewardsPoolContract) private onlyOwner {
-        rewardsPoolContract = _rewardsPoolContract;
+
+    event tokensWithdrawnedForOwners(uint);
+
+    function withdrawTeamTokens() public {
+        require(msg.sender == admin, "Only the Owner");
+        require(block.timestamp - lastTeamTokensClaim > 4 weeks, "Have to wait 1 month to claim again.");
+        require(tokensForOwnersLeft > 0, "No tokens Left");
+
+        lastTeamTokensClaim = block.timestamp;
+        if(balanceOf(address(this)) > 0 && balanceOf(address(this)) < tokensGivenToOwnersPerClaim) {
+            _transfer(address(this), msg.sender, balanceOf(address(this)));
+        } else {
+            _transfer(address(this), msg.sender, tokensGivenToOwnersPerClaim);
+        }
+        tokensForOwnersLeft = balanceOf(address(this));
+
+        emit tokensWithdrawnedForOwners(block.timestamp);
     }
-    
-    
-    function approveContract(address owner, address spender, uint256 amount) public returns (bool) {
-        _approve(owner, spender, amount);
-        return true;
-    }
-    
-    function getTokenContract() public view returns (address) {
-        return address(this);
-    }
-    
-    function getTokendecimals() public view returns (uint256) {
-        return tokendecimals;
-    }    
 
     receive() external payable {}
-
-
-    // ------- ICO -------
-    struct Sale {
-        address investor;
-        uint quantity;
-    }
-
-    Sale[] public sales;
-
-    uint public end;
-    uint public price;
-    uint public minPurchase;
-    uint public maxPurchase;
-    bool public released;
-    
-    
-    function start(
-        uint duration,
-        uint _price, // In WEI
-        uint _minPurchase, // Amount of min tokens
-        uint _maxPurchase) // // Amount of max tokens
-        external
-        onlyAdmin() 
-        icoNotActive() {
-        require(duration > 0, 'duration should be > 0');
-        require(_minPurchase > 0 && _minPurchase < _maxPurchase, '_minPurchase should be > 0 and < _maxPurchase');
-        require(_maxPurchase > 0 && _maxPurchase.mul(10**18) <= availableTokensICO, '_maxPurchase should be > 0 and <= availableTokensICO');
-        end = duration + block.timestamp; 
-        price = _price;
-        minPurchase = _minPurchase;
-        maxPurchase = _maxPurchase;
-        released = false;
-    }
-    
-    function buy()
-        payable
-        external
-        icoActive() {
-        require(msg.value % price == 0, 'have to send a multiple of price');
-        require(msg.value >= (minPurchase.mul(price)) && msg.value <= (maxPurchase.mul(price)), 'have to send between minPurchase and maxPurchase');
-        uint quantity = msg.value.div(price).mul(10**18);
-        require(quantity <= availableTokensICO, 'Not enough tokens left for sale');
-        sales.push(Sale(
-            msg.sender,
-            quantity
-        ));
-
-        availableTokensICO = availableTokensICO.sub(quantity);
-    }
-    
-    function release()
-        external
-        onlyAdmin()
-        icoEnded()
-        tokensNotReleased() {
-
-        for(uint i = 0; i < sales.length; i++) {
-            Sale storage sale = sales[i];
-            transfer(sale.investor, sale.quantity);
-        }
-
-        released = true;
-    }
-    
-    function withdraw(
-        uint amount)
-        external
-        onlyAdmin()
-        icoEnded()
-        tokensReleased() {
-        payable(msg.sender).transfer(amount);    
-    }
-    
-    modifier icoActive() {
-        require(end > 0 && block.timestamp < end && availableTokensICO > 0, "ICO must be active");
-        _;
-    }
-    
-    modifier icoNotActive() {
-        require(end == 0, 'ICO should not be active');
-        _;
-    }
-    
-    modifier icoEnded() {
-        require(end > 0 && (block.timestamp >= end || availableTokensICO == 0), 'ICO must have ended');
-        _;
-    }
-    
-    modifier tokensNotReleased() {
-        require(released == false, 'Tokens must NOT have been released');
-        _;
-    }
-    
-    modifier tokensReleased() {
-        require(released == true, 'Tokens must have been released');
-        _;
-    }
-    
-    modifier onlyAdmin() {
-        require(msg.sender == admin, 'only admin');
-        _;
-    }
     
 }

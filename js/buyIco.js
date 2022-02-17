@@ -1,12 +1,16 @@
-const buyButton = document.querySelector('#buy-tokens');
-const icoLeftTimeText = document.querySelector('#ico-time');
-const icoLeftTokensText = document.querySelector('#ico-tokens');
-const icoPriceText = document.querySelector('#ico-price');
-const icoPurchaseAmountText = document.querySelector('#ico-amount');
+// const buyButton = document.querySelector('#buy-tokens');
+const whitelistButton = document.querySelector('#whitelist-btn');
 
-const icoBuyAmountInput = document.querySelector('#ico-amount-buy');
+const whitelistLeftTimeText = document.querySelector('#whitelist-time');
+// const icoLeftTimeText = document.querySelector('#ico-time');
+// const icoLeftTokensText = document.querySelector('#ico-tokens');
+// const icoPriceText = document.querySelector('#ico-price');
+// const icoPurchaseAmountText = document.querySelector('#ico-amount');
+
+// const icoBuyAmountInput = document.querySelector('#ico-amount-buy');
 
 var icoContract;
+var timeLeft;
 
 
 let doAction = login;
@@ -16,7 +20,7 @@ var userAccount;
 addEventListener('load', async function() {
     login();
 
-    buyButton.addEventListener('click', async function() {
+    whitelistButton.addEventListener('click', async function() {
         await doAction();
     });
 });
@@ -27,19 +31,21 @@ async function login() {
         web3js = new Web3(window.ethereum);  
         
         await web3js.eth.net.getId().then(res => {
-            if (res != 3) {
-                alert("Please Connect to Binance Smart Chain Network");
+            if (res != 4) {
+                alert("Please Connect to Rinkeby Network");
             } else {
-                icoContract = new web3js.eth.Contract(lostParadiseTokenAbi, icoAddress);
+                icoContract = new web3js.eth.Contract(lostParadiseIcoAbi, icoAddress);
 
                 ethereum.request({ method: 'eth_requestAccounts' })
                 .then(function(result) {
                 userAccount = result[0];
                 });
 
-                doAction = buyTokens;
+                // doAction = buyTokens; // ICO
+                doAction = whitelist; // Whitelist
 
-                checkInfo();
+                // checkInfo();
+                checkWhitelistInfo();
             }
         });        
     } else {
@@ -47,6 +53,33 @@ async function login() {
     }
 }
 
+async function whitelist() {
+  await icoContract.methods.whitelistAccount().send({from:userAccount}).then(
+    () => {
+      location.reload();
+    }
+  );
+}
+
+async function checkWhitelistInfo() {
+  await icoContract.methods.getWhitelistLeftTime().call({from:userAccount}).then( res => {
+      timeLeft = res;
+      console.log(res);
+    }
+  )
+
+  updateTime();
+}
+
+function updateTime() {
+
+  if(timeLeft > 0) {
+    timeLeft -= 1;
+    whitelistLeftTimeText.innerText = `Time Left: ${timeLeft} Seconds`
+
+    setTimeout(updateTime, 1000);
+  }
+}
 
 async function buyTokens() {
     var amountToBuy = icoBuyAmountInput.value;
