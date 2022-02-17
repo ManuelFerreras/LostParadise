@@ -126,6 +126,10 @@
     margin-bottom: 80px;
 }
 
+.intro-text a:hover {
+    color: var(--terciario);
+}
+
 .link-learnMore{
     color:var(--secundario);
     text-decoration: none;
