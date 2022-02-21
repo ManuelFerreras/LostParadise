@@ -100,6 +100,10 @@
 
 @media (max-width: 768px) {
 
+    .navegacion a {
+        margin: 20px 0;
+    }
+
     .intro-text h2 {
         width: 80%;
         overflow-wrap: break-word;
@@ -145,19 +149,7 @@
 }
 
 @media (max-width: 600px) {
-    .navegacion {
-        flex-direction: column;
-        align-items: center;
-        display: none;
-        width: 100%;
-        transition: display 1s;
-    }
-    .navegacion.show {
-        display: flex;
-    }
-    .navegacion a {
-        margin: 20px 0;
-    }
+
     .footer {
         flex-direction: column-reverse;
         height: auto;
