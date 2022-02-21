@@ -30,21 +30,40 @@
     height: auto;
     font-size: 24px;
     flex-wrap: wrap;
-    padding: 10px 0;
 }
 
 .header img {
     width: 24vmin;
 }
 
-.header a {
-    max-width: 40vmin;
+
+
+/* Nav Bar */
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.navbar {
+    margin: auto auto;
+}
+
+.top-nav {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.top-nav .navbar {
+    min-height: 4vh;
 }
 
 .navegacion {
     display: flex;
-    justify-content: space-between;
-    width: auto;
+    justify-content: space-around;
     
 }
 
