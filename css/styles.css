@@ -564,3 +564,18 @@
 .footer img{
     width: 30vmin;
 }
+
+.roadmap {
+    background-image: var(--bg-secundario);
+    padding-bottom: 10vmin;
+}
+
+.roadmap h3 {
+    font-size: 8vmin;
+    color: var(--terciario);
+    font-family: var(--mainFont);
+    font-weight: lighter;
+    padding: 100px 0 6% 0;
+    text-align: center;
+    letter-spacing: 10px;
+}
