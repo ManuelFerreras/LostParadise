@@ -12,7 +12,7 @@ contract LPSIco {
     address private admin;
     ERC20 private _LPSToken;
 
-    mapping (address => bool) whiteListed;
+    mapping (address => bool) public whiteListed;
 
     receive() external payable {}
 
